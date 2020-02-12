@@ -1,7 +1,7 @@
 (function () {
 
      //window.environment = document.location.origin+"/UXEprojects/Projects/Clients/previnsight/previnsight1/previnsight/phase2/restPhp/api";
-	window.environment = document.location.origin+"/admin/restPhp/api";
+	window.environment = document.location.origin+"/previnsight/restPhp/api";
 	//window.environment = "http://13.233.40.197/previnsight/admin/restPhp/api";
 
     var SERVICE_ROOT_URL = window.environment;
