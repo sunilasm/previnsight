@@ -1,0 +1,98 @@
+[
+    {
+        "id": "P453",
+        "name": "Temperature",
+        "threshold": "50\u00b0C - 60\u00b0C",
+        "sensorId": "SEN453",
+        "machinery": "N/A",
+        "workOrder": "Show All"
+    },
+    {
+        "id": "P456",
+        "name": "Pressure",
+        "threshold": "50 PA - 60 PA",
+        "sensorId": "SEN643",
+        "machinery": "N/A",
+        "workOrder": "N/A"
+    },
+    {
+        "id": "P987",
+        "name": "Humidity",
+        "threshold": "50% - 60%",
+        "sensorId": "SEN653",
+        "machinery": "N/A",
+        "workOrder": "Show All"
+    },
+    {
+        "id": "P123",
+        "name": "Paddle Speed",
+        "threshold": "100 - 200 RPM",
+        "sensorId": "SEN642",
+        "machinery": "N/A",
+        "workOrder": "Show All"
+    },
+    {
+        "id": "P754",
+        "name": "Taste",
+        "threshold": "Mild to Sour",
+        "sensorId": "SEN232",
+        "machinery": "N/A",
+        "workOrder": "N/A"
+    },
+    {
+        "id": "P453",
+        "name": "Temperature",
+        "threshold": "50\u00b0C - 60\u00b0C",
+        "sensorId": "SEN453",
+        "machinery": "N/A",
+        "workOrder": "Show All"
+    },
+    {
+        "id": "P456",
+        "name": "Pressure",
+        "threshold": "50 PA - 60 PA",
+        "sensorId": "SEN643",
+        "machinery": "N/A",
+        "workOrder": "N/A"
+    },
+    {
+        "id": "P987",
+        "name": "Humidity",
+        "threshold": "50% - 60%",
+        "sensorId": "SEN653",
+        "machinery": "N/A",
+        "workOrder": "Show All"
+    },
+    {
+        "id": "P123",
+        "name": "Paddle Speed",
+        "threshold": "100 - 200 RPM",
+        "sensorId": "SEN642",
+        "machinery": "N/A",
+        "workOrder": "Show All"
+    },
+    {
+        "id": "P754",
+        "name": "Taste",
+        "threshold": "Mild to Sour",
+        "sensorId": "SEN232",
+        "machinery": "N/A",
+        "workOrder": "N/A"
+    },
+    {
+        "id": "P453",
+        "name": "Temperature",
+        "threshold": "50\u00b0C - 60\u00b0C",
+        "sensorId": "SEN453",
+        "machinery": "N/A",
+        "workOrder": "Show All"
+    },
+    {
+        "id": "P456",
+        "name": "Pressure",
+        "threshold": "50 PA - 60 PA",
+        "sensorId": "SEN643",
+        "machinery": "N/A",
+        "workOrder": "N/A"
+    }
+]

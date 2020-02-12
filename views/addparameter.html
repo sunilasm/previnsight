@@ -1,0 +1,181 @@
+<div class="innerPage">
+    
+
+    <div id="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 pageTitle">
+                    <h3>Add Parameter</h3>
+                </div>
+            </div>
+            <div class="row customiedFrom">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-6 col-lg-offset-3">
+                            <form class="form-horizontal" ng-submit="submit()" name="addForm" novalidate>
+                                <div class="form-group">
+                                    <!--<label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Parameter ID</label>-->
+                                    <div class="col-sm-6">
+                                        <input type="hidden" name="parameter_code" ng-model="addParameterData.parameter_code" class="form-control">
+									 </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Parameter Name</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="parameter_name" ng-model="addParameterData.parameter_name" 
+                                               class="form-control" servicename="equipment/checkparameternameexists" required unique-field>
+										<span style="color:red" ng-show="addForm.parameter_name.$dirty && addForm.parameter_name.$invalid">
+										<span ng-show="addForm.parameter_name.$error.required">Parameter name is required.</span>
+										<span ng-show="addForm.parameter_name.$error.uniqueField">Parameter name already exists.</span>
+                                   </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Type</label>
+                                    <div class="col-sm-6">
+                                     <select class="form-control" name="parameter_type" ng-model="addParameterData.selectedType"  ng-options="paramerterType for paramerterType in paramerterTypes" required>
+                                            <option value="">Select Type</option>
+
+                                        </select>
+                                      <!--  <select class="form-control" name="parameter_type" ng-model="parameter_type" required>
+											<option value="">Select Type</option>
+                                            <option value="In Progress">In Process</option>
+                                            <option value="Quantity">Quantity</option>
+                                            <option value="General">General</option>
+                                        </select>-->
+										<span style="color:red" ng-show="addForm.parameter_type.$dirty && addForm.parameter_type.$invalid">
+										<span ng-show="addForm.parameter_type.$error.required">Parameter type is required.</span>
+                                   </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label" name="parameter_subtype"><span class="mandatory">*</span>Subtype</label>
+                                    <div class="col-sm-6">
+                                        <!--<select ng-model="subtype" name="subtype" class="form-control" ng-init="subtype=''" ng-change="changeSubtype()" required>
+											<option value="">Select SubType</option>
+                                            <option value="string">String</option>
+                                            <option value="float">Float</option>
+                                            <option value="integer">Integer</option>
+                                            <option value="boolean">Boolean</option>
+                                        </select>-->
+                                        <select class="form-control" name="subtype" ng-model="addParameterData.selectedSubType" ng-change="changeSubtype(addParameterData.selectedSubType)" ng-options="paramerterSubType for paramerterSubType in paramerterSubTypes" required>
+                                            <option value="">Select Type</option>
+
+                                        </select>
+										<span style="color:red" ng-show="addForm.subtype.$dirty && addForm.subtype.$invalid">
+										<span ng-show="addForm.subtype.$error.required">Parameter Subtype is required.</span>
+                                   </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Definition</label>
+                                    <div class="col-sm-6 definition">
+                                        <div class="setValue" ng-if="addParameterData.selectedSubType == 'String'">
+                                            <div class="parametersetValue">
+                                              <div class="parametersetValueLeft pull-left">
+                                                <label for="">Value</label>
+                                                <div ng-repeat="item in setValueItems" class="setvaluerow">
+                                                  <div class="settext">
+                                                    <input type="text" ng-model="item.value" class="form-control">                                     </div>
+                                                  <div class="removevalue">
+                                                    <a href ng-click="removeItem($index)">-</a>
+                                                  </div>
+                                                </div>
+                                                <input type="button" name="name" value="Add" class="btn-link" ng-click="addValueBox()">
+                                              </div>
+                                              <div class="parametersetValueRight pull-left">
+                                              <label for="">Target</label>
+                                              <select ng-model="addParameterData.selectedStringTargetValue" class="form-control" 
+                                                      ng-init="addParameterData.selectedStringTargetValue=setValueItems[0]"
+                                                      ng-options="i.value for i in setValueItems">
+    </select>
+											</div>
+                                            </div>
+                                        </div>
+                                        <div class="floatValue"  ng-if="addParameterData.selectedSubType == 'Float' || addParameterData.selectedSubType == 'Integer'">
+                                            <div class="definitionOption">
+                                                <ul>
+                                                    <li>
+                                                        <label for="">Unit</label>
+                                                        <!--<select name="" ng-model="addParameterData.unit" class="form-control">
+                                                            <option value="°C">deg C</option>
+                                                            <option value="PA">PA</option>
+                                                            <option value="%">%</option>
+                                                            <option value="RPM">RPM</option>
+                                                        </select>-->
+                                                        <select class="form-control" ng-model="addParameterData.unit"  ng-options="unitValue for unitValue in unitValues"></select>
+                                                        
+                                                    </li>
+                                                    <li>
+                                                        <label for="">Min</label>
+                                                        <input type="text" ng-model="addParameterData.min" class="form-control">
+                                                    </li>
+                                                    <li>
+                                                        <label for="">Max</label>
+                                                        <input type="text" ng-model="addParameterData.max" class="form-control">
+                                                    </li>
+                                                    <li>
+                                                        <label for="">Target</label>
+                                                        <input type="text" ng-model="addParameterData.target" name="target2" class="form-control">
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="floatValue"  ng-if="addParameterData.selectedSubType == 'Boolean'">
+                                            <div class="booleanOption">
+                                                <ul>
+                                                   <!-- <li>
+                                                        <label for="">Value 1</label>
+                                                        <input type="text" ng-model="addParameterData.value1"
+                                                          class="form-control">
+                                                    </li>
+                                                    <li>
+                                                        <label for="">Value 2</label>
+                                                        <input type="text" ng-model="addParameterData.value2"  class="form-control">
+                                                    </li>-->
+                                                    <li ng-repeat="item in setTargetItems">
+                                                         <label for="">{{item.label}}</label>
+                                                        <input type="text" ng-model="item.value" class="form-control">                                     
+                                                    <li>
+                                                        <label for="">Target</label>
+                                                    <select ng-model="addParameterData.selectedBooleanTargetValue" ng-init="addParameterData.selectedBooleanTargetValue=setTargetItems[0]"  ng-options="i.value for i in setTargetItems" class="form-control">
+            </select>
+                                                        <!--<select class="form-control" ng-model="addParameterData.selectedTargetValue" ng-init="addParameterData.selectedTargetValue='addParameterData.value1'" ng-change="onChangeSelectedValue()">
+                                                            <option>{{addParameterData.value1}}</option>
+                                                             <option>{{addParameterData.value2}}</option>
+                                                            
+                                                        </select>-->
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label" name="description" ng-model="description">Description</label>
+                                    <div class="col-sm-6">
+                                        <textarea ng-model="addParameterData.description" name="description" class="form-control" rows="3"></textarea>
+                                    </div>
+                                </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="form-group col-lg-12 submitArea">
+                    <div class="col-sm-offset-5 col-sm-6">
+                        <button type="submit" class="btn btn-default btnSave" ng-click="onSubmitAddParameter(addParameterData)">Save</button>
+                        <span class="btn-divider"></span>
+                        <a ui-sref="nav.parameters" type="button" class="btn btn-link">Cancel</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+</div>

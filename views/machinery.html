@@ -1,0 +1,283 @@
+<toast></toast>
+<div class="innerPage">
+        <div id="content">
+        <div class="container-fluid">
+            <div class="row pageTitle">
+                <div class="col-lg-6 col-sm-4">
+                    <h3>Machinery</h3>
+                </div>
+                <div class="col-lg-6 col-sm-8">
+                    <div class="pull-right">
+                        <div class="sensorSearch">
+                            <input type="text" placeholder="Search" ng-model="searchText" ng-keyup="search($event)">
+                            <a href=""><img src="images/search-insight.png" alt=""></a>
+                        </div>
+                        <a ui-sref="nav.addMachinery" class="btnAddNew" ng-click="addMachinery($event)" ng-show="machineryCreate==1"> <span><img src="images/rounded-add.png" alt=""></span> Add New</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row machineryContainer">
+                <div class="col-lg-6 col-sm-12" ng-repeat="machinery in fpMachinerieslist">
+                    <div class="card">
+                        <div class="cardHeader pull-left">
+                            <div class="cardHeaderRight pull-left">
+                                <h4>{{machinery.name}}</h4>
+                                <div class="cardHeadelocationdetails">
+                                    <a href="javascript:void(0)"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+                                    <ul>
+                                        <li>{{machinery.country}}</li>
+                                        <li>{{machinery.city}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cardContent">
+                            <div class="row">
+                                <div class="col-lg-3 col-sm-3">
+                                    <div class="machinerImgContainer">
+                                        <img data-ng-src="{{machinery.image}}" alt="" class="img-responsive">
+                                    </div>
+                                </div>
+                                <div class="col-lg-9 col-sm-9">
+                                    <div class="cardContentRow">
+                                        <label for="">Sensors</label>
+                                        <span class="machinerySensorIDLink">
+                                       {{machinery.sensor_code}}
+                                       <!-- <a href=""><img src="images/more.png" alt=""></a>-->
+                                        </span>
+                                    </div>
+                                    <div class="cardContentRow">
+                                        <label for="">Last Cleaned</label>
+                                        <span>{{machinery.last_cleaned}}</span>
+                                    </div>
+                                    <div class="cardContentRow">
+                                        <label for="">Last Calibrated</label>
+                                        <span>{{machinery.last_calibrated}}</span>
+                                    </div>
+                                    <div class="cardContentRow">
+                                        <label for="">Last Work Order</label>
+                                        <span class="machineryWorkOrderLink"><a href="">{{ machinery.last_work_order }}</a></span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cardFooter">
+                            <div class="sensor-notification">
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-click="criticalAlerts(machinery.name)">
+                                    <div class="imagesmallContainer">
+                                        <img src="images/warning-sign.png" alt="">
+                                    </div>
+                                </a>
+                                <span class="badge">{{machinery.notificationCount}}</span>
+                                <div class="dropdown-menu dropdown-menu-left sensor-notification-dd">
+                                    <div class="dropdownContent">
+                                        <p><a href='#/home'>No of Alerts - 0</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sensor-graph">
+                                <a href="" data-toggle="modal" ng-click="viewData(machinery.MACHINERY_ID)" data-target="#viewmachinery{{machinery.MACHINERY_ID}}" title="view">
+                                    <div class="imagesmallContainer">
+                                        <img src="images/view-icon.png" class="view" alt="">
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="sensor-graph">
+                                <a href="#/addMachinery?id={{machinery.MACHINERY_ID}}" ng-show="machineryUpdate==1">
+                                    <div class="imagesmallContainer">
+                                        <img src="images/edit-icon.png" alt="">
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="cardFooterSettings pull-right" 
+                                 ng-show="machineryDelete==1 || logactivityCreate==1 || qualificationCreate==1">
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="More">
+                                    <img src="images/settings.png" alt="More" title="More">
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-left settings-dd">
+                                    <ul>
+                                        <li ng-show="logactivityCreate==1"><a href="#/machinerylogactivities?id={{machinery.MACHINERY_ID}}">Log Activity</a></li>
+                                        <li ng-show="qualificationCreate==1"><a href="#/machineryaddqualification?id={{machinery.MACHINERY_ID}}&name={{machinery.name}}" >Add Qualification</a></li>
+                                        <!--<li><a ng-click="onOpenAddQualification(machinery.MACHINERY_ID, machinery.name)">Add Qualification</a></li>-->
+                                        <li ng-show="machineryDelete==1"><a data-toggle="modal" data-target="#deleteMachinery{{machinery.MACHINERY_ID}}">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="modal fade" id="viewmachinery{{machinery.MACHINERY_ID}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog machinery-modal" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">{{machinery.name}}</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+
+                                        <div class="tabbable-panel">
+                                            <div class="tabbable-line">
+                                                <ul class="nav nav-tabs" role="tablist" id=myTab>
+                                                    <li class="active"><a data-target="#view{{machinery.MACHINERY_ID}}" data-toggle="tab">Overview</a></li>
+                                                    <li ng-show="logactivityRead==1"><a data-target="#activitie{{machinery.MACHINERY_ID}}" data-toggle="tab">Log Activities</a></li>
+                                                    <li ng-show="qualificationRead==1"><a data-target="#qualification{{machinery.MACHINERY_ID}}" data-toggle="tab">Qualifications</a></li>
+                                                </ul>
+                                                <div class="tab-content">
+                                                    <div class="tab-pane active" id="view{{machinery.MACHINERY_ID}}">
+                                                        <div class="view_row">
+                                                            <label for="">Location</label><span>{{machinery.country}}, {{machinery.city}}</span>
+                                                        </div>
+                                                        <div class="view_row">
+                                                            <label for="">Sensor</label><span>{{machinery.sensor_code}}</span>
+                                                        </div>
+                                                        <div class="view_row">
+                                                            <label for="">Last Cleaned</label><span>{{machinery.last_cleaned}}</span>
+                                                        </div>
+                                                        <div class="view_row">
+                                                            <label for="">Last Calibrated</label><span>{{machinery.last_calibrated}}</span>
+                                                        </div>
+                                                        <div class="view_row">
+                                                            <label for="">Description</label><span>{{machinery.description}}</span>
+                                                        </div>
+                                                        <div class="view_row">
+                                                            <label for="">Image</label><span>
+                                                                <div class="">
+                                                           <img data-ng-src="{{machinery.image}}" alt="" class="img-responsive">
+                                                        </div>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane" id="activitie{{machinery.MACHINERY_ID}}">
+                                                        <div class="view_row">
+                                                            <label for="">Activity ID</label><span>{{viewLogActivityData.acivityid}}<viewLogActivityData.acivityid/span>
+                                                        </div>
+                                                        <div class="view_row">
+                                                            <label for="">Type of Activity</label><span>{{viewLogActivityData.activityType}}</span>
+                                                        </div>
+                                                        <div class="view_row">
+                                                            <label for="">Location</label><span>{{machinery.country}} | {{machinery.city}}</span>
+                                                        </div>
+                                                        <div class="view_row">
+                                                            <label for="">Performed By</label><span>{{viewLogActivityData.performedBy}}</span>
+                                                        </div>
+                                                        <div class="view_row">
+                                                            <label for="">Checked By</label><span>{{viewLogActivityData.checkedBy}}</span>
+                                                        </div>
+                                                        <div class="view_row">
+                                                            <label for="">Cleaning Up After Work Order</label><span>{{viewLogActivityData.cleanedAfterWorkOrderId}}</span>
+                                                        </div>
+                                                        <div class="view_row">
+                                                            <label for="">Start Date &amp; Time</label><span>{{viewLogActivityData.startDatetime}}</span>
+                                                        </div>
+                                                        <div class="view_row">
+                                                            <label for="">End Date &amp; Time</label><span>{{viewLogActivityData.endDatetime}}</span>
+                                                        </div>
+                                                        <div class="view_row">
+                                                            <label for="">Boiled Out</label><span>{{viewLogActivityData.boiledOut}}</span>
+                                                        </div>
+                                                        <div class="view_row">
+                                                            <label for="">Rinsed</label><span>{{viewLogActivityData.rinsed}}</span>
+                                                        </div>
+                                                        <div class="view_row">
+                                                            <label for="">Availablity Status</label><span>{{viewLogActivityData.availablityStatus}}</span>
+                                                        </div>
+                                                         <div class="view_row">
+                                                            <label for="">Comments</label><span>{{viewLogActivityData.comments}}</span>
+                                                        </div>
+                                                         <div class="view_row">
+                                                            <label for="">Materials Used</label><span>{{viewLogActivityData.material1}}, {{viewLogActivityData.material2}}</span>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                   
+                                                    <div class="tab-pane " id="qualification{{machinery.MACHINERY_ID}}">
+                                                        <div class="view_row">
+                                                            <label for="">Qualification ID</label><span>{{viewQualificationData.qualificationID}}</span>
+                                                        </div>
+                                                        <div class="view_row">
+                                                            <label for="">Equipment Name</label><span>{{viewQualificationData.eqipment_Name}}</span>
+                                                        </div>
+                                                        <div class="view_row">
+                                                            <label for="">Type of Qualification</label><span>{{viewQualificationData.selectedQualificationType}}</span>
+                                                        </div>
+                                                        <div class="view_row">
+                                                            <label for="">Location</label><span>{{machinery.country}} | {{machinery.city}}</span>
+                                                        </div>
+                                                        <div class="view_row">
+                                                            <label for="">Performed By</label><span>{{viewQualificationData.performedBy}}</span>
+                                                        </div>
+                                                        <div class="view_row">
+                                                            <label for="">Can Contain Inventory</label><span>{{viewQualificationData.containinventory}}</span>
+                                                        </div>
+                                                        <div class="view_row">
+                                                            <label for="">Start Date &amp; Time</label><span>{{viewQualificationData.dateRangeStart}}</span>
+                                                        </div>
+                                                        <div class="view_row">
+                                                            <label for="">End Date &amp; Time</label><span>{{viewQualificationData.dateRangeEnd}}</span>
+                                                        </div>
+                                                        <div class="view_row">
+                                                            <label for="">Qualified Status</label><span>{{viewQualificationData.qualifiedStatus}}</span>
+                                                        </div>
+                                                         <div class="view_row">
+                                                            <label for="">Description</label><span>{{viewQualificationData.description}}</span>
+                                                        </div>
+                                                         
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="modal fade" id="deleteMachinery{{machinery.MACHINERY_ID}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog modal-sm deleteSensoreModel" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Confirm</h4>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure want to delete?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default btnSave" data-dismiss="modal" ng-click="deleteMachinery(machinery.MACHINERY_ID)">Yes</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='text-center'>
+                <ul ng-if="pager.pages.length" class="pagination">
+                    <li ng-class="{disabled:pager.currentPage === 1}">
+                        <a ng-click="setPage(1)">&laquo;</a>
+                    </li>
+                    <li ng-class="{disabled:pager.currentPage === 1}">
+                        <a ng-click="setPage(pager.currentPage - 1)">&lsaquo;</a>
+                    </li>
+                    <li ng-repeat="page in pager.pages" ng-class="{active:pager.currentPage === page}">
+                        <a ng-click="setPage(page)">{{page}}</a>
+                    </li>               
+                    <li ng-class="{disabled:pager.currentPage === pager.totalPages}">
+                        <a ng-click="setPage(pager.currentPage + 1)">&rsaquo;</a>
+                    </li>
+                    <li ng-class="{disabled:pager.currentPage === pager.totalPages}">
+                        <a ng-click="setPage(pager.totalPages)">&raquo;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+</div>

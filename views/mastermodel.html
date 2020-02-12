@@ -1,0 +1,103 @@
+<div class="innerPage">
+    
+    <div id="content">
+        <div class="container-fluid">
+            <div class="row pageTitle">
+                        <div class="col-lg-6 col-sm-6">
+                            <h3>Model</h3>
+                        </div>
+                        <div class="col-lg-6 col-sm-6">
+                            <div class="pull-right">
+                                <div class="sensorSearch">
+                                    <input type="text" placeholder="Search" ng-model="searchText">
+                                    <a href=""><img src="images/search-insight.png" alt="Search" title="Search"></a>
+                                </div>
+                                <a class="btnAddNew" ng-click="addNewModel()" ng-show="modelCreate==1"><span><img src="images/rounded-add.png" alt=""></span> Add New</a>
+                            </div>
+                        </div>
+                    </div>
+            <div class="row pbottom25 master">
+                        <div class="table-responsive workOrderTable masterModelTable">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>S.No #</th>
+                                        <th>Manufacturer</th>
+                                        <th>Number</th>
+                                        <th>Name</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-show="addModelRow" ng-form name="innerForm">
+                                        <td></td>
+                                        <td>
+                                            <select class="form-control"  ng-model="selectedManufactureItemvalue"  ng-options="ma.MANUFACTURER_ID as ma.MANUFACTURER_NAME for ma in manufacturerList" required>
+                                            <option value="">Select Manufacturer</option>
+                                        </select>
+                                        </td>
+                                        <td>
+         <input type="text" class="form-control" ng-model="modelnumber" name="model_number" servicename="master/checkmodelnumberexits" required unique-field >
+			<span style="color:red" ng-show="innerForm.model_number.$dirty && innerForm.model_number.$invalid">
+			<span ng-show="innerForm.model_number.$error.required">Model Number is required</span>
+			<span ng-show="innerForm.model_number.$error.uniqueField">Model Number already exists.</span>
+			</span>	
+                                        </td>
+                                        <td>
+                                            <textarea name="" rows="1" class="form-control" ng-model="modelname"></textarea>
+                                        </td>
+                                        <td class="workorderActionBtn">
+                                            <div class="action" ng-click="addmodelItem()">
+                                                <div class="imagesmallContainer">
+                                                    <img ng-src="images/save-icon.png" class="save" alt="Save" title="Save">
+                                                </div>
+                                            </div>
+                                            <div class="action" ng-click="closeAddmodel()">
+                                                <div class="imagesmallContainer">
+                                                    <img ng-src="images/close-icon.png" class="closeMaterial" alt="Close" title="Close">
+                                                </div>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                    <tr ng-repeat="item in modelList | filter:searchText" ng-init="item.modeldetails = true" class="masteredit" ng-mouseover="showAction(item)" ng-mouseleave="hideAction(item)">
+                                        <td>{{$index + 1}}</td>
+                                        <td>
+                                            <select class="form-control" ng-disabled="item.modeldetails"  ng-model="item.MANUFACTURER_ID"  ng-options="ma.MANUFACTURER_ID as ma.MANUFACTURER_NAME for ma in manufacturerList" required>
+                                        </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control" ng-model="item.MODEL_NUMBER" ng-disabled="item.modeldetails">
+                                        </td>
+                                        <td>
+                                            <textarea name="" rows="1" class="form-control" ng-model="item.MODEL_NAME" ng-disabled="item.modeldetails"></textarea>
+                                        </td>
+                                        <td class="workorderActionBtn">
+                                            <div ng-show="item.loading">
+                                                <div class="action" ng-click="editModelItem(item)" ng-show="item.modeldetails && modelUpdate==1">
+                                                    <div class="imagesmallContainer">
+                                                        <img ng-src="images/edit-icon.png" class="save" alt="Edit" title="Edit">
+                                                    </div>
+                                                </div>
+                                                <div class="action" ng-click="saveEditModel(item)" ng-hide="item.modeldetails && modelDelete==1">
+                                                    <div class="imagesmallContainer">
+                                                        <img ng-src="images/save-icon.png" class="save" alt="Save" title="Save">
+                                                    </div>
+                                                </div>
+                                                <div class="action" ng-click="removeAddModel(item.MODEL_ID)">
+                                                    <div class="imagesmallContainer">
+                                                        <img ng-src="images/close-icon.png" class="closeMaterial" alt="Close" title="Close">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>

@@ -1,0 +1,234 @@
+<toast></toast>
+<div class="innerPage">
+        <div id="content">
+        <div class="container-fluid">
+            <div class="row pageTitle">
+                <div class="col-lg-6 col-sm-3">
+                    <h3>Sensors</h3>
+                </div>
+                <div class="col-lg-6 col-sm-9">
+                    <div class="pull-right">
+                        <div class="sensorSearch">
+                            <input type="text" placeholder="Search" ng-model="searchText" ng-keyup="search($event)">
+                            <a href=""><img src="images/search-insight.png" alt="Search" title="Search"></a>
+                        </div>
+                       <!-- <a href="" class="btnAddNew" ng-click="sync($event)" title="synchronize"> <span><img src="images/icon-sync.png"></span> Sync</a>-->
+                        <a ui-sref="nav.addSensor" class="btnAddNew" title="Add New Sensor" ng-show="sensorCreate==1"> <span><img src="images/rounded-add.png"></span> Add New</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row sensorsContainer">
+                <div class="col-lg-3 col-sm-6" ng-repeat="sensor in fpSensorslist">
+                    <div class="card">
+                        <div class="cardHeader pull-left">
+                            <div class="cardHeaderLeft pull-left">
+                                <div class="imageContainer">
+                                    <img ng-src="images/sensor-icon.png" alt="">
+                                </div>
+                            </div>
+                            <div class="cardHeaderRight pull-left">
+                                <h4>{{sensor.sensor_name}}</h4>
+                                <div class="cardHeadelocationdetails">
+                                    <a><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+                                    <ul>
+                                        <li>{{sensor.country}}</li>
+                                        <li>{{sensor.city}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cardContent">
+                            <div class="cardContentRow">
+                                <label for="">Manufacturer</label><span>{{sensor.manufacturer_code}}</span>
+                            </div>
+                            <div class="cardContentRow">
+                                <label for="">Model</label><span>{{sensor.model_number}}</span>
+                            </div>
+                            <div class="cardContentRow">
+                                <label for="">UPC</label><span>{{sensor.UPC}}</span>
+                            </div>
+                            <div class="cardContentRow">
+                                <label for=""><a ui-sref="nav.parameters">Parameter</a></label><span>{{sensor.parameter_name}}</span>
+                            </div>
+                            <div class="cardContentRow">
+                                <label for="">Target Value</label><span>{{sensor.value}}</span>
+                            </div>
+                            <div class="cardContentRow">
+                                <label for="">Machinery</label><span>{{sensor.machinery_code}}</span></div>
+                            <div>
+                                <label for="">Work Order</label><span><a href="">{{sensor.wo_number}}</a></span></div>
+                        </div>
+                        <div class="cardFooter">
+                            <div class="sensor-notification">
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Notifications" ng-click="criticalAlerts(sensor.sensor_name)">
+                                    <div class="imagesmallContainer">
+                                        <img src="images/warning-sign.png" alt="Notifications" title="Notifications">
+                                    </div>
+                                </a>
+                                <span class="badge">{{sensor.notificationCount}}</span>
+                                <div class="dropdown-menu dropdown-menu-left ">
+                                    <div class="dropdownContent">
+                                        <p><a href='#/home'>No of Alerts - <span>{{sensor.notificationCount}}</span></a></p>
+										<!--<p ng-if="sensor.sensor_name == 'dht1_humidity'"><a href='#/home'>No of Alerts - <span>{{humAlerts.length}}</span></a></p>
+                                        <p ng-if="sensor.sensor_name == 'dht1_temperature'"><a href='#/home'>No of Alerts - <span>{{tempAlerts.length}}</span></a></p>
+                                        <p ng-if="sensor.sensor_name != 'dht1_humidity' && sensor.sensor_name != 'dht1_temperature'"><a href='#/home'>No of Alerts - <span>{{alertsData.length}}</span></a></p>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sensor-graph">
+                                <a href="" data-toggle="modal" data-target="#meritsModal" ng-click="onGetSensorName(sensor.sensor_name)">
+                                    <div class="imagesmallContainer">
+                                        <img src="images/metric-iocn.png" alt="Metric" title="Metric">
+                                    </div>
+                                </a>
+                                <div class="modal fade meritsModel" id="meritsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" dragable>
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="myModalLabel">Metrics</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <!--<img src="images/graph.png" class="graphImg" alt="">-->
+                                                <div id="metricChart" style="width:100%; padding: 15px 10px 0 15px;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sensor-graph">
+                                <a href="" data-toggle="modal" data-target="#topoModal" title="Topology" ng-click="onDrawTopology(sensor.sensor_name)">
+                                    <div class="imagesmallContainer">
+                                        <img src="images/topology-icon.png" alt="Topology" title="Topology">
+                                    </div>
+                                </a>
+                                <div class="modal fade meritsModel" id="topoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" dragable>
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="myModalLabel">Topology</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <!--<img src="images/graph.png" class="graphImg" alt="">-->
+                                                <div id="topoView" style="width:100%; padding: 15px 10px 0 15px;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sensor-graph">
+                                <a href="" data-toggle="modal" data-target="#viewsensor{{sensor.sensor_code}}" title="View">
+                                    <div class="imagesmallContainer">
+                                        <img src="images/view-icon.png" class="view" alt="View" title="View">
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="sensor-graph">
+                                <a href="#/addSensor?id={{sensor.sensor_id}}" title="Edit" ng-show="sensorUpdate==1">
+                                    <div class="imagesmallContainer">
+                                        <img src="images/edit-icon.png" alt="Edit" title="Edit">
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="cardFooterSettings pull-right">
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="More">
+                                    <img src="images/settings.png" alt="More" title="More">
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-left settings-dd">
+                                    <ul>
+                                        <li><a href="javascript:void(0)">Calibrate</a></li>
+                                        <li ng-show="sensorDelete==1"><a data-toggle="modal" data-target="#deleteSensor{{sensor.sensor_code}}">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="viewsensor{{sensor.sensor_code}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog view_modal" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">{{sensor.sensor_name}}</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="view_row">
+                                        <label for="">Manufacturer</label><span>{{sensor.manufacturer_code}}</span>
+                                    </div>
+                                    <div class="view_row">
+                                        <label for="">Model</label><span>{{sensor.model_number}}</span>
+                                    </div>
+                                    <div class="view_row">
+                                        <label for="">UPC</label><span>{{sensor.UPC}}</span>
+                                    </div>
+                                    <div class="view_row">
+                                        <label for="">Location</label><span>{{sensor.country}}, {{sensor.city}}</span>
+                                    </div>
+                                    <div class="view_row">
+                                        <label for="">Machinery</label><span>{{sensor.machinery_code}}</span>
+                                    </div>
+                                    <div class="view_row">
+                                        <label for="">Parameter</label><span>{{sensor.parameter_name}}</span>
+                                    </div>
+                                    <div class="view_row">
+                                        <label for="">Target</label><span>{{sensor.value}}</span>
+                                    </div>
+                                    <div class="view_row">
+                                        <label for="">Work order</label><span>{{sensor.wo_number}}</span>
+                                    </div>
+                                     <div class="view_row">
+                                        <label for="">Description</label><span>{{sensor.description}}</span>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="deleteSensor{{sensor.sensor_code}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog modal-sm deleteSensoreModel" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Confirm</h4>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure want to delete?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default btnSave" data-dismiss="modal" ng-click="deleteSen(sensor.sensor_id)">Yes</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='text-center'>
+                <ul ng-if="pager.pages.length" class="pagination">
+                    <li ng-class="{disabled:pager.currentPage === 1}">
+                        <a ng-click="setPage(1)">&laquo;</a>
+                    </li>
+                    <li ng-class="{disabled:pager.currentPage === 1}">
+                        <a ng-click="setPage(pager.currentPage - 1)">&lsaquo;</a>
+                    </li>
+                    <li ng-repeat="page in pager.pages" ng-class="{active:pager.currentPage === page}">
+                        <a ng-click="setPage(page)">{{page}}</a>
+                    </li>               
+                    <li ng-class="{disabled:pager.currentPage === pager.totalPages}">
+                        <a ng-click="setPage(pager.currentPage + 1)">&rsaquo;</a>
+                    </li>
+                    <li ng-class="{disabled:pager.currentPage === pager.totalPages}">
+                        <a ng-click="setPage(pager.totalPages)">&raquo;</a>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+
+</div>

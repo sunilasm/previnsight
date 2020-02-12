@@ -1,0 +1,145 @@
+<div class="innerPage">
+    
+    <div id="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 pageTitle">
+                    <h3>Add Sensor</h3>
+                </div>
+            </div>
+            <div class="row customiedFrom">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-6 col-lg-offset-3">
+                            <form class="form-horizontal" ng-submit="submit()" name="addForm" novalidate>
+                                <input type="hidden" name="sensor_code" ng-model="addSensorData.sensor_code" class="form-control">
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Sensor Name</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="sensor_name" ng-model="addSensorData.sensor_name" class="form-control" value="" servicename="equipment/checksensornameexits" required unique-field>
+                                        <span style="color:red" ng-show="addForm.sensor_name.$dirty && addForm.sensor_name.$invalid">
+    										<span ng-show="addForm.sensor_name.$error.required">Sensor Name is required.</span>
+                                            <span ng-show="addForm.sensor_name.$error.uniqueField">Sensor name already exists.</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Sensor Unique Id</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="sensor_unique_id" ng-model="addSensorData.sensor_unique_id" class="form-control" value="" ng-disabled="true">
+                                        <!--<span style="color:red" ng-show="addForm.sensor_unique_id.$dirty && addForm.sensor_unique_id.$invalid">
+										<span ng-show="addForm.sensor_unique_id.$error.required">Sensor Unique Id is required.</span>
+                                        </span>-->
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Manufacturer</label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" ng-model="addSensorData.selectedManufacturer" ng-change="getModelData(addSensorData.selectedManufacturer)" ng-options="ma.Manufacturer_id as ma.Manufacturer_Code for ma in manufacturers" name="manufacturer" required>
+                                            <option value="">Select Manufacturer</option>
+
+                                        </select>
+
+
+                                        <span style="color:red" ng-show="addForm.manufacturer.$dirty && addForm.manufacturer.$invalid">
+										<span ng-show="addForm.manufacturer.$error.required">Manufacturer is required.</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Model</label>
+                                    <div class="col-sm-6">
+
+                                        <select class="form-control" ng-model="addSensorData.selectedModel" ng-options="mo.Model_id as mo.Model_Number for mo in models" name="model" required>
+                                            <option value="">Select Model</option>
+
+                                        </select>
+                                        <span style="color:red" ng-show="addForm.model.$dirty && addForm.model.$invalid">
+										<span ng-show="addForm.model.$error.required">Model is required.</span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">UPC</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" ng-model="addSensorData.upc" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Location</label>
+                                    <div class="col-sm-8">
+                                        <button type="button" class="btn btn-default locationBtn" ng-class="{'show' : locationSelectBtn, 'hide' : !locationSelectBtn}" ng-click="locationSelect($event)">Select</button>
+                                        <button type="button" class="btn btn-default locationBtn" ng-class="{'show' : locationEditBtn, 'hide' : !locationEditBtn}" ng-click="locationEdit($event)">Edit</button>
+                                        <div class="locationBox" ng-class="{'show' : location, 'hide' : !location}">
+                                            <wxy-push-menu menu="menu" options="rest.options"></wxy-push-menu>
+                                            <div class="arrow"></div>
+                                            <div class="flyout-fold"></div>
+                                            <div class="locationFooter">
+                                                <button type="button" class="btn btn-default btnSave" ng-click="locationSeleted($event)">Done</button>
+                                                <a href="javascript:void(0)" class="cancel" ng-click="locationCancel($event)">Cancel</a>
+                                            </div>
+                                        </div>
+                                        <div id="pushobj" name="locationData" ng-show="events.length >0">                  
+                                            <ul>
+                                                <li name="event_{{$index}}" ng-repeat="event in events track by $index" ng-bind="event"></li>
+                                            </ul>
+                                            
+                                        </div>
+                                        <span style="color:red" ng-show="eventsEmptyArr">Select Location is required.</span>
+                                    
+                                    </div>
+                                    
+                                    
+                                </div>
+                                 
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Machinery</label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" ng-model="addSensorData.selectedMachinery" ng-options="m.machinery_id as m.MACHINERY_CODE for m in machinerys" name="machinery">
+                                            <option value="">Select Machinery</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span><a ui-sref="nav.parameters">Parameter</a></label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" ng-model="addSensorData.selectedParameter" ng-options="p.Parameter_ID as p.PARAMETER_NAME for p in parameters" name="parameter" ng-change="getTargetValue(addSensorData.selectedParameter)" required>
+                                            <option value="">Select Parameter</option>
+                                        </select>
+                                
+                                        <span style="color:red" ng-show="addForm.parameter.$dirty &&addForm.parameter.$invalid">
+										    <span ng-show="addForm.parameter.$error.required">Parameter is required.</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Target Value</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" ng-model="addSensorData.value" class="form-control" disabled="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label" ng-model="addSensorData.description">Description</label>
+                                    <div class="col-sm-6">
+                                        <textarea ng-model="addSensorData.description" class="form-control" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12 submitArea">
+                        <div class="col-sm-offset-5 col-sm-6">
+                            <button type="submit" class="btn btn-default btnSave" ng-click="OnSubmitSensor(addSensorData)" title="Save Sensor">Save</button>
+                            <span class="btn-divider"></span>
+                            <button type="button" class="btn btn-link" ng-click="onCancelSensor()" title="Cancel Sensor">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>

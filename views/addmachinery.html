@@ -1,0 +1,107 @@
+<div class="innerPage">
+    
+    <div id="content" class="machinery">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 pageTitle">
+                    <h3>Add Machinery</h3>
+                </div>
+            </div>
+            <div class="row customiedFrom">
+                <div class="col-lg-12">
+                    <div class="row pbottom25">
+                        <div class="col-lg-6 col-lg-offset-3">
+                            <form class="form-horizontal" ng-submit="submit()" name="addForm" novalidate>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Machinery ID</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="machinery_code" ng-model="addMachineryData.machinery_id" class="form-control" ng-disabled="true">
+                                        
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Name</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="machinery_name" ng-model="addMachineryData.machinery_name" class="form-control" servicename="equipment/checkmachinerynameexits" required unique-field>
+                                        <span style="color:red" ng-show="addForm.machinery_name.$dirty && addForm.machinery_name.$invalid">
+										<span ng-show="addForm.machinery_name.$error.required">Name is required.</span>
+                                            <span ng-show="addForm.machinery_name.$error.uniqueField">Name already exists.</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Location</label>
+                                    <div class="col-sm-8">
+                                        <button type="button" class="btn btn-default locationBtn" ng-class="{'show' : locationSelectBtn, 'hide' : !locationSelectBtn}" ng-click="locationSelect($event)">Select</button>
+                                        <button type="button" class="btn btn-default locationBtn" ng-class="{'show' : locationEditBtn, 'hide' : !locationEditBtn}" ng-click="locationEdit($event)">Edit</button>
+                                        <div class="locationBox" ng-class="{'show' : location, 'hide' : !location}">
+                                            <wxy-push-menu menu="menu" options="rest.options"></wxy-push-menu>
+                                            <div class="arrow"></div>
+                                            <div class="flyout-fold"></div>
+                                            <div class="locationFooter">
+                                                <button type="button" class="btn btn-default btnSave" ng-click="locationSeleted($event)">Done</button>
+                                                <a href="javascript:void(0)" class="cancel" ng-click="locationCancel($event)">Cancel</a>
+                                            </div>
+                                        </div>
+                                        <div id="pushobj" name="locationData" ng-show="events.length >0">                  
+                                            <ul>
+                                                <li name="event_{{$index}}" ng-repeat="event in events track by $index" ng-bind="event"></li>
+                                            </ul>
+                                            
+                                        </div>
+                                        <span style="color:red" ng-show="eventsEmptyArr">Select Location is required.</span>
+                                    
+                                    </div>
+                                    
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Sensors Name</label>
+                                    <div class="col-sm-6">
+                                        <select multiple chosen ng-model="addMachineryData.selectedSensors" ng-options="s.sensor_id as s.sensor_name for s in sensorNames">
+                                            <option value=""></option>
+                                        </select>
+                                        
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Description</label>
+                                    <div class="col-sm-6">
+                                        <textarea name="description" ng-model="addMachineryData.description" class="form-control" rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Upload Image</label>
+                                    <div class="col-sm-6">
+                                        <div class="dropzone" file-dropzone="[image/png, image/jpeg, image/gif]" file="image" file-name="imageFileName" data-max-file-size="3">
+                                        </div>
+                                        <form action>
+
+                                            <div class="imageDragDrop" placeholder="Image browse or Drag and Drop Here">
+                                                <input type="file" fileread="uploadme.src" class="imageDragArea" />
+                                            </div>
+                                            <div class="image-container" ng-class="{'in': uploadme.src, 'dummy': !uploadme.src}">
+                                                <img data-ng-src="{{uploadme.src}}">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12 submitArea">
+                        <div class="col-sm-offset-5 col-sm-6">
+                            <button type="submit" class="btn btn-default btnSave" ng-click="onSaveAddMachinery(addMachineryData)">Save</button>
+                            <span class="btn-divider"></span>
+                            <a ui-sref="nav.machinery" type="button" class="btn btn-link">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+</div>

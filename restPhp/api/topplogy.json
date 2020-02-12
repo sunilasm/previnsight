@@ -1,0 +1,89 @@
+{
+    "name": "Santa Clara",
+    "img": "images/location.svg",
+    "color":"red",
+    "children": [
+        {
+            "name": "Building 1",
+            "img": "images/building.svg",
+            "children": [
+                {
+                    "name": "Room 1",
+                    "img": "images/room.svg",
+                    "children": [
+                        {
+                            "name": "Temperature",
+                            "img": "images/sensor.svg",
+                            "children": [
+                                {
+                                    "name": "Machinery",
+                                    "img": "images/machinery.svg"
+
+                    }
+                ]
+
+            }
+        ]
+
+    }
+
+  ]
+  },
+
+        {
+            "name": "Building2",
+            "img": "images/building.svg",
+            "children": [
+                {
+                    "name": "Room2",
+                    "img": "images/room.svg"
+    }
+   ]
+  }
+
+ ]
+},{
+    "name": "Santa Clara",
+    "img": "images/location.svg",
+    "color":"red",
+    "children": [
+        {
+            "name": "Building 1",
+            "img": "images/building.svg",
+            "children": [
+                {
+                    "name": "Room 1",
+                    "img": "images/room.svg",
+                    "children": [
+                        {
+                            "name": "Temperature",
+                            "img": "images/sensor.svg",
+                            "children": [
+                                {
+                                    "name": "Machinery",
+                                    "img": "images/machinery.svg"
+
+                    }
+                ]
+
+            }
+        ]
+
+    }
+
+  ]
+  },
+
+        {
+            "name": "Building2",
+            "img": "images/building.svg",
+            "children": [
+                {
+                    "name": "Room2",
+                    "img": "images/room.svg"
+    }
+   ]
+  }
+
+ ]
+}

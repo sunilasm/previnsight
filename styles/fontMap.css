@@ -1,0 +1,58 @@
+@font-face {
+    font-family: 'roboto_light';
+    src: url('../fonts/roboto/light/Roboto-Light-webfont.eot');
+    src: url('../fonts/roboto/light/Roboto-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/roboto/light/Roboto-Light-webfont.woff') format('woff'),
+         url('../fonts/roboto/light/Roboto-Light-webfont.ttf') format('truetype'),
+         url('../fonts/roboto/light/Roboto-Light-webfont.svg#open_sanslight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'roboto_regular';
+    src: url('../fonts/roboto/regular/Roboto-Regular-webfont.eot');
+    src: url('../fonts/roboto/regular/Roboto-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/roboto/regular/Roboto-Regular-webfont.woff') format('woff'),
+         url('../fonts/roboto/regular/Roboto-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/roboto/regular/Roboto-Regular-webfont.svg#open_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'roboto_bold';
+    src: url('../fonts/roboto/bold/Roboto-Bold-webfont.eot');
+    src: url('../fonts/roboto/bold/Roboto-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/roboto/bold/Roboto-Bold-webfont.woff') format('woff'),
+         url('../fonts/roboto/bold/Roboto-Bold-webfont.ttf') format('truetype'),
+         url('../fonts/roboto/bold/Roboto-Bold-webfont.svg#open_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'roboto_thin';
+    src: url('../fonts/roboto/thin/Roboto-Thin-webfont.eot');
+    src: url('../fonts/roboto/thin/Roboto-Thin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/roboto/thin/Roboto-Thin-webfont.woff') format('woff'),
+         url('../fonts/roboto/thin/Roboto-Thin-webfont.ttf') format('truetype'),
+         url('../fonts/roboto/thin/Roboto-Thin-webfont.svg#open_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'font_awesome';
+    src: url('../fonts/fontAwesome/fontawesome-webfont.eot');
+    src: url('../fonts/fontAwesome/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/fontAwesome/fontawesome-webfont.woff') format('woff'),
+         url('../fonts/fontAwesome/fontawesome-webfont.ttf') format('truetype'),
+         url('../fonts/fontAwesome/fontawesome-webfont.svg#open_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+

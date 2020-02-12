@@ -1,0 +1,46 @@
+/*
+
+.multilevelpushmenu_wrapper {
+  position: fixed !important;
+}
+*/
+
+#pushobj {
+    position: relative;
+    margin-top: 15px;
+    font-family: 'roboto_regular';
+    font-size: 14px;
+    color: #666;
+    background: #fff;
+    margin-left: 0 !important;
+    float: left;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#pushobj ul {
+    font-family: 'roboto_regular';
+    font-size: 14px;
+}
+
+#pushobj ul li {
+    float: left;
+    padding-right: 14px;
+    position: relative;
+}
+
+#pushobj ul li:after {
+    content: '|';
+    position: absolute;
+    z-index: 10;
+    top: -3px;
+    right: 5px;
+    color: #999;
+    font-family: roboto_light;
+    font-size: 19px;
+}
+
+#pushobj ul li:last-child:after {
+    content: '';
+}

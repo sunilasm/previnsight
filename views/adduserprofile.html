@@ -1,0 +1,299 @@
+<div class="innerPage">
+    <div id="content">
+        <div class="container-fluid">
+            <div class="row pageTitle">
+                <div class="col-lg-6 col-sm-6">
+                    <h3>Add User Profile</h3>
+                </div>
+                <div class="col-lg-6 col-sm-6">
+                    <div class="pull-right">
+                    </div>
+                </div>
+            </div>
+            <div class="row customiedFrom permission">
+                <div class="col-lg-4">
+                                <div class="other-features-row dashboard-widgets">
+                                    <div class="ofleft">Select All</div>
+                                    <div class="ofright">
+                                        <input type="checkbox"  ng-model="selectedAll" ng-click="checkAll()">
+                                    </div>
+                                </div>
+                 </div>
+                <div class="col-lg-12">
+                    <table class="table table-bordered workOrderTable permissionTable">
+                        <thead>
+                            <tr>
+                                <th>Features</th>
+                                <th>Create</th>
+                                <th>Read</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                                <!--<th>Select All</th>-->
+                            </tr>
+                        </thead>
+                        <tbody>
+						<!--<tr>
+					<th scope="row">Insight</th>
+					<td><input  ng-model="addprofileData.insightCreate" ng-true-value="1" ng-false-value="0"  type="checkbox"></td>
+					<td><input  ng-model="addprofileData.insightRead"   ng-true-value="1" ng-false-value="0"  type="checkbox"></td>
+					<td><input  ng-model="addprofileData.insightUpdate"  ng-true-value="1" ng-false-value="0" type="checkbox"></td>
+					<td><input  ng-model="addprofileData.insightDelete"  ng-true-value="1" ng-false-value="0" type="checkbox"></td>
+					
+				</tr>-->
+                            <tr>
+                                <th scope="row">Work Orders</th>
+                                <td><input ng-model="addprofileData.workorderCreate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                                <td><input ng-model="addprofileData.workorderRead" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                                <td><input ng-model="addprofileData.workorderUpdate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                                <td><input ng-model="addprofileData.workorderDelete" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="sublevel">Quality</th>
+                                <td><input ng-model="addprofileData.qualityCreate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                                <td><input ng-model="addprofileData.qualityRead" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                                <td><input ng-model="addprofileData.qualityUpdate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                                <td><input ng-model="addprofileData.qualityDelete" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                            </tr>
+                            <tr>
+							<th scope="row">Inventory</th>
+							<td><input ng-model="addprofileData.inventoryCreate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.inventoryRead" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.inventoryUpdate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.inventoryDelete" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                            </tr>
+							<tr>
+                                <th scope="row" class="sublevel">Quality</th>
+                                <td><input ng-model="addprofileData.invqualityCreate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                                <td><input ng-model="addprofileData.invqualityRead" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                                <td><input ng-model="addprofileData.invqualityUpdate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                                <td><input ng-model="addprofileData.invqualityDelete" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Recipies</th>
+                                <td><input ng-model="addprofileData.recipeCreate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                                <td><input ng-model="addprofileData.recipeRead" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                                <td><input ng-model="addprofileData.recipeUpdate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                                <td><input ng-model="addprofileData.recipeDelete" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                            </tr>
+
+                            <tr>
+							<th scope="row">Equipment</th>
+							<td><input ng-model="addprofileData.equipmentCreate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.equipmentRead" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.equipmentUpdate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.equipmentDelete" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row" class="sublevel">Sensor</th>
+                                <td><input ng-model="addprofileData.sensorCreate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                                <td><input ng-model="addprofileData.sensorRead" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                                <td><input ng-model="addprofileData.sensorUpdate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                                <td><input ng-model="addprofileData.sensorDelete" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                                <!--<td>
+                                    <input type="checkbox">
+                                </td>-->
+                            </tr>
+
+                            <tr>
+							<th scope="row" class="sublevel">Machinery</th>
+							<td><input ng-model="addprofileData.machineryCreate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.machineryRead" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.machineryUpdate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.machineryDelete" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							
+                            </tr>
+                            <tr>
+
+                            <th scope="row" class="sublevel secondsublevel">Log Activity</th>
+
+                            <td><input ng-model="addprofileData.logactivityCreate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.logactivityRead" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.logactivityUpdate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.logactivityDelete" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                             
+                            </tr>
+
+                            <tr>
+
+                            <th scope="row" class="sublevel secondsublevel">Add Qualification</th>
+
+                             <td><input ng-model="addprofileData.qualificationCreate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.qualificationRead" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.qualificationUpdate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.qualificationDelete" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                             
+
+                            </tr>
+
+                            <tr>
+
+                            <th scope="row" class="sublevel">Parameter</th>
+
+                             <td><input ng-model="addprofileData.parameterCreate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.parameterRead" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.parameterUpdate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.parameterDelete" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                             
+                            </tr>
+
+                            <tr>
+
+                            <th scope="row">Reports</th>
+
+                            <td><input ng-model="addprofileData.reportCreate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.reportRead" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.reportUpdate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.reportDelete" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Admin</th>
+                            <td><input ng-model="addprofileData.adminCreate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.adminRead" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.adminUpdate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.adminDelete" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                             
+                            </tr>
+
+                            <tr>
+
+                            <th scope="row" class="sublevel">Users</th>
+
+                            <td><input ng-model="addprofileData.userCreate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.userRead" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.userUpdate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.userDelete" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                             
+
+                            </tr>
+
+                            <tr>
+
+                            <th scope="row" class="sublevel">Roles</th>
+                            <td><input ng-model="addprofileData.roleCreate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.roleRead" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.roleUpdate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.roleDelete" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                             
+                            </tr>
+                            <tr>
+
+                            <th scope="row" class="subTitle">Master</th>
+                            <td><input ng-model="addprofileData.masterCreate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.masterRead" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.masterUpdate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.masterDelete" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                             
+                            </tr>
+
+                            <tr>
+
+                            <th scope="row" class="sublevel">Materials</th>
+                            <td><input ng-model="addprofileData.materialCreate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.materialRead" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.materialUpdate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.materialDelete" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                             
+                            </tr>
+
+                            <tr>
+
+                            <th scope="row" class="sublevel">UOM</th>
+							
+                            <td><input ng-model="addprofileData.uomCreate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.uomRead" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.uomUpdate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.uomDelete" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                             
+                            </tr>
+                            <tr>
+
+                            <th scope="row" class="sublevel">Manufacturer</th>
+
+                            <td><input ng-model="addprofileData.manufacturerCreate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.manufacturerRead" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.manufacturerUpdate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.manufacturerDelete" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                             
+                            </tr>
+
+                            <tr>
+
+							<th scope="row" class="sublevel">Model</th>
+
+                            <td><input ng-model="addprofileData.modelCreate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.modelRead" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.modelUpdate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.modelDelete" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                             
+
+                            </tr>
+
+                            <tr>
+
+                            <th scope="row" class="sublevel">Location</th>
+
+                            <td><input ng-model="addprofileData.locationCreate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.locationRead" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.locationUpdate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.locationDelete" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                             
+                            </tr>
+                            <tr>
+                            <th scope="row" class="sublevel">Supplier</th>
+
+                            <td><input ng-model="addprofileData.supplierCreate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.supplierRead" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.supplierUpdate" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+							<td><input ng-model="addprofileData.supplierDelete" ng-true-value="1" ng-false-value="0" type="checkbox" ></td>
+                             
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <div class="other-features">
+                        <h2>Other Features</h2>
+                        <div class="other-features-row">
+                            <div class="ofleft">Chat</div>
+                            <div class="ofright">
+                                <switch name="yesNo" ng-model="otherFeatureChat" on="Yes" off="No" class="wide"></switch>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="other-features">
+                        <h2>Dashboard Widgets</h2>
+                       
+                            <div class="col-lg-4">
+                                <div class="other-features-row dashboard-widgets">
+                                    <div class="ofleft">Alerts</div>
+                                    <div class="ofright">
+                                        <switch name="yesNo" ng-model="dashboardAlerts" on="Yes" off="No" class="wide"></switch>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="other-features-row dashboard-widgets">
+                                    <div class="ofleft">Location Map</div>
+                                    <div class="ofright">
+                                        <switch name="yesNo" ng-model="dashboardLocationMap" on="Yes" off="No" class="wide"></switch>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4"></div>
+                       
+
+                    </div>
+                    <div class="form-group col-lg-12 submitArea">
+                        <div class="col-sm-offset-5 col-sm-6">
+                        <button type="submit" class="btn btn-default btnSave" ng-click="OnSubmitUserProfile(addprofileData)" title="Save Sensor">Save</button>
+                            <span class="btn-divider"></span>
+                            <button type="button" class="btn btn-link" ng-click="onCancelUser()" title="Cancel Sensor">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>

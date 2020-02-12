@@ -1,0 +1,113 @@
+{"name":"Sensor",
+ "children":[
+    {
+        "name": "Seattle",
+        "children": [
+            {
+                "name": "Area1-Building1",
+                "children": [
+                    {
+                        "name": "Room12",
+                        "children": [
+                            {
+                                "name": "SENSOR54",
+                                "children": [
+                                    {
+                                        "name": "1001",
+                                        "data": {}
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Room76",
+                        "children": [
+                            {
+                                "name": "dht1_temperature",
+                                "children": [
+                                    {
+                                        "name": "Not Available",
+                                        "data": {}
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "San Jose",
+        "children": [
+            {
+                "name": "Area1 - bldg1",
+                "children": [
+                    {
+                        "name": "Room6578",
+                        "children": [
+                            {
+                                "name": "SENSOR2229",
+                                "children": [
+                                    {
+                                        "name": "BLENDER_1",
+                                        "data": {}
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Shenyang",
+        "children": [
+            {
+                "name": "Area54-Site54",
+                "children": [
+                    {
+                        "name": "Building534",
+                        "children": [
+                            {
+                                "name": "SENSOR2221",
+                                "children": [
+                                    {
+                                        "name": "BLENDER_1",
+                                        "data": {}
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Santa Clara",
+        "children": [
+            {
+                "name": "Buliding 1 -SIte54",
+                "children": [
+                    {
+                        "name": "Location1 corridor A",
+                        "children": [
+                            {
+                                "name": "dht1_humidity",
+                                "children": [
+                                    {
+                                        "name": "Not Available",
+                                        "data": {}
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]}

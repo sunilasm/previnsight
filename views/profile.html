@@ -1,0 +1,99 @@
+<div class="innerPage">
+        <div id="content">
+        <div class="container-fluid">
+            <div class="row pageTitle">
+                <div class="col-lg-6 col-sm-6">
+                    <h3>Profile</h3>
+                </div>
+                <div class="col-lg-6 col-sm-9">
+                    <div class="pull-right">
+                        <div class="sensorSearch">
+                            <input type="text" placeholder="Search" ng-model="searchText">
+                            <a href=""><img src="images/search-insight.png" alt="Search" title="Search"></a>
+                        </div>
+                        <a class="btnAddNew" title="Add New User" ng-click="addNewRole()" ng-show="roleCreate==1"> <span><img src="images/rounded-add.png"></span> Add New</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row pbottom25 master">
+                <div class="table-responsive workOrderTable masterUomTable">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>S.No #</th>
+                                <th>Profiles</th>
+                                <th>Description</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-show="addRoleRow" ng-form name="innerForm">
+                                <td></td>
+                                <td>
+                                    <input type="text" class="form-control" ng-model="rolename" name="role_name" servicename="user/checkprofilenameexits" required unique-field>
+									 <span style="color:red" ng-show="innerForm.role_name.$dirty && innerForm.role_name.$invalid">
+										<span ng-show="innerForm.role_name.$error.required">Profile name is required</span>
+										<span ng-show="innerForm.role_name.$error.uniqueField">Profile name already exists.</span>
+									</span>
+                                </td>
+                                <td>
+                                    <textarea name="" rows="1" class="form-control" ng-model="roledescription"></textarea>
+                                </td>
+                                <td class="workorderActionBtn">
+                                    <div class="action" ng-click="addRoleItem()">
+                                        <div class="imagesmallContainer">
+                                            <img ng-src="images/save-icon.png" class="save" alt="Save" title="Save">
+                                        </div>
+                                    </div>
+                                    <div class="action" ng-click="closeAddRole()">
+                                        <div class="imagesmallContainer">
+                                            <img ng-src="images/close-icon.png" class="closeMaterial" alt="Close" title="Close">
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+
+                            <tr ng-repeat="item in rolesList | filter:searchText" ng-init="item.roledetails = true" class="masteredit" ng-mouseover="showAction(item)" ng-mouseleave="hideAction(item)">
+                                <td>{{$index + 1}}</td>
+                                <td>
+                                    <input type="text" class="form-control" ng-model="item.name" ng-disabled="item.roledetails">
+                                </td>
+                                <td>
+                                    <textarea name="" rows="1" class="form-control" ng-model="item.description" ng-disabled="item.roledetails"></textarea>
+                                </td>
+                                <td class="workorderActionBtn">
+                                    <div ng-show="item.loading">
+                                       <!-- <div class="action" ng-click="editRoleItem(item)" ng-show="item.roledetails">
+                                            <div class="imagesmallContainer">
+                                                <img ng-src="images/edit-icon.png" class="save" alt="Edit" title="Edit">
+                                            </div>
+                                        </div>
+                                        <div class="action" ng-click="saveEditRole(item)" ng-hide="item.roledetails">
+                                            <div class="imagesmallContainer">
+                                                <img ng-src="images/save-icon.png" class="save" alt="Save" title="Save">
+                                            </div>
+                                        </div>-->
+                                        <div class="action" ng-show="roleUpdate==1">
+                                            <a href="#/adduserprofile?id={{item.user_profile_id}}">
+                                                <div class="imagesmallContainer">
+                                                    <img ng-src="images/edit-icon.png" class="closeMaterial icon_permission" alt="" title="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="action" ng-click="deleteProfile(item.user_profile_id)" ng-show="roleDelete==1">
+                                            <div class="imagesmallContainer">
+                                                <img ng-src="images/close-icon.png" class="closeMaterial" alt="Close" title="Close">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>

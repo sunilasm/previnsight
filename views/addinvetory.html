@@ -1,0 +1,334 @@
+<div class="innerPage">
+    
+
+    <div id="content" class="inventory">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 pageTitle">
+                    <h3>Add Inventory</h3>
+                </div>
+            </div>
+            <div class="row customiedFrom">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-6 col-lg-offset-3">
+                            <form class="form-horizontal" name="addInventoryForm" ng-submit="submit()" novalidate>
+                                <div class="form-group">
+                                    <input type="hidden" class="form-control" ng-model="addInventoryData.inventory_code" name="inventory_code">
+                                    <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Inventory Name</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" ng-model="addInventoryData.inventory_name" name="inventory_name"
+                                               servicename="inventory/checkinventorynameexits" required unique-field>
+                                        
+                                        <span style="color:red" ng-show="addInventoryForm.inventory_name.$dirty && addInventoryForm.inventory_name.$invalid">
+                                            <span ng-show="addInventoryForm.inventory_name.$error.required">Inventory Name is required</span>
+                                             <span ng-show="addInventoryForm.inventory_name.$error.uniqueField">Inventory name already exists.</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Category</label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" name="category_type" ng-model="addInventoryData.category" ng-options="categoryType for categoryType in categoryTypes" required>
+                                            <option value="">Select Category</option>
+
+                                        </select>
+                                        <span style="color:red" ng-show="addInventoryForm.category_type.$dirty && addInventoryForm.category_type.$invalid">
+										<span ng-show="addInventoryForm.category_type.$error.required">Select Category is required.</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Item/Material</label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" ng-model="addInventoryData.item" ng-options="item for item in materials" name="invMaterial" required>
+                                            <option value="">Select Material</option>
+                                        </select>
+                                        <a href="" class="add_material_link" ng-click="addMaterialShow($event)" ng-hide="true">Add Material</a>
+                                        <span style="color:red" ng-show="addInventoryForm.invMaterial.$dirty && addInventoryForm.invMaterial.$invalid">
+										<span ng-show="addInventoryForm.invMaterial.$error.required">Select Material is required.</span>
+                                        </span>
+                                        <div class="locationBox add_material_box" ng-class="{'show' : addmaterial, 'hide' : !addmaterial}">
+                                            <div class="notifySearchBoxContainer">
+                                                
+                                                    <div class="form-group">
+                                                        <label for="" class="col-sm-4 control-label">Name</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" placeholder="" ng-model="materialName">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="" class="col-sm-4 control-label">Description</label>
+                                                        <div class="col-sm-8">
+                                                            <textarea rows="2" class="form-control" ng-model="materialdescription"></textarea>
+                                                        </div>
+                                                    </div>
+
+                                            </div>
+                                            <div class="arrow"></div>
+                                            <div class="flyout-fold"></div>
+                                            <div class="locationFooter">
+                                                <button type="button" class="btn btn-default btnSave" ng-click="saveNewMaterial($event, materialName,materialdescription)">Done</button>
+                                                <a href="javascript:void(0)" class="cancel" ng-click="cancelNewMaterial($event)">Cancel</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Location</label>
+                                    <div class="col-sm-6">
+                                        <button type="button" class="btn btn-default locationBtn" ng-class="{'show' : locationSelectBtn, 'hide' : !locationSelectBtn}" ng-click="locationSelect($event)">Select</button>
+                                        <button type="button" class="btn btn-default locationBtn" ng-class="{'show' : locationEditBtn, 'hide' : !locationEditBtn}" ng-click="locationEdit($event)">Edit</button>
+                                        <div class="locationBox" ng-class="{'show' : location, 'hide' : !location}">
+                                            <wxy-push-menu menu="menu" options="rest.options"></wxy-push-menu>
+                                            <div class="arrow"></div>
+                                            <div class="flyout-fold"></div>
+                                            <div class="locationFooter">
+                                                <button type="button" class="btn btn-default btnSave" ng-click="locationSeleted($event)">Done</button>
+                                                <a href="javascript:void(0)" class="cancel" ng-click="locationCancel($event)">Cancel</a>
+                                            </div>
+                                        </div>
+                                        <div id="pushobj" name="locationData" ng-show="events.length >0">
+                                            <ul>
+                                                <li name="event_{{$index}}" ng-repeat="event in events track by $index" ng-bind="event"></li>
+                                            </ul>
+                                        </div>
+                                        <span style="color:red" ng-show="eventsEmptyArr">Select Location is required.</span>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Machinery</label>
+                                    <div class="col-sm-6">
+
+                                        <select class="form-control" ng-model="addInventoryData.machinery_id" ng-options="ma.machinery_id as ma.MACHINERY_CODE for ma in machineries" name="machinery">
+                                            <option value="">Select Machinery</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Sensor</label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" ng-model="addInventoryData.sensor_id" ng-options="se.sensor_id as se.sensor_name for se in sensors" ng-change="getParameterValue(addInventoryData.sensor_id)" name="sensor">
+                                            <option value="">Select Sensor</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Parameter</label>
+                                    <div class="col-sm-6">
+
+                                        <input type="text" value="1" class="form-control" ng-model="addInventoryData.parameter_name" ng-disabled="true">
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Goal</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" ng-model="addInventoryData.goal" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Stock</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" ng-model="addInventoryData.stock" class="form-control">
+                                    </div>
+                                </div>
+                                <!--<div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Supplier Name</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" ng-model="addInventoryData.supplierName" class="form-control">
+                                    </div>
+                                </div>
+                                <a href="" class="add_material_link" ng-click="addSupplierShow($event)">Add Supplier</a>
+                                <div class="locationBox add_material_box" ng-class="{'show' : addsupplier, 'hide' : !addsupplier}">
+                                            <div class="notifySearchBoxContainer">
+                                                
+                                                    <div class="form-group">
+                                                        <label for="" class="col-sm-4 control-label">Name</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" placeholder="" ng-model="materialName">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="" class="col-sm-4 control-label">Description</label>
+                                                        <div class="col-sm-8">
+                                                            <textarea rows="2" class="form-control" ng-model="materialdescription"></textarea>
+                                                        </div>
+                                                    </div>
+
+                                            </div>
+                                            <div class="arrow"></div>
+                                            <div class="flyout-fold"></div>
+                                            <div class="locationFooter">
+                                                <button type="button" class="btn btn-default btnSave" ng-click="saveNewMaterial($event, materialName,materialdescription)">Done</button>
+                                                <a href="javascript:void(0)" class="cancel" ng-click="cancelNewMaterial($event)">Cancel</a>
+                                            </div>
+                                        </div>
+
+                                -->
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Supplier Name</label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" ng-model="addInventoryData.supplierName" ng-options="item for item in suppliers" name="supplierName" required>
+                                            <option value="">Select Supplier</option>
+                                        </select>
+                                        <span style="color:red" ng-show="addInventoryForm.supplierName.$dirty && addInventoryForm.supplierName.$invalid">
+										<span ng-show="addInventoryForm.supplierName.$error.required">Select supplierName is required.</span>
+                                        </span>
+                                        
+                                        
+                                    </div> 
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label"></label>
+                                <div class="col-sm-6">
+                                     <a href="javascript:void(0)" data-toggle="modal" data-target="#createInventoryModal" ng-hide="showInventoryName" ng-hide="true">Add Supplier</a>
+ <div class="modal fade meritsModel inventoryModel" id="createInventoryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" dragable>
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content ">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                            <h4 class="modal-title" id="myModalLabel">Add Supplier</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form class="form-horizontal" name="addSupplierForm" novalidate>
+                                                                <div class="row customiedFrom">
+                                                                    <div class="col-md-6 col-sm-12">
+                                                                        <div class="form-group">
+                                                                            <label for="" class="col-sm-4 control-label">Supplier Name</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input type="text" class="form-control" ng-model="addSupplierData.supplier_name" name="supplier_name">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="" class="col-sm-4 control-label">Supplier Id</label>
+                                                                            <div class="col-sm-8">
+                                                                              <input type="text" class="form-control" ng-model="addSupplierData.supplier_id"> 
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="" class="col-sm-4 control-label">Contact Person</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input type="text" class="form-control" ng-model="addSupplierData.contact_person">     </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="" class="col-sm-4 control-label">Country</label>
+                                                                            <div class="col-sm-8">
+                                                                               <input type="text" class="form-control" ng-model="addSupplierData.country">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label for="" class="col-sm-4 control-label">City</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input type="text" class="form-control" ng-model="addSupplierData.city">
+                                                                            </div>
+                                                                        </div>
+                                                                        
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12">
+                                                                        <div class="form-group">
+                                                                            <label for="" class="col-sm-4 control-label">Address Line1</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input type="text" class="form-control" ng-model="addSupplierData.addressline1">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="" class="col-sm-4 control-label">Address Line2</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input type="text" value="1" class="form-control" ng-model="addSupplierData.addressline2" >
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label for="" class="col-sm-4 control-label">Address Line3</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input type="text" class="form-control" ng-model="addSupplierData.addressline3">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="" class="col-sm-4 control-label">Mobile Number</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input type="text" class="form-control" ng-model="addSupplierData.mobileNumber">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                        <label for="" class="col-sm-4 control-label">Email Address</label>
+                                                                        <div class="col-sm-8">
+                                                                            <input type="text" ng-model="addSupplierData.email" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                
+                              
+                                                                    </div>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default btnSave" ng-click="OnSubmitSupplier(addSupplierData)" data-dismiss="modal">Save</button>
+                                                            <span class="btn-divider"></span>
+                                                            <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label"><!--<span class="mandatory">*</span>-->Description</label>
+                                    <div class="col-sm-6">
+                                        <textarea name="Inv_Description" class="form-control descriptionTextArea" ng-model="addInventoryData.description" rows="3"></textarea>
+                                        
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Upload Image</label>
+                                    <div class="col-sm-6">
+                                        <div class="dropzone" file-dropzone="[image/png, image/jpeg, image/gif]" file="image" file-name="imageFileName" data-max-file-size="3">
+                                        </div>
+                                        <form action>
+
+                                            <div class="imageDragDrop" placeholder="Image browse or Drag and Drop Here">
+                                                <input type="file" fileread="uploadme.src" class="imageDragArea" />
+                                            </div>
+                                            <div class="image-container" ng-class="{'in': uploadme.src, 'dummy': !uploadme.src}">
+                                                <img ng-src="{{ uploadme.src }}">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+
+                                <!--<div class="form-group">
+                                    <label for="" class="col-sm-4 control-label"></label>
+                                    <div class="col-sm-6">
+                                        <div class="readingText">
+                                            Reading...
+                                        </div>
+                                    </div>
+                                </div>-->
+                            </form>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12 submitArea">
+                        <div class="col-sm-offset-5 col-sm-6">
+                            <button type="button" class="btn btn-default btnSave" ng-click="OnSubmitInventory(addInventoryData)" title="Save">Save</button>
+                            <span class="btn-divider"></span>
+                            <a ui-sref="nav.inventory" type="button" class="btn btn-link" title="Cancel">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+
+</div>

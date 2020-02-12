@@ -1,0 +1,95 @@
+<div class="innerPage">
+    
+    <div id="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="row pageTitle">
+                        <div class="col-lg-6 col-sm-6">
+                            <h3>Unit of Measurement</h3>
+                        </div>
+                        <div class="col-lg-6 col-sm-6">
+                            <div class="pull-right">
+                                <div class="sensorSearch">
+                                    <input type="text" placeholder="Search" ng-model="searchText">
+                                    <a href=""><img src="images/search-insight.png" alt="Search" title="Search"></a>
+                                </div>
+                                <a class="btnAddNew" ng-click="addNewUom()" ng-show="uomCreate==1"><span><img src="images/rounded-add.png" alt=""></span> Add New</a>
+                            </div>
+                        </div>
+                    </div>
+                <div class="row pbottom25 master">
+                        <div class="table-responsive workOrderTable masterUomTable">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>S.No #</th>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-show="addUOMRow" ng-form name="innerForm">
+                                        <td></td>
+                                        <td>
+                                            <input type="text" class="form-control" ng-model="uomName" name="uom_name" servicename="master/checkuomnameexits" required unique-field >
+											 <span style="color:red" ng-show="innerForm.uom_name.$dirty && innerForm.uom_name.$invalid">
+												<span ng-show="innerForm.uom_name.$error.required">UOM Name is required</span>
+												<span ng-show="innerForm.uom_name.$error.uniqueField">UOM name already exists.</span>
+											</span>
+                                        </td>
+                                        <td>
+                                            <textarea name="" rows="1" class="form-control" ng-model="uomDesc"></textarea>
+                                        </td>
+                                        <td class="workorderActionBtn">
+                                            <div class="action" ng-click="addUomItem()">
+                                                <div class="imagesmallContainer">
+                                                    <img ng-src="images/save-icon.png" class="save" alt="Save" title="Save">
+                                                </div>
+                                            </div>
+                                            <div class="action" ng-click="closeAddUom()">
+                                                <div class="imagesmallContainer">
+                                                    <img ng-src="images/close-icon.png" class="closeMaterial" alt="Close" title="Close">
+                                                </div>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                    <tr ng-repeat="item in uomList | filter:searchText" ng-init="item.uomdetails = true" class="masteredit" ng-mouseover="showAction(item)" ng-mouseleave="hideAction(item)">
+                                        <td>{{$index + 1}}</td>
+                                        <td>
+                                            <input type="text" class="form-control" ng-model="item.NAME" ng-disabled="item.uomdetails">
+                                        </td>
+                                        <td>
+                                            <textarea name="" rows="1" class="form-control" ng-model="item.DESCRIPTION" ng-disabled="item.uomdetails"></textarea>    
+                                        </td>
+                                        <td class="workorderActionBtn">
+                                            <div ng-show="item.loading">
+                                                <div class="action" ng-click="editUomItem(item)" ng-show="item.uomdetails && uomUpdate==1">
+                                                    <div class="imagesmallContainer">
+                                                        <img ng-src="images/edit-icon.png" class="save" alt="Edit" title="Edit">
+                                                    </div>
+                                                </div>
+                                                <div class="action" ng-click="saveEditUom(item)" ng-hide="item.uomdetails && uomDelete==1">
+                                                    <div class="imagesmallContainer">
+                                                        <img ng-src="images/save-icon.png" class="save" alt="Save" title="Save">
+                                                    </div>
+                                                </div>
+                                                <div class="action" ng-click="removeAddUom(item.UOM_ID)">
+                                                    <div class="imagesmallContainer">
+                                                        <img ng-src="images/close-icon.png" class="closeMaterial" alt="Close" title="Close">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>

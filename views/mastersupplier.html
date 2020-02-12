@@ -1,0 +1,112 @@
+<div class="innerPage">
+   
+    <div id="content">
+        <div class="container-fluid">
+            <div class="row pageTitle">
+                <div class="col-lg-6 col-sm-6">
+                    <h3>Add Supplier</h3>
+                </div>
+                <div class="col-lg-6 col-sm-6">
+                    <div class="pull-right">
+                    </div>
+                </div>
+            </div>
+            <div class="row customiedFrom">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-6 col-lg-offset-3">
+                            <form class="form-horizontal" name="addSupplierForm" novalidate>
+                                                                <div class="row customiedFrom">
+                                                                    
+												<div class="form-group">
+													<label for="" class="col-sm-4 control-label">Supplier Name</label>
+													<div class="col-sm-8">
+														<input type="text" class="form-control" ng-model="addSupplierData.supplier_name" name="supplier_name"  value="" servicename="supplier/checksuppliernameexits" required unique-field>
+												<span style="color:red" ng-show="addSupplierForm.supplier_name.$dirty && addSupplierForm.supplier_name.$invalid">
+													<span ng-show="addSupplierForm.supplier_name.$error.required">Supplier Name is required.</span>
+													<span ng-show="addSupplierForm.supplier_name.$error.uniqueField">Supplier name already exists.</span>
+												</span>
+													</div>
+												</div>
+                                                                        <div class="form-group">
+                                                                            <label for="" class="col-sm-4 control-label">Supplier Id</label>
+                                                                            <div class="col-sm-8">
+                                                                              <input type="text" class="form-control" ng-model="addSupplierData.supplier_id"> 
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="" class="col-sm-4 control-label">Contact Person</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input type="text" class="form-control" ng-model="addSupplierData.contact_person">     </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="" class="col-sm-4 control-label">Country</label>
+                                                                            <div class="col-sm-8">
+                                                                               <input type="text" class="form-control" ng-model="addSupplierData.country">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label for="" class="col-sm-4 control-label">City</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input type="text" class="form-control" ng-model="addSupplierData.city">
+                                                                            </div>
+                                                                        </div>
+                                                                        
+                                                                    
+                                                                    <div class="form-group">
+                                                                            <label for="" class="col-sm-4 control-label">Address Line1</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input type="text" class="form-control" ng-model="addSupplierData.addressline1">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="" class="col-sm-4 control-label">Address Line2</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input type="text" value="1" class="form-control" ng-model="addSupplierData.addressline2" >
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label for="" class="col-sm-4 control-label">Address Line3</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input type="text" class="form-control" ng-model="addSupplierData.addressline3">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="" class="col-sm-4 control-label">Mobile Number</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input type="text" class="form-control" ng-model="addSupplierData.mobileNumber">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                        <label for="" class="col-sm-4 control-label">Email Address</label>
+                                                                        <div class="col-sm-8">
+                                                                            <input type="text" ng-model="addSupplierData.email" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                
+                              
+                                                                    
+                                                                </div>
+                                                           
+                                
+                            </form>
+                            
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12 submitArea">
+                        <div class="col-sm-offset-5 col-sm-6">
+                            <button type="submit" class="btn btn-default btnSave" ng-click="OnSubmitSupplier(addSupplierData)" title="Save Sensor">Save</button>
+                            <span class="btn-divider"></span>
+                            <button type="button" class="btn btn-link" ng-click="onCancelSupplier()" title="Cancel Sensor">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <div class="clearfix"></div>
+</div>

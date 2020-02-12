@@ -1,0 +1,193 @@
+<div class="innerPage">
+    
+    <div id="content">
+        <div class="container-fluid">
+            <div class="row pageTitle">
+                        <div class="col-lg-6 col-sm-6">
+                            <h3>Add User</h3>
+                        </div>
+                        <div class="col-lg-6 col-sm-6">
+                            <div class="pull-right">
+                            </div>
+                        </div>
+                    </div>
+            <div class="row customiedFrom">
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col-lg-6 col-lg-offset-3">
+                                    <form class="form-horizontal" name="addUserForm" novalidate>
+                                        <div class="form-group">
+                                            <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>First Name</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" name="firstname" ng-model="addUserData.first_name" class="form-control" value="" required>
+                                                <span style="color:red" ng-show="addUserForm.firstname.$dirty && addUserForm.firstname.$invalid">
+    										<span ng-show="addUserForm.firstname.$error.required">First Name is required.</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Last Name</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" name="lastname" ng-model="addUserData.last_name" class="form-control" value="" required>
+                                                <span style="color:red" ng-show="addUserForm.lastname.$dirty && addUserForm.lastname.$invalid">
+    										<span ng-show="addUserForm.lastname.$error.required">Last Name is required.</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Designation</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" name="designation" ng-model="addUserData.designation" class="form-control" value="" required>
+                                                <span style="color:red" ng-show="addUserForm.designation.$dirty && addUserForm.designation.$invalid">
+										<span ng-show="addUserForm.designation.$error.required">Designation is required.</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Badge ID</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" name="badgeID" class="form-control" ng-model="addUserData.badge_id" value="" required>
+                                                <span style="color:red" ng-show="addUserForm.badgeID.$dirty && addUserForm.badgeID.$invalid">
+										<span ng-show="addUserForm.badgeID.$error.required">Badge ID is required.</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Email</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" name="email" ng-model="addUserData.email_id" class="form-control" value="" required>
+                                                <span style="color:red" ng-show="addUserForm.email.$dirty && addUserForm.email.$invalid">
+										<span ng-show="addUserForm.email.$error.required">Email is required.</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Phone <span class="smalllabel">(Mobile)</span></label>
+                                            <div class="col-sm-6">
+                                                <input type="text" name="phonemobile" ng-model="addUserData.work_phone" class="form-control" value="" required>
+                                                <span style="color:red" ng-show="addUserForm.phonemobile.$dirty && addUserForm.phonemobile.$invalid">
+										<span ng-show="addUserForm.phonemobile.$error.required">Mobile No. is required.</span>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="" class="col-sm-4 control-label">Phone <span class="smalllabel"><span class="mandatory">*</span>(Work)</span></label>
+                                            <div class="col-sm-6">
+                                                <input type="text" name="phonework" ng-model="addUserData.cell_phone" class="form-control" value="" required>
+                                                <span style="color:red" ng-show="addUserForm.phonework.$dirty && addUserForm.phonework.$invalid">
+										<span ng-show="addUserForm.phonework.$error.required">Work No. is required.</span>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>User Profile</label>
+                                            <div class="col-sm-6">
+                                                <select class="form-control" name="selectedprofile" ng-model="addUserData.user_role"  ng-options="ma.USER_PROFILE_ID as ma.PROFILE_NAME for ma in profileList" required>
+                                            <option value="">Select Profile</option>
+
+                                        </select>
+                                        <span style="color:red" ng-show="addUserForm.selectedprofile.$dirty && addUserForm.selectedprofile.$invalid">
+										<span ng-show="addUserForm.selectedprofile.$error.required">Select Profile is required.</span>
+                                        </span>
+                                               
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Location</label>
+                                            <div class="col-sm-8">
+                                                <button type="button" class="btn btn-default locationBtn" ng-class="{'show' : locationSelectBtn, 'hide' : !locationSelectBtn}" ng-click="locationSelect($event)">Select</button>
+                                                <button type="button" class="btn btn-default locationBtn" ng-class="{'show' : locationEditBtn, 'hide' : !locationEditBtn}" ng-click="locationEdit($event)">Edit</button>
+                                                <div class="locationBox" ng-class="{'show' : location, 'hide' : !location}">
+                                                    <wxy-push-menu menu="menu" options="rest.options"></wxy-push-menu>
+                                                    <div class="arrow"></div>
+                                                    <div class="flyout-fold"></div>
+                                                    <div class="locationFooter">
+                                                        <button type="button" class="btn btn-default btnSave" ng-click="locationSeleted($event)">Done</button>
+                                                        <a href="javascript:void(0)" class="cancel" ng-click="locationCancel($event)">Cancel</a>
+                                                    </div>
+                                                </div>
+                                                <div id="pushobj" name="locationData" ng-show="events.length >0">
+                                                    <ul>
+                                                        <li name="event_{{$index}}" ng-repeat="event in events track by $index" ng-bind="event"></li>
+                                                    </ul>
+                                                </div>
+                                                <span style="color:red" ng-show="eventsEmptyArr">Select Location is required.</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="" class="col-sm-4 control-label">Active</label>
+                                            <div class="col-sm-6">
+                                                <switch name="yesNo" ng-model="addUserData.is_active" on="Yes" off="No" class="wide"></switch>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Username</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" name="username" ng-model="addUserData.user_name" class="form-control" value="" servicename="user/checkusernameexits" required unique-field>
+												<span style="color:red" ng-show="addUserForm.username.$dirty && addUserForm.username.$invalid">
+													<span ng-show="addUserForm.username.$error.required">User name is required.</span>
+													<span ng-show="addUserForm.username.$error.uniqueField">User name already exists.</span>
+												</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Password</label>
+                                            <div class="col-sm-6">
+                                                <input type="password" id="password"  name="password" ng-model="addUserData.password" class="form-control" required>
+                                                <span style="color:red" ng-show="addUserForm.password.$dirty && addUserForm.password.$invalid">
+										<span ng-show="addUserForm.password.$error.required">Password is required.</span>
+                                                </span>
+                                              
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Confirm Password</label>
+                                            <div class="col-sm-6">
+                                                <input type="password" id="password_c" name="password_c" ng-model="addUserData.confirm_password" class="form-control" data-match="addUserData.password" required>
+                                                                                                
+                                        <span style="color:red" ng-show="addUserForm.password_c.$dirty && addUserForm.password_c.$invalid ">
+										<span ng-show="addUserForm.password_c.$error.required">Confirm Password is required.</span>
+                                                </span>
+                                                   <div style="color:red" data-ng-show="addUserForm.password_c.$error.match">Passwords do not match!</div>
+
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Upload Image</label>
+                                    <div class="col-sm-6">
+                                        <div class="dropzone" file-dropzone="[image/png, image/jpeg, image/gif]" file="image" file-name="imageFileName" data-max-file-size="3">
+                                        </div>
+                                        <form action>
+
+                                            <div class="imageDragDrop" placeholder="Image browse or Drag and Drop Here">
+                                                <input type="file" fileread="uploadme.src" class="imageDragArea" />
+                                            </div>
+                                            <div class="image-container" ng-class="{'in': uploadme.src, 'dummy': !uploadme.src}">
+                                                <img data-ng-src="{{uploadme.src}}">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-12 submitArea">
+                                <div class="col-sm-offset-5 col-sm-6">
+                                    <button type="submit" class="btn btn-default btnSave" ng-click="OnSubmitUser(addUserData)" title="Save Sensor">Save</button>
+                                    <span class="btn-divider"></span>
+                                    <button type="button" class="btn btn-link" ng-click="onCancelUser()" title="Cancel Sensor">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+</div>

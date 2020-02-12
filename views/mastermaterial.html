@@ -1,0 +1,103 @@
+<div class="innerPage">
+    
+    <div id="content">
+        <div class="container-fluid">
+           <div class="row pageTitle">
+                        <div class="col-lg-6 col-sm-6">
+                            <h3>Material</h3>
+                        </div>
+                        <div class="col-lg-6 col-sm-6">
+                            <div class="pull-right">
+                                <div class="sensorSearch">
+                                    <input type="text" placeholder="Search" ng-model="searchText">
+                                    <a href=""><img src="images/search-insight.png" alt="Search" title="Search"></a>
+                                </div>
+                                <a class="btnAddNew" ng-click="addNewMaterial()" ng-show="materialCreate==1"><span><img src="images/rounded-add.png" alt=""></span> Add New</a>
+                            </div>
+                        </div>
+                    </div>
+           <div class="row pbottom25 master">
+                        <div class="table-responsive workOrderTable masterMaterialTable">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>S.No #</th>
+                                        <!--<th>Code</th>-->
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-show="addMatrialRow" ng-form name="innerForm">
+                                        <td>
+                                           
+                                        </td>
+                                        <!--<td>
+                                            
+                                        </td>
+                                        --><td>
+                                            <input type="text" class="form-control" ng-model="materialname" name="material_name" servicename="master/checkmaterialnameexits" required unique-field>
+                                        
+                                        <span style="color:red" ng-show="innerForm.material_name.$dirty && innerForm.material_name.$invalid">
+                                            <span ng-show="innerForm.material_name.$error.required">Material Name is required</span>
+                                             <span ng-show="innerForm.material_name.$error.uniqueField">Material name already exists.</span>
+                                        </span>
+                                        </td>
+                                        <td>
+                                            <textarea name="" rows="1" class="form-control" ng-model="materialDesc"></textarea>
+                                        </td>
+                                        <td class="workorderActionBtn">
+                                            <div class="action" ng-click="addItem()">
+                                                <div class="imagesmallContainer">
+                                                    <img ng-src="images/save-icon.png" class="save" alt="Save" title="Save">
+                                                </div>
+                                            </div>
+                                            <div class="action" ng-click="closeAddMaterial()">
+                                                <div class="imagesmallContainer">
+                                                    <img ng-src="images/close-icon.png" class="closeMaterial" alt="Close" title="Close">
+                                                </div>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                    <tr ng-repeat="item in materialList | filter:searchText" ng-init="item.materialdetails = true" class="masteredit" ng-mouseover="showAction(item)" ng-mouseleave="hideAction(item)">
+                                        <td>{{$index + 1}}</td>
+                                       <!-- <td>
+                                            {{item.materialcode}}
+                                        </td>
+                                       --> 
+                                        <td>
+                                            <input type="text" class="form-control " ng-cloak ng-model="item.MATERIAL_NAME" ng-disabled="item.materialdetails">
+                                        </td>
+                                        <td>
+                                            <textarea name="" rows="1" class="form-control" ng-cloak ng-model="item.DESCRIPTION" ng-disabled="item.materialdetails"></textarea>    
+                                        </td>
+                                        <td class="workorderActionBtn">
+                                            <div ng-show="item.loading">
+                                                <div class="action" ng-click="editMaterial(item)" ng-show="item.materialdetails && materialUpdate==1">
+                                                    <div class="imagesmallContainer">
+                                                        <img ng-src="images/edit-icon.png" class="view" alt="Edit" title="Edit">
+                                                    </div>
+                                                </div>
+                                                <div class="action" ng-click="saveEditMaterial(item)" ng-hide="item.materialdetails && materialDelete==1">
+                                                    <div class="imagesmallContainer">
+                                                        <img ng-src="images/save-icon.png" class="save" alt="Save" title="Save">
+                                                    </div>
+                                                </div>
+                                                <div class="action" ng-click="removeMaterial(item.MATERIAL_ID)">
+                                                    <div class="imagesmallContainer">
+                                                        <img ng-src="images/close-icon.png" class="save" alt="Close" title="Close">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>

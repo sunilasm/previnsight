@@ -1,0 +1,74 @@
+<div class="innerPage">
+    
+    <div id="content">
+        <div class="container-fluid">
+            <div class="row pageTitle">
+                <div class="col-lg-6 col-sm-4">
+                    <h3>Reports</h3>
+                </div>
+                <div class="col-lg-6 col-sm-8">
+                    
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6">
+                   <div class="widget" ng-class="{'expandwidget': isActive3}">
+                        <div class="widgetHeader">
+                            <div>
+                            <h4 style="display:inline;">Quality Analyst Badge in and out for </h4>
+                            <select style="display:inline;width:30%;" class="form-control" ng-model="selectedUser" ng-options="ma.USER_ID as ma.USERNAME for ma in userslist" ng-change="getBadgeData(selectedUser)">
+                                           
+                                        </select>
+                                
+                                
+                                        
+                            </div>
+                            
+                            <!--<h4>Quality Analyst Badge in and out</h4>
+                            <a href="javascript:void(0);" ng-click="expandReport3()" class="expand"><i class="fa fa-expand" aria-hidden="true"></i></a>-->
+                        </div>
+                        <div class="widgetContainer">
+                            <div id="badgeChart"></div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                <div class="col-lg-6">
+                    <div class="widget" ng-class="{'expandwidget': isActive}">
+                        <div class="widgetHeader">
+                            <div>
+                            <h4 style="display:inline;">Temperature Sensor Data for</h4>
+                            <select style="display:inline;width:30%;" class="form-control small" style="width:200px;" ng-model="SelectedSensor"
+                                    ng-click="OnChange(SelectedSensor)">
+                                                    <option value="Touch Sensor">Touch Sensor</option>
+                                                    <option value="Vibration_Sensor1342">Vibration_Sensor1342</option>
+                                                </select>
+                            </div>
+                            
+                            <a href="javascript:void(0);" ng-click="expandReport()" class="expand"><i class="fa fa-expand" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="widgetContainer">
+                            <div id="chart1" style="min-width: 310px; max-width: 800px; height: 350px; margin: 0 auto"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="widget" ng-class="{'expandwidget': isActive2}">
+                        <div class="widgetHeader">
+                            <h4>Reaction Percentage Completion <span>(pH and  Viscosity sensor Data)</span></h4>
+                            <a href="javascript:void(0);" ng-click="expandReport2()" class="expand"><i class="fa fa-expand" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="widgetContainer">
+                            <div id="chart2" style="min-width: 310px; max-width: 800px; height: 350px; margin: 0 auto"></div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>

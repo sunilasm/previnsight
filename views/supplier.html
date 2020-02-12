@@ -1,0 +1,104 @@
+<div class="innerPage">
+        <div id="content">
+        <div class="container-fluid">
+            <div class="row pageTitle">
+                <div class="col-lg-6 col-sm-6">
+                    <h3>Supplier</h3>
+                </div>
+                <div class="col-lg-6 col-sm-9">
+                    <div class="pull-right">
+                        <div class="sensorSearch">
+                            <input type="text" placeholder="Search" ng-model="searchText">
+                            <a href=""><img src="images/search-insight.png" alt="Search" title="Search"></a>
+                        </div>
+                        <a ui-sref="nav.masteraddsupplier" class="btnAddNew" title="Add New Supplier" ng-show="supplierCreate==1"> <span><img src="images/rounded-add.png"></span> Add New</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row viewusers">
+
+              <div class="col-lg-3" ng-repeat="supplier in suppliers | filter:searchText">
+
+                    <div class="card">
+                        <div class="cardHeader pull-left">
+                            <div class="cardHeaderRight pull-left">
+                                <h4 class="ng-binding">{{supplier.SUPPLIER_NAME}}</h4>
+                                <div class="cardHeadelocationdetails">
+                                    <ul>
+                                        <li class="ng-binding">{{supplier.CONTACT_PERSON}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cardContent">
+                            <div class="cardContentRow">
+                                <label for=""><i class="fa fa-at" aria-hidden="true"></i></label><span>{{supplier.EMAIL_ADDRESS}}</span>
+                            </div>
+                            <div class="cardContentRow">
+                                <label for=""><i class="fa fa-mobile" aria-hidden="true"></i></label><span>{{supplier.PHONE_NUMBER}}</span>
+                            </div>
+                            <div class="cardContentRow">
+                                <label for=""><i class="fa fa-map-marker" aria-hidden="true"></i></label><span>{{supplier.COUNTRY}} <b>|</b> {{supplier.CITY}}</span>
+                            </div>
+                        </div>
+
+                        <div class="cardFooter">
+                            <div class="sensor-graph">
+                                <a href="" data-toggle="modal" data-target="#viewuser" title="View">
+                                    <div class="imagesmallContainer">
+                                        <img src="images/view-icon.png" class="view" alt="View" title="View">
+                                    </div>
+                                </a>
+                            </div>
+                            <!--<div class="sensor-graph">
+                                <a href="#/masteraddsupplier" title="Edit">
+                                    <div class="imagesmallContainer">
+                                        <img src="images/edit-icon.png" alt="Edit" title="Edit">
+                                    </div>
+                                </a>
+                            </div>-->
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="modal fade" id="viewuser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog view_modal" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">{{supplier.SUPPLIER_NAME}}</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="view_row">
+                                        <label for="">Contact Person</label><span>{{supplier.CONTACT_PERSON}}</span>
+                                    </div>
+                                    <div class="view_row">
+                                        <label for="">Mobile</label><span>{{supplier.PHONE_NUMBER}}</span>
+                                    </div>
+                                    <div class="view_row">
+                                        <label for="">Email</label><span>{{supplier.EMAIL_ADDRESS}}</span>
+                                    </div>
+                                    <div class="view_row">
+                                        <label for="">Address</label><span>{{supplier.ADDRESS_LINE1}}, {{supplier.ADDRESS_LINE2}}, {{supplier.ADDRESS_LINE3}}, {{supplier.ADDRESS_LINE4}}</span>
+                                    </div>
+                                    <div class="view_row">
+                                        <label for="">City</label><span>{{supplier.CITY}}</span>
+                                    </div>
+                                    <div class="view_row">
+                                        <label for="">Country</label><span>{{supplier.COUNTRY}}</span>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+</div>

@@ -1,0 +1,169 @@
+<div class="innerPage">
+    
+    <div id="content">
+        <div class="container-fluid">
+            <div class="row pageTitle">
+                <div class="col-lg-6 col-sm-6">
+                    <h3>Create Sample</h3>
+                </div>
+                <div class="col-lg-6 col-sm-6">
+
+                </div>
+            </div>
+            <div class="row customiedFrom">
+                <div class="col-lg-12">
+                    <div id="referenceData" style="display: none;"></div>
+                    <form class="form-horizontal" ng-submit="submit()" name="addForm" novalidate>
+                        <div class="row pbottom25">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Sample Name</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="" class="form-control small" ng-model="addSampleData.sampleName">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Amount</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="" class="form-control small" ng-model="addSampleData.sampleAmount">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>UOM</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control small" ng-model="addSampleData.sampleUOM">
+                                            <option label="Kg" value="Kg">Kg</option>
+                                            <option label="gms" value="gms">gms</option>
+                                            <option label="ltr" value="ltr">ltr</option>
+                                            <option label="ml" value="ml">ml</option>
+                                            <option label="gal" value="gal">gal</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Date &amp; Time</label>
+                                    <div class="col-sm-8">
+                                        <div class="input-group date small">
+                                           
+                                            <input class="form-control" datetime-picker ng-model="badgedatetime" date-format="MM/dd/yyyy  HH:mm:ss" close-on-select="false" />
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Operator</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="" class="form-control small" ng-model="addSampleData.operatorName" ng-disabled="true">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+
+                                    <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Container Name</label>
+                                    <div class="col-sm-5">
+                                        <select class="form-control" ng-model="addSampleData.selectedContainer" ng-change="getLocation(addSampleData.selectedContainer)">
+                                            <option ng-repeat="machinery in machineryList" ng-selected="{{machinery==addSampleData.selectedContainer}}" value="{{machinery}}">{{machinery}}</option>
+                                            <option value="">Select Container</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Container Location</label>
+                                    <div class="col-sm-5">
+                                        <label class="contaierlocation">{{containerLocation}}</label>
+                                    </div>
+
+                                    <!--<div class="col-sm-8">
+                                        <button type="button" class="btn btn-default locationBtn" ng-class="{'show' : locationSelectBtn, 'hide' : !locationSelectBtn}" ng-click="locationSelect($event)">Select</button>
+                                        <button type="button" class="btn btn-default locationBtn" ng-class="{'show' : locationEditBtn, 'hide' : !locationEditBtn}" ng-click="locationEdit($event)">Edit</button>
+                                        <div class="locationBox" ng-class="{'show' : location, 'hide' : !location}">
+                                            <wxy-push-menu menu="menu" options="rest.options"></wxy-push-menu>
+                                            <div class="arrow"></div>
+                                            <div class="flyout-fold"></div>
+                                            <div class="locationFooter">
+                                                <button type="button" class="btn btn-default btnSave" ng-click="locationSeleted($event)">Done</button>
+                                                <a href="javascript:void(0)" class="cancel" ng-click="locationCancel($event)">Cancel</a>
+                                            </div>
+                                        </div>
+                                        <div id="pushobj" name="locationData" ng-show="events.length >0">                  
+                                            <ul>
+                                                <li name="event_{{$index}}" ng-repeat="event in events track by $index" ng-bind="event"></li>
+                                            </ul>
+                                            
+                                        </div>
+                                        <span style="color:red" ng-show="eventsEmptyArr">Select Location is required.</span>
+                                    </div>-->
+                                </div>
+								<div class="form-group">
+
+                                    <label for="" class="col-sm-4 control-label"><span class="mandatory">*</span>Status</label>
+                                    <div class="col-sm-5">
+                                        <select class="form-control" ng-model="addSampleData.status">
+											 <option value="pass">Pass</option>
+											<option value="fail">Fail</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="table-responsive workOrderTable createsampleTable">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Parameters</th>
+                                                <th>Value</th>
+                                                <th>UOM</th>
+                                                <th>DateTime</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in productProfileItems">
+                                                <td>
+                                                    <input type="hidden" ng-model="item.id">
+                                                    <select class="form-control" ng-model="item.selectedParameter" ng-change="getThresholdData(item.selectedParameter,item)">
+                                                        <option ng-repeat="parameter in parameterList" ng-selected="{{parameter==item.selectedParameter}}" value="{{parameter}}">{{parameter}}</option>
+                                                        <option value="">Select Parameter</option>
+                                                    </select>
+
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" value="" ng-model="item.target">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" value="" ng-model="item.uom">
+                                                </td>
+                                                <td>
+                                                    <label> </label>
+                                                </td>
+
+                                                <td>
+                                                    <a href="javascript:void(0)" class="addRecipeBtn recipeActionBtn" ng:click="removeProductItem($index)"><img src="images/remove-recipe.png" alt=""></a>
+                                                </td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <a href="" class="addnewRecipeItem" id="add_prameter" ng-click="addProductItem()">Add New</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-12 submitArea">
+                            <div class="col-sm-offset-5 col-sm-6">
+                                <button type="submit" class="btn btn-default btnSave" ng-click="OnSubmitSample()" title="Save">Save</button>
+                                <span class="btn-divider"></span>
+                                <button type="button" class="btn btn-link" ng-click="onCancelSample()" title="Cancel">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>

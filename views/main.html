@@ -1,0 +1,586 @@
+<div class="innerPage">
+    
+    <div id="content">
+        <div class="container-fluid">
+            <div class="row statusHead">
+                <div class="col-lg-3 col-sm-6">
+                    <a href="">
+                        <div class="box box-workorder">
+                            <div class="boxBody">
+                                <div class="boxBodyLeft pull-left"><img src="images/insight-workorder.png" alt=""></div>
+                                <div class="boxBodyRight pull-right">
+                                    <div class="count">20</div>
+                                    <div class="text">Work Orders</div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="">
+                        <div class="box box-alerts">
+                            <div class="boxBody">
+                                <div class="boxBodyLeft pull-left"><img src="images/insight-notifications.png" alt=""></div>
+                                <div class="boxBodyRight pull-right">
+                                    <div class="count">15</div>
+                                    <div class="text">Notifications</div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="">
+                        <div class="box box-sensors">
+                            <div class="boxBody">
+                                <div class="boxBodyLeft pull-left"><img src="images/insight-sensors.png" alt=""></div>
+                                <div class="boxBodyRight pull-right">
+                                    <div class="count">10</div>
+                                    <div class="text">Sensors</div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="">
+                        <div class="box box-extra">
+                            <div class="boxBody">
+                                <div class="boxBodyLeft pull-left"><img src="images/insights.png" alt=""></div>
+                                <div class="boxBodyRight pull-right">
+                                    <div class="count">23</div>
+                                    <div class="text">Insights</div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row dashboard_container">
+                <div class="col-lg-12">
+                    <div class="insightContainer" ng-class="{'mapFullWidth' : fullContent, 'mapNormalWidth' : !fullContent}">
+                        <div class="insightContainerHeader">
+                            <div class="insightheaderText" ng-class="{'show' : insightText, 'hide' : !insightText}">
+                                <h4>Insights</h4>
+                            </div>
+                            <div class="meritsheaderText" ng-class="{'show' : meritsText, 'hide' : !meritsText}">
+                                <a href="javascript:void(0)" ng-click="backtoInsight($event)"><img src="images/back-to-insight.png" alt=""></a>
+                                <h4>Metrics</h4>
+                            </div>
+                            <a href="javascript:void(0);" ng-click="expand()"><i class="fa fa-expand" aria-hidden="true"></i></a>
+                        </div>
+
+                        <ul class="nav nav-tabs alertTabs" ng-init="activeTab = 'all'">
+                            <li ng-class="{ active: activeTab === 'all' }">
+                                <a ng-click="activeTab = 'all'" href="javascript:void(0)">All <span class="badge"></span></a>
+                            </li>
+
+                            <li ng-class="{ active: activeTab === 'warning' }">
+                                <a ng-click="activeTab = 'warning'" href="javascript:void(0)">Warning</a>
+                            </li>
+                            <li ng-class="{ active: activeTab === 'severe' }">
+                                <a ng-click="activeTab = 'severe'" href="javascript:void(0)">Severe</a>
+                            </li>
+                            <li ng-class="{ active: activeTab === 'critical' }">
+                                <a ng-click="activeTab = 'critical'" href="javascript:void(0)">Critical</a>
+                            </li>
+                        </ul>
+
+                        <div class="insightBoxSearch headerSearch">
+                            <input type="text" placeholder="Search" ng-model="queryAlert">
+                            <a href=""><img src="images/search-insight.png" alt="search" title="search"></a>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-12 alertSection">
+                                <div class="tab-content h100" id="tabheight">
+                                    <div class="tab-pane" ng-class="{ active: activeTab === 'all' }">
+                                        <div class="alerteft">
+                                            <div class="alertSection">
+
+
+                                                <div class="warningContainer" ng-class="{'show' : graphShow, 'hide' : !graphShow}">
+                                                    <div class="custom-scrollbar" directive-when-scrolled="loadMore()">
+                                                        <ul>
+                                                            <img src="https://i2.wp.com/www.dhp11.com/foswiki/pub/Internal/2012-06-12/spinner.gif" ng-hide="true" />
+                                                            <li ng-repeat="alert in alertsData | filter:queryAlert |reverse | limitTo: limit" on-finish-render="ngRepeatFinished">
+                                                                <div class="warningTabLeft">
+                                                                    <div class="insight-type"><img src="images/icon-severe.png" alt=""></div>
+                                                                    <h6><a href="javascript:void(0)" ng-click="metricsShow(alert)">{{alert.metrictype}} </a></h6>
+                                                                    <div class="alertData">
+                                                                        <div class="alertDataColumn">
+                                                                            <div class="column">
+                                                                                <span class="title">Entity :</span> <span class="subTitle">{{alert.entityname}}</span>
+                                                                            </div>
+                                                                            <div class="column">
+                                                                                <div class="title">Host : <span class="subTitle">{{alert.host}}</span></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="alertData">
+                                                                        <div class="alertDataColumn">
+                                                                            <div class="columnFull">
+                                                                                <div class="alertdescripe">{{alert.rca}}</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="warningTabRight">
+                                                                    <div class="warnigdate">{{alert.timestamp | ZoneConversion}}</div>
+                                                                    <div class="warningActions">
+                                                                        <a href="" data-toggle="modal" data-target="#viewalert{{$index}}" title="View"><img src="images/view-icon.png" alt="view alert"></a>
+                                                                        <a href="javascript:void(0)"><img src="images/topology-icon.png" alt="" ng-click="topologyInit(alert.host)"></a>
+                                                                        <a href="javascript:void(0)" ng-click="metricsShow(alert)"><img src="images/metric-iocn.png" alt="" title="Metric"></a>
+                                                                        <a href="" ng-click="show(alert.metrictype, alert.entityname, alert.timestamp)"><img src="images/graph-icon.png" alt="Graph" title="Graph"></a>
+                                                                        <a><img src="images/warning-done.png" alt=""></a>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="modal fade" id="viewalert{{$index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                                    <div class="modal-dialog view_modal" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                                <h4 class="modal-title" id="myModalLabel">{{alert.metrictype}}</h4>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <div class="view_row">
+                                                                                    <label for="">Entity</label><span>{{alert.entityname}}</span>
+                                                                                </div>
+                                                                                <div class="view_row">
+                                                                                    <label for="">Host</label><span>{{alert.host}}</span>
+                                                                                </div>
+                                                                                <div class="view_row">
+                                                                                    <label for="">Score</label><span>{{alert.score}}</span>
+                                                                                </div>
+                                                                                <div class="view_row">
+                                                                                    <label for="">Anomaly Algorithm</label><span>{{alert.algo}}</span>
+                                                                                </div>
+                                                                                <div class="view_row">
+                                                                                    <label for="">Metric Value</label><span>{{alert.metricvalue}}</span>
+                                                                                </div>
+                                                                                <div class="view_row">
+                                                                                    <label for="">Root Cause</label><span>{{alert.rca}}</span>
+                                                                                </div>
+                                                                                <div class="clearfix"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane" ng-class="{ active: activeTab === 'warning' }">
+                                        <div class="alerteft">
+                                            <div class="alertSection">
+                                                <div class="warningContainer" ng-class="{'show' : graphShow, 'hide' : !graphShow}">
+                                                    <div class="custom-scrollbar">
+                                                        <ul>
+                                                            <li ng-repeat="alert in alertsData |filter:queryAlert |reverse |warningAlerts | limitTo: limit" on-finish-render="ngRepeatFinished">
+                                                                <div class="warningTabLeft">
+                                                                    <div class="insight-type"><img src="images/icon-severe.png" alt=""></div>
+                                                                    <h6><a href="javascript:void(0)" ng-click="metricsShow(alert)">{{alert.metrictype}} </a></h6>
+                                                                    <div class="alertData">
+                                                                        <div class="alertDataColumn">
+                                                                            <div class="column">
+                                                                                <span class="title">Entity :</span> <span class="subTitle">{{alert.entityname}}</span>
+                                                                            </div>
+                                                                            <div class="column">
+                                                                                <div class="title">Host : <span class="subTitle">{{alert.host}}</span></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="alertData">
+                                                                        <div class="alertDataColumn">
+                                                                            <div class="columnFull">
+                                                                                <div class="alertdescripe">{{alert.rca}}</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="warningTabRight">
+                                                                    <div class="warnigdate">{{alert.timestamp | ZoneConversion}}</div>
+                                                                    <div class="warningActions">
+                                                                       <a href="" data-toggle="modal" data-target="#viewwarningalert{{$index}}" title="View"><img src="images/view-icon.png" alt="view alert"></a>
+                                                                        <a href="javascript:void(0)"><img src="images/topology-icon.png" alt="" ng-click="topologyInit(alert.host)"></a>
+                                                                        <a href="javascript:void(0)" ng-click="metricsShow(alert)"><img src="images/metric-iocn.png" alt="" title="Metric"></a>
+                                                                        <a href="" ng-click="show(alert.metrictype, alert.entityname, alert.timestamp)"><img src="images/graph-icon.png" alt="Graph" title="Graph"></a>
+                                                                        <a><img src="images/warning-done.png" alt=""></a>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal fade" id="viewwarningalert{{$index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                                    <div class="modal-dialog view_modal" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                                <h4 class="modal-title" id="myModalLabel">{{alert.metrictype}}</h4>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <div class="view_row">
+                                                                                    <label for="">Entity</label><span>{{alert.entityname}}</span>
+                                                                                </div>
+                                                                                <div class="view_row">
+                                                                                    <label for="">Host</label><span>{{alert.host}}</span>
+                                                                                </div>
+                                                                                <div class="view_row">
+                                                                                    <label for="">Score</label><span>{{alert.score}}</span>
+                                                                                </div>
+                                                                                <div class="view_row">
+                                                                                    <label for="">Anomaly Algorithm</label><span>{{alert.algo}}</span>
+                                                                                </div>
+                                                                                <div class="view_row">
+                                                                                    <label for="">Metric Value</label><span>{{alert.metricvalue}}</span>
+                                                                                </div>
+                                                                                <div class="view_row">
+                                                                                    <label for="">Root Cause</label><span>{{alert.rca}}</span>
+                                                                                </div>
+                                                                                <div class="clearfix"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </li>
+                                                        </ul>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane" ng-class="{ active: activeTab === 'severe' }">
+                                        <div class="alerteft">
+                                            <div class="alertSection">
+                                                <div class="warningContainer" ng-class="{'show' : graphShow, 'hide' : !graphShow}">
+                                                    <div class="custom-scrollbar">
+                                                        <ul>
+                                                            <li ng-repeat="alert in alertsData |filter:queryAlert| severeAlerts |reverse | limitTo: limit" on-finish-render="ngRepeatFinished">
+                                                                <div class="warningTabLeft">
+                                                                    <div class="insight-type"><img src="images/icon-severe.png" alt=""></div>
+                                                                    <h6><a href="javascript:void(0)" ng-click="metricsShow(alert)">{{alert.metrictype}} </a></h6>
+                                                                    <div class="alertData">
+                                                                        <div class="alertDataColumn">
+                                                                            <div class="column">
+                                                                                <span class="title">Entity :</span> <span class="subTitle">{{alert.entityname}}</span>
+                                                                            </div>
+                                                                            <div class="column">
+                                                                                <div class="title">Host : <span class="subTitle">{{alert.host}}</span></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="alertData">
+                                                                        <div class="alertDataColumn">
+                                                                            <div class="columnFull">
+                                                                                <div class="alertdescripe">{{alert.rca}}</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="warningTabRight">
+                                                                    <div class="warnigdate">{{alert.timestamp | ZoneConversion}}</div>
+                                                                    <div class="warningActions">
+                                                                       <a href="" data-toggle="modal" data-target="#viewseverealert{{$index}}" title="View"><img src="images/view-icon.png" alt="view alert"></a>
+                                                                        <a href="javascript:void(0)"><img src="images/topology-icon.png" alt="" ng-click="topologyInit(alert.host)"></a>
+                                                                        <a href="javascript:void(0)" ng-click="metricsShow(alert)"><img src="images/metric-iocn.png" alt="" title="Metric"></a>
+                                                                        <a href="" ng-click="show(alert.metrictype,alert.entityname, alert.timestamp)"><img src="images/graph-icon.png" alt="Graph" title="Graph"></a>
+                                                                        <a><img src="images/warning-done.png" alt=""></a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal fade" id="viewseverealert{{$index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                                    <div class="modal-dialog view_modal" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                                <h4 class="modal-title" id="myModalLabel">{{alert.metrictype}}</h4>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <div class="view_row">
+                                                                                    <label for="">Entity</label><span>{{alert.entityname}}</span>
+                                                                                </div>
+                                                                                <div class="view_row">
+                                                                                    <label for="">Host</label><span>{{alert.host}}</span>
+                                                                                </div>
+                                                                                <div class="view_row">
+                                                                                    <label for="">Score</label><span>{{alert.score}}</span>
+                                                                                </div>
+                                                                                <div class="view_row">
+                                                                                    <label for="">Anomaly Algorithm</label><span>{{alert.algo}}</span>
+                                                                                </div>
+                                                                                <div class="view_row">
+                                                                                    <label for="">Metric Value</label><span>{{alert.metricvalue}}</span>
+                                                                                </div>
+                                                                                <div class="view_row">
+                                                                                    <label for="">Root Cause</label><span>{{alert.rca}}</span>
+                                                                                </div>
+                                                                                <div class="clearfix"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane" ng-class="{ active: activeTab === 'critical' }">
+                                        <div class="alerteft">
+                                            <div class="alertSection">
+                                                <div class="warningContainer" ng-class="{'show' : graphShow, 'hide' : !graphShow}">
+                                                    <div class="custom-scrollbar">
+                                                        <ul>
+                                                            <li ng-repeat="alert in alertsData |filter:queryAlert| criticalAlerts |reverse | limitTo: limit" on-finish-render="ngRepeatFinished">
+                                                                
+                                                                <div class="warningTabLeft">
+                                                                    <div class="insight-type"><img src="images/icon-severe.png" alt=""></div>
+                                                                    <h6><a href="javascript:void(0)" ng-click="metricsShow(alert)">{{alert.metrictype}} | {{alert.metricvalue}} </a></h6>
+                                                                    <div class="alertData">
+                                                                        <div class="alertDataColumn">
+                                                                            <div class="column">
+                                                                                <span class="title">Entity :</span> <span class="subTitle">{{alert.entityname}}</span>
+                                                                            </div>
+                                                                            <div class="column">
+                                                                                <div class="title">Host : <span class="subTitle">{{alert.host}}</span></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="alertData">
+                                                                        <div class="alertDataColumn">
+                                                                            <div class="columnFull">
+                                                                                <div class="alertdescripe">{{alert.rca}}</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="warningTabRight">
+                                                                    <div class="warnigdate">{{alert.timestamp | ZoneConversion}}</div>
+                                                                    <div class="warningActions">
+                                                                        <a href="" data-toggle="modal" data-target="#viewcriticalalert{{$index}}" title="View"><img src="images/view-icon.png" alt="view alert"></a>
+                                                                        <a href="javascript:void(0)"><img src="images/topology-icon.png" alt="" ng-click="topologyInit(alert.host)"></a>
+                                                                        <a href="javascript:void(0)" ng-click="metricsShow(alert)"><img src="images/metric-iocn.png" alt="" title="Metric"></a>
+                                                                        <a href="" ng-click="show(alert.metrictype,alert.entityname, alert.timestamp)"><img src="images/graph-icon.png" alt="Graph" title="Graph"></a>
+                                                                        <a><img src="images/warning-done.png" alt=""></a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal fade" id="viewcriticalalert{{$index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                                    <div class="modal-dialog view_modal" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                                <h4 class="modal-title" id="myModalLabel">{{alert.metrictype}}</h4>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <div class="view_row">
+                                                                                    <label for="">Entity</label><span>{{alert.entityname}}</span>
+                                                                                </div>
+                                                                                <div class="view_row">
+                                                                                    <label for="">Host</label><span>{{alert.host}}</span>
+                                                                                </div>
+                                                                                <div class="view_row">
+                                                                                    <label for="">Score</label><span>{{alert.score}}</span>
+                                                                                </div>
+                                                                                <div class="view_row">
+                                                                                    <label for="">Anomaly Algorithm</label><span>{{alert.algo}}</span>
+                                                                                </div>
+                                                                                <div class="view_row">
+                                                                                    <label for="">Metric Value</label><span>{{alert.metricvalue}}</span>
+                                                                                </div>
+                                                                                <div class="view_row">
+                                                                                    <label for="">Root Cause</label><span>{{alert.rca}}</span>
+                                                                                </div>
+                                                                                <div class="clearfix"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="metricContainer h100" ng-class="{'show' : metricShow, 'hide' : !metricShow}">
+                                        <div id="metricChart" style="width:100%; padding: 15px 10px 0 15px;"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="refresh-topology"><a href="" title="reset topology"><img src="images/icon-refresh.png" alt="reset topology" title="reset topology" ng-click="topologyInit('All')"></a></div>
+                                <div id="topoView"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row homeBottomContainer">
+                <div class="col-lg-8">
+                    <div class="mapView" ng-class="{'mapFullWidth' : mapview, 'mapNormalWidth' : !mapview}">
+                        <div class="mapViewHeader">
+                            <h3>Locations</h3>
+                            <a href="" id="mapExpand" ng-click="mapview = !mapview" title="Expand Location"><i class="fa fa-expand" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="mapViewBody">
+                            <div id="map"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="chatContainer homeChatContainer" ng-class="{'mapFullWidth' : chatContent, 'mapNormalWidth' : !chatContent}">
+                        <div class="insightContainerHeader">
+                            <h4>Chat</h4>
+                            <a href="" id="ChatExpand" ng-click="chatContent = !chatContent" title="Expand Chat"><i class="fa fa-expand" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="chatContacts">
+                            <div class="custom-scrollbar">
+                                <ul>
+                                    <li>
+                                        <a href="" ng-click="showChat()">
+                                            <div class="chatContactsLeft">
+                                                <img src="images/01-contact-member.png" alt="">
+                                            </div>
+                                            <div class="chatContactsRight">
+                                                <h6 class="contactPersonName">Carol</h6>
+                                                <div class="contactPersonPosition">Material Specialist - Georgia</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="" ng-click="showChat()">
+                                            <div class="chatContactsLeft">
+                                                <img src="images/02-contact-member.png" alt="">
+                                            </div>
+                                            <div class="chatContactsRight">
+                                                <h6 class="contactPersonName">Kelly</h6>
+                                                <div class="contactPersonPosition">ERP Specialist - Kansas</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="" ng-click="showChat()">
+                                            <div class="chatContactsLeft">
+                                                <img src="images/03-contact-member.png" alt="">
+                                            </div>
+                                            <div class="chatContactsRight">
+                                                <h6 class="contactPersonName">Ryan Mathew</h6>
+                                                <div class="contactPersonPosition">Recipe Specialist - Pennsylvania</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="" ng-click="showChat()">
+                                            <div class="chatContactsLeft">
+                                                <img src="images/04-contact-member.png" alt="">
+                                            </div>
+                                            <div class="chatContactsRight">
+                                                <h6 class="contactPersonName">Emily Jacson</h6>
+                                                <div class="contactPersonPosition">Quality Analyst - Knasas</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="" ng-click="showChat()">
+                                            <div class="chatContactsLeft">
+                                                <img src="images/05-contact-member.png" alt="">
+                                            </div>
+                                            <div class="chatContactsRight">
+                                                <h6 class="contactPersonName">Isabella</h6>
+                                                <div class="contactPersonPosition">Meterial Specialist - Oklahoma</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="" ng-click="showChat()">
+                                            <div class="chatContactsLeft">
+                                                <img src="images/06-contact-member.png" alt="">
+                                            </div>
+                                            <div class="chatContactsRight">
+                                                <h6 class="contactPersonName">Elizabeth</h6>
+                                                <div class="contactPersonPosition">Recipe Specialist - Wisconsin</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="" ng-click="showChat()">
+                                            <div class="chatContactsLeft">
+                                                <img src="images/07-contact-member.png" alt="">
+                                            </div>
+                                            <div class="chatContactsRight">
+                                                <h6 class="contactPersonName">Brayden</h6>
+                                                <div class="contactPersonPosition">Material Specialist - Georgia</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="" ng-click="showChat()">
+                                            <div class="chatContactsLeft">
+                                                <img src="images/08-contact-member.png" alt="">
+                                            </div>
+                                            <div class="chatContactsRight">
+                                                <h6 class="contactPersonName">Sophia</h6>
+                                                <div class="contactPersonPosition">Quality Analyst - Kansas</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="" ng-click="showChat()">
+                                            <div class="chatContactsLeft">
+                                                <img src="images/09-contact-member.png" alt="">
+                                            </div>
+                                            <div class="chatContactsRight">
+                                                <h6 class="contactPersonName">Jayden Ethan</h6>
+                                                <div class="contactPersonPosition">Materials Specialist - Pennsylvania</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="" ng-click="showChat()">
+                                            <div class="chatContactsLeft">
+                                                <img src="images/10-contact-member.png" alt="">
+                                            </div>
+                                            <div class="chatContactsRight">
+                                                <h6 class="contactPersonName">Willam Jacob</h6>
+                                                <div class="contactPersonPosition">Material Specialist - Pennsylvania</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!--<div class="modal fade bs-example-modal-lg chatmodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <button type="button" class="close" data-dismiss="modal" style="position:absolute; top:6px; right:10px;"><span aria-hidden="true">&times;</span></button>
+                    <iframe src="chatURL" width="100%" style="min-height:600px;" frameborder="0"></iframe>
+                </div>
+            </div>-->
+
+        </div>
+    </div>

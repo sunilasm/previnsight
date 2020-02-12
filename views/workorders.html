@@ -1,0 +1,150 @@
+<div class="innerPage">
+    <div id="content">
+        <div class="container-fluid">
+            <div class="row pageTitle">
+                <div class="col-lg-6 col-sm-4">
+                    <h3>Work Orders</h3>
+                </div>
+                <div class="col-lg-6 col-sm-8">
+                    <div class="pull-right">
+                        <div class="sensorSearch">
+                            <input type="text" placeholder="Search" ng-model="searchText" ng-keyup="search($event)" class="ng-pristine ng-valid ng-empty ng-touched" style="">
+                            <a href=""><img src="images/search-insight.png" alt=""></a>
+                        </div>
+                        <a ui-sref="nav.addWorkorder" class="btnAddNew" title="Add New Work Order" ng-show="workorderCreate==1"><span><img src="images/rounded-add.png" alt=""></span> Add New</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row pbottom25">
+                <div class="table-responsive workOrderTable">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>WO ID#</th>
+                                <th>Recipe</th>
+                                <th>Date</th>
+                                <th>Target Materials</th>
+                                <th>Quantity Requested</th>
+                                <th>Quantity Made</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="workorder in fpWorkorderslist">
+                                <td>{{workorder.WORK_ORDER_ID}}</td>
+                                <td>{{workorder.RECIPE_NAME}}</td>
+                                <td>{{workorder.CREATION_DATE}}</td>
+                                <td>{{workorder.TARGET_MATERIAL}}</td>
+                                <td>{{workorder.QUANTITY_REQUESTED}}</td>
+                                <td>{{workorder.QUANTITY_MADE}}</td>
+                                <td>{{workorder.STATUS}}</td>
+                                <td class="workorderActionBtn">
+                                    <a href="" data-toggle="modal" data-target="#viewworkorder{{workorder.WORK_ORDER_ID}}" title="View">
+                                        <div class="imagesmallContainer">
+                                            <img ng-src="images/view-icon.png" class="view" alt="View" title="View">
+                                        </div>
+                                    </a>
+                                    <a href="#/addWorkorder?id={{workorder.WORK_ORDER_ID}}" title="Edit" ng-show="workorderUpdate==1">
+                                        <div class="imagesmallContainer">
+                                            <img ng-src="images/edit-icon.png" class="view" alt="Edit" title="Edit">
+                                        </div>
+                                    </a>
+                                    <a href="" title="Delete" data-toggle="modal" data-target="#deleteWorkorder{{workorder.WORK_ORDER_ID}}"
+                                       ng-show="workorderDelete==1">
+                                        <div class="imagesmallContainer">
+                                            <img ng-src="images/delete-icon.png" class="" alt="Delete" title="Delete">
+                                        </div>
+                                    </a>
+                                    <span ng-show="qualityRead==1" ng-if="workorder.STATUS=='completed' || workorder.STATUS=='COMPLETED' || workorder.STATUS=='completedsuccess' || workorder.STATUS=='COMPLETEDSUCCESS' || workorder.STATUS=='completedfailed' || workorder.STATUS=='COMPLETEDFAILED'">
+									<a title="Quality" href="#/samplelist?id={{workorder.WORK_ORDER_ID}}">
+                                        <div class="imagesmallContainer">
+                                            <img ng-src="images/quality-icon.png" class="view" alt="Quality" title="Quality">
+                                        </div>
+                                    </a>
+									</span>
+                                    <div class="modal fade" id="viewworkorder{{workorder.WORK_ORDER_ID}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                        <div class="modal-dialog view_modal" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="myModalLabel">{{workorder.WORK_ORDER_ID}}</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="view_row">
+                                                        <label for="">Operator ID</label><span>{{workorder.OPERATOR_NAME}}</span>
+                                                    </div>
+                                                    <div class="view_row">
+                                                        <label for="">Recipe</label><span>{{workorder.RECIPE_NAME}}</span>
+                                                    </div>
+                                                    <div class="view_row">
+                                                        <label for="">Target Material</label><span>{{workorder.TARGET_MATERIAL}}</span>
+                                                    </div>
+                                                    <div class="view_row">
+                                                        <label for="">Actual Yield</label><span>{{workorder.VALUE}} {{workorder.ACTUAL_YIELD}}</span>
+                                                    </div>
+                                                    <div class="view_row">
+                                                        <label for="">Quantity Requested</label><span>{{workorder.QUANTITY_REQUESTED}}</span>
+                                                    </div>
+                                                    <div class="view_row">
+                                                        <label for="">Quantity Made</label><span>{{workorder.QUANTITY_MADE}}</span>
+                                                    </div>
+                                                    <div class="view_row">
+                                                        <label for="">Status</label><span>{{workorder.STATUS}}</span>
+                                                    </div>
+                                                    <div class="view_row">
+                                                        <label for="">Description</label><span>{{workorder.DESCRIPTION}}</span>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="deleteWorkorder{{workorder.WORK_ORDER_ID}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                        <div class="modal-dialog modal-sm deleteSensoreModel" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="myModalLabel">Confirm</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Are you sure want to delete?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default btnSave" data-dismiss="modal" ng-click="deleteWorkorder(workorder.WORK_ORDER_ID)">Yes</button>
+                                                    <button type="button" class="btn btn-default">Cancel</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class='text-center'>
+                    <ul ng-if="pager.pages.length" class="pagination">
+                        <li ng-class="{disabled:pager.currentPage === 1}">
+                            <a ng-click="setPage(1)">&laquo;</a>
+                        </li>
+                        <li ng-class="{disabled:pager.currentPage === 1}">
+                            <a ng-click="setPage(pager.currentPage - 1)">&lsaquo;</a>
+                        </li>
+                        <li ng-repeat="page in pager.pages" ng-class="{active:pager.currentPage === page}">
+                            <a ng-click="setPage(page)">{{page}}</a>
+                        </li>               
+                        <li ng-class="{disabled:pager.currentPage === pager.totalPages}">
+                            <a ng-click="setPage(pager.currentPage + 1)">&rsaquo;</a>
+                        </li>
+                        <li ng-class="{disabled:pager.currentPage === pager.totalPages}">
+                            <a ng-click="setPage(pager.totalPages)">&raquo;</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>

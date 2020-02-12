@@ -1,0 +1,135 @@
+<div class="innerPage locationPage">
+   
+
+    <div id="content">
+        <div class="container-fluid">
+           <div class="row pageTitle">
+                        <div class="col-lg-6 col-sm-6">
+                            <h3>Location</h3>
+                        </div>
+                        <div class="col-lg-6 col-sm-6">
+                            <div class="pull-right">
+                                <div class="sensorSearch">
+                                    <input type="text" placeholder="Search" ng-model="searchText">
+                                    <a href=""><img src="images/search-insight.png" alt="Search" title="Search"></a>
+                                </div>
+                                <a class="btnAddNew" ng-click="addNewLocation()"><span><img src="images/rounded-add.png" alt=""></span> Add New</a>
+                            </div>
+                        </div>
+                    </div>
+           <div class="row pbottom25 master">
+                        <div class="table-responsive workOrderTable masterModelTable">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>S.No #</th>
+                                        <th style="width:10%;">Country</th>
+                                        <!--<th>State</th>-->
+                                        <th style="width:5%;">City</th>
+                                        <th style="width:10%;">Address Line1</th>
+                                        <th style="width:10%;">Address Line2</th>
+                                        <th style="width:10%;">Address Line3</th>
+                                        <th style="width:10%;">Address Line4</th>
+                                        <th style="width:10%;">Zipcode</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-show="addLocationRow">
+                                        <td></td>
+                                        <td style="width:10%;">
+                                            <input type="text" class="form-control" ng-model="countryname">
+                                        </td>
+                                        <!--<td>
+                                            <input type="text" class="form-control" ng-model="statename">
+                                        </td>-->
+                                        <td style="width:10%;">
+                                            <input type="text" class="form-control" ng-model="cityname">
+                                        </td>
+                                        <td style="width:10%;">
+                                            <input type="text" class="form-control" ng-model="address1">
+                                        </td>
+                                        <td style="width:10%;">
+                                            <input type="text" class="form-control" ng-model="address2">
+                                        </td >
+                                        <td style="width:10%;">
+                                            <input type="text" class="form-control" ng-model="address3">
+                                        </td >
+                                        <td style="width:10%;">
+                                            <input type="text" class="form-control" ng-model="address4">
+                                        </td >
+                                        <td style="width:10%;"
+                                            <input type="text" class="form-control" ng-model="zipcode">
+                                        </td>
+                                        
+                                        <td class="workorderActionBtn">
+                                            <div class="action" ng-click="addLocationItem()">
+                                                <div class="imagesmallContainer">
+                                                    <img ng-src="images/save-icon.png" class="save" alt="Save" title="Save">
+                                                </div>
+                                            </div>
+                                            <div class="action" ng-click="closeAddLocation()">
+                                                <div class="imagesmallContainer">
+                                                    <img ng-src="images/close-icon.png" class="closeMaterial" alt="Close" title="Close">
+                                                </div>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr ng-repeat="item in locationList" ng-init="item.locationdetails = true" class="masteredit" ng-mouseover="showAction(item)" ng-mouseleave="hideAction(item)">
+                                        <td>{{$index + 1}}</td>
+                                        <td>
+                                            <input type="text" class="form-control" ng-model="item.COUNTRY" ng-disabled="item.locationdetails">
+                                        </td>
+                                        <!--<td>
+                                            <input type="text" class="form-control" ng-model="item.STATE" ng-disabled="item.locationdetails">
+                                        </td>-->
+                                        <td>
+                                            <input type="text" class="form-control" ng-model="item.CITY" ng-disabled="item.locationdetails">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control" ng-model="item.ADDRESS_LINE1" ng-disabled="item.locationdetails">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control" ng-model="item.ADDRESS_LINE2" ng-disabled="item.locationdetails">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control" ng-model="item.ADDRESS_LINE3" ng-disabled="item.locationdetails">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control" ng-model="item.ADDRESS_LINE4" ng-disabled="item.locationdetails">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control" ng-model="item.ZIP_CODE" ng-disabled="item.locationdetails">
+                                        </td>
+                                        
+                                        <td class="workorderActionBtn">
+                                            <div ng-show="item.loading">
+                                                <div class="action" ng-click="editLocationItem(item)" ng-show="item.locationdetails">
+                                                    <div class="imagesmallContainer">
+                                                        <img ng-src="images/edit-icon.png" class="save" alt="Edit" title="Edit">
+                                                    </div>
+                                                </div>
+                                                <div class="action" ng-click="saveEditLocation(item)" ng-hide="item.locationdetails">
+                                                    <div class="imagesmallContainer">
+                                                        <img ng-src="images/save-icon.png" class="save" alt="Save" title="Save">
+                                                    </div>
+                                                </div>
+                                                <div class="action" ng-click="removeAddLcoation(item.LOCATION_ID)">
+                                                    <div class="imagesmallContainer">
+                                                        <img ng-src="images/close-icon.png" class="closeMaterial" alt="Close" title="Close">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+    </div>

@@ -1,0 +1,128 @@
+<div class="innerPage">
+        <div id="content">
+        <div class="container-fluid">
+            <div class="row pageTitle">
+                <div class="col-lg-6 col-sm-4">
+                    <h3>Sample List</h3>
+                </div>
+                <div class="col-lg-6 col-sm-8">
+                    <div class="pull-right">
+                        <div class="sensorSearch">
+                            <input type="text" placeholder="Search" ng-model="searchText" class="ng-pristine ng-valid ng-empty ng-touched" style="">
+                            <a href=""><img src="images/search-insight.png" alt=""></a>
+                        </div>
+                        <a ng-show="qualityCreate==1" href="#/createsample?id={{workorderID}}" class="btnAddNew" title="Add New Work Order"><span><img src="images/rounded-add.png" alt=""></span> Add New</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row pbottom25">
+                <div class="table-responsive workOrderTable sampleList">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Sample Name</th>
+                                <th>Amount</th>
+                                <th>UOM</th>
+                                <th>Date &amp; Time</th>
+                                <th>Operator</th>
+                                <th>Container Name</th>
+                                <th>Container Location</th>
+                                <th>Parameter</th>
+								<th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="sample in samplesList">
+                                <td>{{sample.SAMPLE_NAME}}</td>
+                                <td>{{sample.AMOUNT}}</td>
+                                <td>{{sample.UOM}}</td>
+                                <td>{{sample.ENTERED_DATE}}</td>
+                                <td>{{sample.OPERATOR}}</td>
+                                <td>{{sample.CONTAINER_NAME}}</td>
+                                <td>{{sample.CAONTAINER_LOCATION}}</td>
+                                <td class="workorderActionBtn">
+                                    <a href="" data-toggle="modal" data-target="#viewparameter" title="View Parameter">
+                                        <div class="imagesmallContainer">
+                                            <img ng-src="images/icon-parameter.png" class="view" alt="View Parameter" title="View Parameter"
+                                                 ng-click="onGetParamtersList(sample.SAMPLE_ID)">
+                                        </div>
+                                    </a>
+                                    <div class="modal fade" id="viewparameter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                        <div class="modal-dialog view_modal machinery-modal" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="myModalLabel">Parameters</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="table-responsive table-bordered parameterslist">
+                                                        <table class="table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Name</th>
+                                                                    <th>Value</th>
+                                                                    <th>UOM</th>
+                                                                    <th>Date &amp; Time</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr ng-repeat="item in parametersList">
+                                                                    <td>{{item.PARAMTERS}}</td>
+                                                                    <td>{{item.VALUE}}</td>
+                                                                    <td>{{item.UOM}}</td>
+                                                                    <td>{{item.LAST_UPDATED_DATE}}</td>
+                                                                </tr>
+                                                                
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+								 <td>{{sample.STATUS}}</td>
+                                <td class="workorderActionBtn">
+                                    <a href="#/createsample?sampleid={{sample.SAMPLE_ID}}&id={{sample.WORK_ORDER_ID}}" title="Edit" ng-show="qualityUpdate==1">
+                                        <div class="imagesmallContainer">
+                                            <img ng-src="images/edit-icon.png" class="view" alt="Edit" title="Edit">
+                                        </div>
+                                    </a>
+                                    <a href="" title="Delete" data-toggle="modal" data-target="#deleteSample{{sample.SAMPLE_ID}}" ng-show="qualityDelete==1">
+                                        <div class="imagesmallContainer">
+                                            <img ng-src="images/delete-icon.png" class="" alt="Delete" title="Delete">
+                                        </div>
+                                    </a>
+                                    
+                                     <div class="modal fade" id="deleteSample{{sample.SAMPLE_ID}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                        <div class="modal-dialog modal-sm deleteSensoreModel" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="myModalLabel">Confirm</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Are you sure want to delete?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default btnSave" data-dismiss="modal" ng-click="deleteWorkorderSample(sample.SAMPLE_ID)">Yes</button>
+                                                    <button type="button" class="btn btn-default">Cancel</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>

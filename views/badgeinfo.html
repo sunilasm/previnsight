@@ -1,0 +1,88 @@
+<div class="innerPage">
+    
+    <div id="content">
+        <div class="container-fluid">
+            <div class="row pageTitle">
+                <div class="col-lg-6 col-sm-6">
+                    <h3>Badge Info</h3>
+                </div>
+                <div class="col-lg-6 col-sm-9">
+                    <div class="pull-right">
+                        <a ui-sref="nav.addbadgeinfo" class="btnAddNew" title="Add New User"> <span><img src="images/rounded-add.png"></span> Add New</a>
+                    </div>
+                </div>
+            </div>
+            <form name="badgeinfoSearchForm" novalidate ng-submit="getBadgeInfo(fromdate)">
+                <div class="row search-badgeinfo">
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="">User Name</label>
+                            <input type="text" class="form-control" id="" placeholder="username" ng-model="username.FULL_NAME">
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="">Location</label>
+                            <input type="text" class="form-control" id="" placeholder="location" ng-model="location.CITY">
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            <label for="">From Date</label>
+                            <div class="input-group date">
+                               
+                                <input class="form-control"  datetime-picker ng-model="from" date-format="yyyy-MM-dd" date-only/>
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            <label for="">To Date</label>
+                            <div class="input-group date">
+                               
+                                <input class="form-control"  datetime-picker ng-model="to" date-format="yyyy-MM-dd" date-only/>
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="col-lg-2">
+                        <div class="form-group searchbtn">
+                            <button type="submit" class="btnAddNew"> Search</button>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="row pbottom25">
+                    <div class="table-responsive workOrderTable">
+                        <table class="table" ng-cloak>
+                            <thead>
+                                <tr>
+                                    <th>User ID</th>
+                                    <th>User Name</th>
+                                    <th>Location</th>
+                                    <th>Swipe Sensor Name</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="badge in BadgeInfoByDate | filter: username | filter: location | dateRange : from : to ">
+                                    <td>{{badge.USER_ID}}</td>
+                                    <td>{{badge.FIRST_NAME}} {{badge.LAST_NAME}}</td>
+                                    <td>{{badge.CITY}}</td>
+                                    <td>{{badge.ADDRESS_LINE1}}</td>
+                                    <td>{{badge.STATUS}}</td>
+                                    <td>{{badge.PUNCH_DATE  }}</td>
+                                    <td>{{badge.PUNCH_IN_OUT | timeOnly }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="clearfix"></div>
+    </div>

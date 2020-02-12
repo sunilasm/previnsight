@@ -1,0 +1,56 @@
+
+					[{
+						"Host": "45.55.201.227",
+						"Date": "Sat May 28 2016",
+                        "Anomaly_algorithm": "TUKEY",
+						"Root_cause": "The configuration of name disk2 changed or added, and shared between nodes docker_mysql_2, docker_mysql_1, could be the problem",
+						"Score": 554.4962245442757
+					}, {
+						"Host": "45.55.201.227",
+						"Date": "Sat May 28 2016",
+                        "Anomaly_algorithm": "TUKEY",
+						"Root_cause": "FALSE POSITIVE",
+						"Score": 160.13154894736844
+					}, {
+						"Host": "45.55.201.227",
+						"Date": "Sat May 28 2016",
+                        "Anomaly_algorithm": "TUKEY",
+						"Root_cause": "The configuration of name disk2 changed or added, and shared between nodes docker_mysql_2, docker_mysql_1, could be the problem",
+						"Score": 176.4962245442757
+					},
+
+					{
+						"Host": "45.55.201.227",
+						"Date": "Sat May 28 2016",
+                        "Anomaly_algorithm": "TUKEY",
+						"Root_cause": "The configuration of name disk2 changed or added, and shared between nodes docker_mysql_2, docker_mysql_1, could be the problem",
+						"Score": 154.4962245442757
+					}, {
+						"Host": "45.55.201.227",
+						"Date": "Sat May 28 2016",
+                        "Anomaly_algorithm": "CLUSTER_EDM",
+						"Root_cause": "The Realtionship of entity docker_webservice_app_4 with docker_mysql_prod_1 could be the problem. This relationship is different than others dockers_webservice_app_1, docker_webservice_app_2, docker_webservice_app_3, docker_webservice_app_4 of similar kind",
+						"Score": 104.4962245442757
+					}, {
+						"Host": "45.55.201.227",
+						"Date": "Sat May 28 2016",
+                        "Anomaly_algorithm": "TUKEY",
+						"Root_cause": "The configuration of name disk2 changed or added, and shared between nodes docker_mysql_2, docker_mysql_1, could be the problem",
+						"Score": 100.4962245442757
+					},
+                     {
+						"Host": "45.55.201.227",
+						"Date": "Sat May 28 2016",
+                        "Anomaly_algorithm": "TUKEY",
+						"Root_cause": "The configuration of name disk2 changed or added, and shared between nodes docker_mysql_2, docker_mysql_1, could be the problem",
+						"Score": 435.4962245442757
+					},
+                     {
+						"Host": "45.55.201.227",
+						"Date": "Sat May 28 2016",
+                        "Anomaly_algorithm": "TUKEY",
+						"Root_cause": "The configuration of name disk2 changed or added, and shared between nodes docker_mysql_2, docker_mysql_1, could be the problem",
+						"Score": 212.4962245442757
+					}
+					
+				]

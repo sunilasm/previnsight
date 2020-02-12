@@ -1,0 +1,213 @@
+<div class="innerPage">
+    
+    <div id="content" class="machinery">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 pageTitle">
+                    <h3>Log Activity</h3>
+                </div>
+            </div>
+            <div class="row customiedFrom">
+                <div class="col-lg-12">
+                    <div class="row pbottom25">
+                        <div class="col-lg-6 col-lg-offset-3">
+                            <form class="form-horizontal" ng-submit="submit()" name="machinerylogactivityForm" novalidate>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Activity ID</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="machinery_code" ng-model="addLogActivity.acivityid" class="form-control small"  disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Type of Activity <span class="mandatory">*</span></label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" ng-model="addLogActivity.activityType">
+                                            <option value="">Select Type</option>
+                                            <option value="Minor Cleaning">Minor Cleaning</option>
+                                            <option value="Major Cleaning">Major Cleaning</option>
+                                            <option value="Calibration">Calibration</option>
+                                            <option value="Processing">Processing</option>
+                                            <option value="Maintenance">Maintenance</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Location</label>
+                                    <div class="col-sm-6">
+                                        <div class="loglocation">{{events[0]}} | {{events[1]}}</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Performed By <span class="mandatory">*</span></label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" name="performedBy" ng-model="addLogActivity.performedBy"  ng-options="userlist for userlist in UsersLists" required>
+                                            <option value="">Select User</option>
+
+                                        </select>
+                                        
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Checked By <span class="mandatory">*</span></label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" name="checkedBy" ng-model="addLogActivity.checkedBy"  ng-options="userlist for userlist in UsersLists" required>
+                                            <option value="">Select User</option>
+
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Cleaning up after Work Order <span class="mandatory">*</span></label>
+                                    <div class="col-sm-6">
+                                        
+                                        <select class="form-control" name="cleaningAfterWorkOrder" ng-model="addLogActivity.cleanedAfterWorkOrderId"  ng-options="ma.WORK_ORDER_ID as ma.WORK_ORDER_ID for ma in workorderslist" required>
+                                            <option value="">Select WorkOrderID</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Date &amp; Time <span class="mandatory">*</span></label>
+                                    <div class="col-sm-6">
+                                        <div class="logdatetime">
+                                            <ul>
+                                                <li>
+                                                    <!--<div class="dropdown">
+                                                        <a class="dropdown-toggle" id="dropdownStart" role="button" data-toggle="dropdown" data-target="#">
+                                                            <div class="input-group date">
+                                                                <input type="text" class="form-control" data-ng-model="dateRangeStart" placeholder="Start">
+                                                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                            </div>
+                                                        </a>
+                                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                            <datetimepicker data-ng-model="dateRangeStart" data-datetimepicker-config="{ dropdownSelector: '#dropdownStart', renderOn: 'end-date-changed', modelType:'MM-DD-YYYY HH:mm'}" data-on-set-time="startDateOnSetTime()" data-before-render="startDateBeforeRender($dates)"></datetimepicker>
+                                                        </ul>
+                                                    </div>-->
+                                                    <div class="input-group date">
+                                            <input class="form-control" datetime-picker ng-model="addLogActivity.startDatetime" date-format="MM/dd/yyyy  HH:mm:ss" close-on-select="false" placeholder="Start"/>
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                                </li>
+                                                <li>
+                                                    <div class="input-group date">
+                                            <input class="form-control" datetime-picker ng-model="addLogActivity.endDatetime" date-format="MM/dd/yyyy  HH:mm:ss" close-on-select="false" placeholder="End" />
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                                    <!--<div class="dropdown">
+                                                        <a class="dropdown-toggle" id="dropdownEnd" role="button" data-toggle="dropdown" data-target="#">
+                                                            <div class="input-group date">
+                                                                <input type="text" class="form-control" data-ng-model="dateRangeEnd" placeholder="End">
+                                                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                            </div>
+                                                        </a>
+                                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                            <datetimepicker data-ng-model="dateRangeEnd" data-datetimepicker-config="{ dropdownSelector: '#dropdownEnd', renderOn: 'start-date-changed', modelType:'MM-DD-YYYY HH:mm' }" data-on-set-time="endDateOnSetTime()" data-before-render="endDateBeforeRender($view, $dates, $leftDate, $upDate, $rightDate)"></datetimepicker>
+                                                        </ul>
+                                                    </div>-->
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Boiled Out</label>
+                                    <div class="col-sm-6">
+                                        <switch name="yesNo" ng-model="addLogActivity.boiledOut" on="Yes" off="No" class="wide"></switch>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Rinsed</label>
+                                    <div class="col-sm-6">
+                                        <switch name="yesNo" ng-model="addLogActivity.rinsed" on="Yes" off="No" class="wide"></switch>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Availablity Status <span class="mandatory">*</span></label>
+                                    <div class="col-sm-6">
+                                        <switch name="yesNo" ng-model="addLogActivity.availablityStatus" on="Yes" off="No" class="wide"></switch>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Comments</label>
+                                    <div class="col-sm-6">
+                                        <textarea class="form-control" rows="3" ng-model="addLogActivity.comments"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Materials Used</label>
+                                    <div class="col-sm-6">
+                                        <div class="logmaterialused">
+                                            <ul>
+                                                <li>
+                                                    <select class="form-control" ng-model="addLogActivity.material1" ng-options="item for item in materials" name="material" required>
+                                            <option value="">Select Material</option>
+                                        </select>
+                                        
+                                                </li>
+                                                <li>
+                                                    <input type="text" class="qty form-control" ng-model="addLogActivity.qty1">
+                                                </li>
+                                                <li>
+                                                    <select class="form-control" ng-model="addLogActivity.actualyield1" ng-options="expectedYieldType for expectedYieldType in expectedYieldTypes" name="actualyieldvalue">
+                                                        <option value="">Select</option>
+                                        </select>
+                                                </li>
+                                            </ul>
+                                            <!--<div class="addlogmaterial">
+                                                <a href=""><img src="images/add-recipe.png" alt=""></a>
+                                            </div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label"></label>
+                                    <div class="col-sm-6">
+                                        <div class="logmaterialused">
+                                            <ul>
+                                                <li>
+                                                    <select class="form-control" ng-model="addLogActivity.material2" ng-options="item for item in materials" name="material" required>
+                                            <option value="">Select Material</option>
+                                        </select>
+                                        
+                                                </li>
+                                                <li>
+                                                    <input type="text" class="qty form-control" ng-model="addLogActivity.qty2">
+                                                </li>
+                                                <li>
+                                                    <select class="form-control" ng-model="addLogActivity.actualyield2" ng-options="expectedYieldType for expectedYieldType in expectedYieldTypes" name="actualyieldvalue">
+                                                        <option value="">Select</option>
+                                        </select>
+                                                </li>
+                                            </ul>
+                                            <!--<div class="addlogmaterial">
+                                                <a href=""><img src="images/add-recipe.png" alt=""></a>
+                                            </div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12 submitArea">
+                        <div class="col-sm-offset-5 col-sm-6">
+                            <button type="submit" class="btn btn-default btnSave" ng-click="onSaveLogActivity()">Save</button>
+                            <span class="btn-divider"></span>
+                            <a type="button" class="btn btn-link" ui-sref="nav.machinery">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+</div>

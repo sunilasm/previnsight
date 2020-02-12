@@ -1,0 +1,290 @@
+[
+    {
+        "id": "m1",
+        "name": "Tablet Press",
+        "mainLocation": "Georgia",
+        "subLocation": "Atlanda",
+        "machineryImageUrl": "images/01-machinery.jpg",
+        "sensorId": ["SEN124", "SEN546", "SEN674"],
+        "LastCleaned": "11/22/2015",
+        "LastCalibrated": "11/22/2015",
+        "LastWorkOrder": ["W053235", "Show All"],
+        "notificationCount": 1,
+        "notificationContent": "Equipment 2132 is displaying sings of wear & tear (per Assay #65).Impurity XSD is over the limit of 0.1 ml. Schedule cleanig and calibration as soo as posible.",
+        "notificationDate": "Yesterday, 02:25 pm",
+        "settings": [
+            {
+                "name": "Cleaning",
+                "link": "javascript:void(0)"
+            },
+            {
+                "name": "Calibrate",
+                "link": "javascript:void(0)"
+            }
+        ]
+    },
+    {
+        "id": "m2",
+        "name": "Dry Batch Mixer",
+        "mainLocation": "Georgia",
+        "subLocation": "Atlanda",
+        "machineryImageUrl": "images/02-machinery.jpg",
+        "sensorId": ["SEN124", "SEN546", "SEN674"],
+        "LastCleaned": "11/22/2015",
+        "LastCalibrated": "11/22/2015",
+        "LastWorkOrder": ["W053235", "Show All"],
+        "notificationCount": 1,
+        "notificationContent": "Equipment 2132 is displaying sings of wear & tear (per Assay #65).Impurity XSD is over the limit of 0.1 ml. Schedule cleanig and calibration as soo as posible.",
+        "notificationDate": "Yesterday, 02:25 pm",
+        "settings": [
+            {
+                "name": "Cleaning",
+                "link": "javascript:void(0)"
+            },
+            {
+                "name": "Calibrate",
+                "link": "javascript:void(0)"
+            }
+        ]
+    },
+    {
+        "id": "m3",
+        "name": "Tablet Press",
+        "mainLocation": "Georgia",
+        "subLocation": "Atlanda",
+        "machineryImageUrl": "images/01-machinery.jpg",
+        "sensorId": ["SEN124", "SEN546", "SEN674"],
+        "LastCleaned": "11/22/2015",
+        "LastCalibrated": "11/22/2015",
+        "LastWorkOrder": ["W053235", "Show All"],
+        "notificationCount": 1,
+        "notificationContent": "Equipment 2132 is displaying sings of wear & tear (per Assay #65).Impurity XSD is over the limit of 0.1 ml. Schedule cleanig and calibration as soo as posible.",
+        "notificationDate": "Yesterday, 02:25 pm",
+        "settings": [
+            {
+                "name": "Cleaning",
+                "link": "javascript:void(0)"
+            },
+            {
+                "name": "Calibrate",
+                "link": "javascript:void(0)"
+            }
+        ]
+    },
+    {
+        "id": "m4",
+        "name": "Dry Batch Mixer",
+        "mainLocation": "Georgia",
+        "subLocation": "Atlanda",
+        "machineryImageUrl": "images/02-machinery.jpg",
+        "sensorId": ["SEN124", "SEN546", "SEN674"],
+        "LastCleaned": "11/22/2015",
+        "LastCalibrated": "11/22/2015",
+        "LastWorkOrder": ["W053235", "Show All"],
+        "notificationCount": 1,
+        "notificationContent": "Equipment 2132 is displaying sings of wear & tear (per Assay #65).Impurity XSD is over the limit of 0.1 ml. Schedule cleanig and calibration as soo as posible.",
+        "notificationDate": "Yesterday, 02:25 pm",
+        "settings": [
+            {
+                "name": "Cleaning",
+                "link": "javascript:void(0)"
+            },
+            {
+                "name": "Calibrate",
+                "link": "javascript:void(0)"
+            }
+        ]
+    },
+    {
+        "id": "m5",
+        "name": "Tablet Press",
+        "mainLocation": "Georgia",
+        "subLocation": "Atlanda",
+        "machineryImageUrl": "images/01-machinery.jpg",
+        "sensorId": ["SEN124", "SEN546", "SEN674"],
+        "LastCleaned": "11/22/2015",
+        "LastCalibrated": "11/22/2015",
+        "LastWorkOrder": ["W053235", "Show All"],
+        "notificationCount": 1,
+        "notificationContent": "Equipment 2132 is displaying sings of wear & tear (per Assay #65).Impurity XSD is over the limit of 0.1 ml. Schedule cleanig and calibration as soo as posible.",
+        "notificationDate": "Yesterday, 02:25 pm",
+        "settings": [
+            {
+                "name": "Cleaning",
+                "link": "javascript:void(0)"
+            },
+            {
+                "name": "Calibrate",
+                "link": "javascript:void(0)"
+            }
+        ]
+    },
+    {
+        "id": "m6",
+        "name": "Dry Batch Mixer",
+        "mainLocation": "Georgia",
+        "subLocation": "Atlanda",
+        "machineryImageUrl": "images/02-machinery.jpg",
+        "sensorId": ["SEN124", "SEN546", "SEN674"],
+        "LastCleaned": "11/22/2015",
+        "LastCalibrated": "11/22/2015",
+        "LastWorkOrder": ["W053235", "Show All"],
+        "notificationCount": 1,
+        "notificationContent": "Equipment 2132 is displaying sings of wear & tear (per Assay #65).Impurity XSD is over the limit of 0.1 ml. Schedule cleanig and calibration as soo as posible.",
+        "notificationDate": "Yesterday, 02:25 pm",
+        "settings": [
+            {
+                "name": "Cleaning",
+                "link": "javascript:void(0)"
+            },
+            {
+                "name": "Calibrate",
+                "link": "javascript:void(0)"
+            }
+        ]
+    },
+    {
+        "id": "m7",
+        "name": "Tablet Press",
+        "mainLocation": "Georgia",
+        "subLocation": "Atlanda",
+        "machineryImageUrl": "images/01-machinery.jpg",
+        "sensorId": ["SEN124", "SEN546", "SEN674"],
+        "LastCleaned": "11/22/2015",
+        "LastCalibrated": "11/22/2015",
+        "LastWorkOrder": ["W053235", "Show All"],
+        "notificationCount": 1,
+        "notificationContent": "Equipment 2132 is displaying sings of wear & tear (per Assay #65).Impurity XSD is over the limit of 0.1 ml. Schedule cleanig and calibration as soo as posible.",
+        "notificationDate": "Yesterday, 02:25 pm",
+        "settings": [
+            {
+                "name": "Cleaning",
+                "link": "javascript:void(0)"
+            },
+            {
+                "name": "Calibrate",
+                "link": "javascript:void(0)"
+            }
+        ]
+    },
+    {
+        "id": "m8",
+        "name": "Dry Batch Mixer",
+        "mainLocation": "Georgia",
+        "subLocation": "Atlanda",
+        "machineryImageUrl": "images/02-machinery.jpg",
+        "sensorId": ["SEN124", "SEN546", "SEN674"],
+        "LastCleaned": "11/22/2015",
+        "LastCalibrated": "11/22/2015",
+        "LastWorkOrder": ["W053235", "Show All"],
+        "notificationCount": 1,
+        "notificationContent": "Equipment 2132 is displaying sings of wear & tear (per Assay #65).Impurity XSD is over the limit of 0.1 ml. Schedule cleanig and calibration as soo as posible.",
+        "notificationDate": "Yesterday, 02:25 pm",
+        "settings": [
+            {
+                "name": "Cleaning",
+                "link": "javascript:void(0)"
+            },
+            {
+                "name": "Calibrate",
+                "link": "javascript:void(0)"
+            }
+        ]
+    },
+    {
+        "id": "m9",
+        "name": "Tablet Press",
+        "mainLocation": "Georgia",
+        "subLocation": "Atlanda",
+        "machineryImageUrl": "images/01-machinery.jpg",
+        "sensorId": ["SEN124", "SEN546", "SEN674"],
+        "LastCleaned": "11/22/2015",
+        "LastCalibrated": "11/22/2015",
+        "LastWorkOrder": ["W053235", "Show All"],
+        "notificationCount": 1,
+        "notificationContent": "Equipment 2132 is displaying sings of wear & tear (per Assay #65).Impurity XSD is over the limit of 0.1 ml. Schedule cleanig and calibration as soo as posible.",
+        "notificationDate": "Yesterday, 02:25 pm",
+        "settings": [
+            {
+                "name": "Cleaning",
+                "link": "javascript:void(0)"
+            },
+            {
+                "name": "Calibrate",
+                "link": "javascript:void(0)"
+            }
+        ]
+    },
+    {
+        "id": "m10",
+        "name": "Dry Batch Mixer",
+        "mainLocation": "Georgia",
+        "subLocation": "Atlanda",
+        "machineryImageUrl": "images/02-machinery.jpg",
+        "sensorId": ["SEN124", "SEN546", "SEN674"],
+        "LastCleaned": "11/22/2015",
+        "LastCalibrated": "11/22/2015",
+        "LastWorkOrder": ["W053235", "Show All"],
+        "notificationCount": 1,
+        "notificationContent": "Equipment 2132 is displaying sings of wear & tear (per Assay #65).Impurity XSD is over the limit of 0.1 ml. Schedule cleanig and calibration as soo as posible.",
+        "notificationDate": "Yesterday, 02:25 pm",
+        "settings": [
+            {
+                "name": "Cleaning",
+                "link": "javascript:void(0)"
+            },
+            {
+                "name": "Calibrate",
+                "link": "javascript:void(0)"
+            }
+        ]
+    },
+    {
+        "id": "m11",
+        "name": "Tablet Press",
+        "mainLocation": "Georgia",
+        "subLocation": "Atlanda",
+        "machineryImageUrl": "images/01-machinery.jpg",
+        "sensorId": ["SEN124", "SEN546", "SEN674"],
+        "LastCleaned": "11/22/2015",
+        "LastCalibrated": "11/22/2015",
+        "LastWorkOrder": ["W053235", "Show All"],
+        "notificationCount": 1,
+        "notificationContent": "Equipment 2132 is displaying sings of wear & tear (per Assay #65).Impurity XSD is over the limit of 0.1 ml. Schedule cleanig and calibration as soo as posible.",
+        "notificationDate": "Yesterday, 02:25 pm",
+        "settings": [
+            {
+                "name": "Cleaning",
+                "link": "javascript:void(0)"
+            },
+            {
+                "name": "Calibrate",
+                "link": "javascript:void(0)"
+            }
+        ]
+    },
+    {
+        "id": "m12",
+        "name": "Dry Batch Mixer",
+        "mainLocation": "Georgia",
+        "subLocation": "Atlanda",
+        "machineryImageUrl": "images/02-machinery.jpg",
+        "sensorId": ["SEN124", "SEN546", "SEN674"],
+        "LastCleaned": "11/22/2015",
+        "LastCalibrated": "11/22/2015",
+        "LastWorkOrder": ["W053235", "Show All"],
+        "notificationCount": 1,
+        "notificationContent": "Equipment 2132 is displaying sings of wear & tear (per Assay #65).Impurity XSD is over the limit of 0.1 ml. Schedule cleanig and calibration as soo as posible.",
+        "notificationDate": "Yesterday, 02:25 pm",
+        "settings": [
+            {
+                "name": "Cleaning",
+                "link": "javascript:void(0)"
+            },
+            {
+                "name": "Calibrate",
+                "link": "javascript:void(0)"
+            }
+        ]
+    }
+]

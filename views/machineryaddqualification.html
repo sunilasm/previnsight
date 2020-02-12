@@ -1,0 +1,140 @@
+<div class="innerPage">
+    
+    <div id="content" class="machinery">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 pageTitle">
+                    <h3>Add Qualification</h3>
+                </div>
+            </div>
+            <div class="row customiedFrom">
+                <div class="col-lg-12">
+                    <div class="row pbottom25">
+                        <div class="col-lg-6 col-lg-offset-3">
+                            
+                            <form class="form-horizontal" ng-submit="submit()" name="machineryqualificatioForm" novalidate>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Equipment ID</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="machinery_code" ng-model="addQualificationData.eqipment_ID" class="form-control small" disabled >
+                                        
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Equipment Name</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" disabled ng-model="addQualificationData.eqipment_Name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Type of Qualification <span class="mandatory">*</span></label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control"  ng-model="addQualificationData.selectedQualificationType"  ng-options="qualificationType for qualificationType in qualificationTypes">
+                                            <option value="">Select Type</option>
+
+                                        </select>
+                                        
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Location</label>
+                                    <div class="col-sm-6">
+                                        <div class="loglocation">{{events[0]}} | {{events[1]}}</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Performed By <span class="mandatory">*</span></label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control"  ng-model="addQualificationData.performedBy"  ng-options="userlist for userlist in UsersLists">
+                                            <option value="">Select</option>
+
+                                        </select>
+                                        
+                                       
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Can contain Inventory</label>
+                                    <div class="col-sm-6">
+                                        <switch name="yesNo" ng-model="addQualificationData.containinventory" on="Yes" off="No" class="wide"></switch>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Date &amp; Time <span class="mandatory">*</span></label>
+                                    <div class="col-sm-6">
+                                        <div class="logdatetime">
+                                            <ul>
+                                                <li>
+                                                    <!--<div class="dropdown">
+                                                        <a class="dropdown-toggle" id="dropdownStart" role="button" data-toggle="dropdown" data-target="#">
+                                                            <div class="input-group date">
+                                                                <input type="text" class="form-control" data-ng-model="dateRangeStart" placeholder="Start">
+                                                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                            </div>
+                                                        </a>
+                                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                            <datetimepicker data-ng-model="dateRangeStart" data-datetimepicker-config="{ dropdownSelector: '#dropdownStart', renderOn: 'end-date-changed', modelType:'MM-DD-YYYY HH:mm'}" data-on-set-time="startDateOnSetTime()" data-before-render="startDateBeforeRender($dates)"></datetimepicker>
+                                                        </ul>
+                                                    </div>-->
+                                                    <div class="input-group date">
+                                            <input class="form-control" datetime-picker ng-model="addQualificationData.startDatetime" date-format="MM/dd/yyyy  HH:mm:ss" close-on-select="false" placeholder="Start"/>
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                                </li>
+                                                <li>
+                                                    <!--<div class="dropdown">
+                                                        <a class="dropdown-toggle" id="dropdownEnd" role="button" data-toggle="dropdown" data-target="#">
+                                                            <div class="input-group date">
+                                                                <input type="text" class="form-control" data-ng-model="dateRangeEnd" placeholder="End">
+                                                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                            </div>
+                                                        </a>
+                                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                            <datetimepicker data-ng-model="dateRangeEnd" data-datetimepicker-config="{ dropdownSelector: '#dropdownEnd', renderOn: 'start-date-changed', modelType:'MM-DD-YYYY HH:mm' }" data-on-set-time="endDateOnSetTime()" data-before-render="endDateBeforeRender($view, $dates, $leftDate, $upDate, $rightDate)"></datetimepicker>
+                                                        </ul>
+                                                    </div>-->
+                                                    <div class="input-group date">
+                                            <input class="form-control" datetime-picker ng-model="addQualificationData.endDatetime" date-format="MM/dd/yyyy  HH:mm:ss" close-on-select="false" placeholder="End"/>
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Qualified Status <span class="mandatory">*</span></label>
+                                    <div class="col-sm-6">
+                                        <switch name="yesNo" ng-model="addQualificationData.qualifiedStatus" on="Yes" off="No" class="wide"></switch>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Description</label>
+                                    <div class="col-sm-6">
+                                        <textarea class="form-control" rows="3" ng-model="addQualificationData.description"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12 submitArea">
+                        <div class="col-sm-offset-5 col-sm-6">
+                            <button type="submit" class="btn btn-default btnSave" ng-click="onSaveAddQualification()">Save</button>
+                            <span class="btn-divider"></span>
+                            <a type="button" class="btn btn-link" ui-sref="nav.machinery">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+</div>

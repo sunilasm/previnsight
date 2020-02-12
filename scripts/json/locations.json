@@ -1,0 +1,31 @@
+[{
+    "name": "Seattle",
+    "region": "Seattle, WA, USA",
+    "latitude": 47.6062095,
+    "longitude": -122.3320708,
+    "senosr":2
+}, {
+    "name": "San Jose",
+    "region": "San Jose, CA, USA",
+    "latitude": 37.3382082,
+    "longitude": -121.8863286,
+    "senosr":1
+}, {
+    "name": "Santa Clara",
+    "region": "Santa Clara, CA, USA",
+    "latitude": 37.3541079,
+    "longitude": -121.9552356,
+    "senosr":1,
+}, {
+    "name": "Shenyang",
+    "region": "Shenyang, Liaoning, China",
+    "latitude": 41.805699,
+    "longitude": 123.431472,
+    "senosr":1
+}, {
+    "name": "Shanghai",
+    "region": "Shanghai, China",
+    "latitude": 31.230416,
+    "longitude": 121.473701,
+    "senosr":0
+}]

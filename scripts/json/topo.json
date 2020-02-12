@@ -1,0 +1,151 @@
+{"name":"Sensoe",
+ "children":[
+    {
+        "name": "Seattle",
+        "data": {},
+        "img": "images/location.svg",
+        "children": [
+            {
+                "name": "Area1-Building1",
+                "data": {},
+                "img": "images/building.svg",
+                "children": [
+                    {
+                        "name": "Room12",
+                        "data": {},
+                        "img": "images/room.svg",
+                        "children": [
+                            {
+                                "name": "SENSOR54",
+                                "data": {},
+                                "img": "images/sensor.svg",
+                                "children": [
+                                    {
+                                        "name": "1001",
+                                        "data": {},
+                                        "img": "images/machinery.svg"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Room76",
+                        "data": {},
+                        "img": "images/room.svg",
+                        "children": [
+                            {
+                                "name": "dht1_temperature",
+                                "data": {},
+                                "img": "images/sensor.svg"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Area1-Building1",
+                "data": {},
+                "img": "images/building.svg"
+            }
+        ]
+    },
+    {
+        "name": "San Jose",
+        "data": {},
+        "img": "images/location.svg",
+        "children": [
+            {
+                "name": "Area1 - bldg1",
+                "data": {},
+                "img": "images/building.svg",
+                "children": [
+                    {
+                        "name": "Room6578",
+                        "data": {},
+                        "img": "images/room.svg",
+                        "children": [
+                            {
+                                "name": "SENSOR2229",
+                                "data": {},
+                                "img": "images/sensor.svg",
+                                "children": [
+                                    {
+                                        "name": "BLENDER_1",
+                                        "data": {},
+                                        "img": "images/machinery.svg"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Shenyang",
+        "data": {},
+        "img": "images/location.svg",
+        "children": [
+            {
+                "name": "Area54-Site54",
+                "data": {},
+                "img": "images/building.svg",
+                "children": [
+                    {
+                        "name": "Building534",
+                        "data": {},
+                        "img": "images/room.svg",
+                        "children": [
+                            {
+                                "name": "SENSOR2221",
+                                "data": {},
+                                "img": "images/sensor.svg",
+                                "children": [
+                                    {
+                                        "name": "BLENDER_1",
+                                        "data": {},
+                                        "img": "images/machinery.svg"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Santa Clara",
+        "data": {},
+        "img": "images/location.svg",
+        "children": [
+            {
+                "name": "Buliding 1 -SIte54",
+                "data": {},
+                "img": "images/building.svg",
+                "children": [
+                    {
+                        "name": "Location1 corridor A",
+                        "data": {},
+                        "img": "images/room.svg",
+                        "children": [
+                            {
+                                "name": "dht1_humidity",
+                                "data": {},
+                                "img": "images/sensor.svg"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Seattle",
+        "data": {},
+        "img": "images/location.svg"
+    }
+]
+}

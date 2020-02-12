@@ -1,0 +1,26 @@
+[
+    {
+        "id": "1010",
+        "material": "Material1",
+        "parameter": "Temprature",
+        "target": "60 deg C",
+        "machinery": "Pot P1234",
+        "actual": "Lot L1235"
+    },
+     {
+        "id": "1011",
+        "material": "Material2",
+        "parameter": "Pressure",
+        "target": "50PA",
+        "machinery": "Steeping BagS1234",
+        "actual": "Container C1234"
+    },
+    {
+        "id": "1012",
+        "material": "Material3",
+        "parameter": "Humidity",
+        "target": "67 Deg C",
+        "machinery": "BrewPot B83147",
+        "actual": "Lot L8564"
+    }
+]

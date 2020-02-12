@@ -1,0 +1,155 @@
+<toast></toast>
+<div class="innerPage">
+        <div id="content">
+        <div class="container-fluid">
+            <div class="row pageTitle">
+                <div class="col-lg-6 col-sm-4">
+                    <h3>Parameters</h3>
+                </div>
+             <div class="col-lg-6 col-sm-8">
+                    <div class="pull-right">
+                        <div class="sensorSearch">
+                            <input type="text" placeholder="Search" ng-model="searchText" ng-keyup="search($event)">
+                            <a href=""><img src="images/search-insight.png" alt=""></a>
+                        </div>
+                        <a ui-sref="nav.addParameter" class="btnAddNew" ng-click="addParameter($event)" ng-show="parameterCreate==1"> <span><img src="images/rounded-add.png" alt="" ></span> Add New</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-sm-6" ng-repeat="parameter in fpParameterslist">
+                    <div class="card">
+                        <div class="cardHeader pull-left">
+                            <div class="cardHeaderRight pull-left">
+                                <h4>{{parameter.parameter_name}}</h4>
+                            </div>
+                        </div>
+                        <div class="cardContent">
+                            <div class="cardContentRow">
+                                <label for="">Code</label><span>{{parameter.parameter_code}}</span> </div>
+                            <div class="cardContentRow">
+                                <label for="">Threshold</label><span>{{parameter.THRESHOLD}}</span></div>
+                            <div class="cardContentRow">
+                                <label for="">Sensor</label><span>{{parameter.sensor_code}}</span></div>
+                            <div class="cardContentRow">
+                                <label for="">Machinery</label><span>{{parameter.machinery_id}}</span></div>
+                            <div class="cardContentRow">
+                                <label for="">Work order</label><span><a href="">{{parameter.workOrder}}</a></span></div>
+                        </div>
+                        <div class="cardFooter">
+                            <div class="sensor-notification">
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-click="criticalAlerts(parameter.parameter_name)">
+                                    <div class="imagesmallContainer">
+                                        <img src="images/warning-sign.png" alt="Notifications" title="Notifications">
+                                    </div>
+                                </a>
+                                <span class="badge">{{parameter.notificationCount}} <!--{{sensor.notificationCount}}--></span>
+                                <div class="dropdown-menu dropdown-menu-left sensor-notification-dd">
+                                    <div class="dropdownContent">
+                                        <p><a href='#/home'>No of Alerts - {{parameter.notificationCount}}</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sensor-graph">
+                                <a href="" data-toggle="modal" data-target="#viewparameter{{parameter.parameter_code}}" title="View">
+                                    <div class="imagesmallContainer">
+                                        <img src="images/view-icon.png" class="view" alt="View" title="View">
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="sensor-graph">
+                                <a href="#/addParameter?id={{parameter.PARAMETER_ID}}" ng-show="parameterUpdate==1">
+                                    <div class="imagesmallContainer">
+                                        <img src="images/edit-icon.png" alt="Edit" title="Edit">
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="cardFooterSettings pull-right" ng-show="parameterDelete==1">
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="More">
+                                    <img src="images/settings.png" alt="More" title="More">
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-left settings-dd">
+                                    <ul>
+                                        <li><a data-toggle="modal" data-target="#deleteParameter{{parameter.PARAMETER_ID}}">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    
+                    <div class="modal fade" id="viewparameter{{parameter.parameter_code}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog view_modal" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">{{parameter.parameter_name}}</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="view_row">
+                                        <label for="">Code</label><span>{{parameter.parameter_code}}</span>
+                                    </div>
+                                    <div class="view_row">
+                                        <label for="">Threshold</label><span>{{parameter.THRESHOLD}}</span>
+                                    </div>
+                                    <div class="view_row">
+                                        <label for="">Sensor</label><span>{{parameter.sensor_code}}</span>
+                                    </div>
+                                    <div class="view_row">
+                                        <label for="">Machinery</label><span>{{parameter.machinery_id}}</span>
+                                    </div>
+                                    <div class="view_row">
+                                        <label for="">Work order</label><span>{{parameter.workOrder}}</span>
+                                    </div>
+                                     <div class="view_row">
+                                        <label for="">Description</label><span>{{parameter.description}}</span>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal fade" id="deleteParameter{{parameter.PARAMETER_ID}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog modal-sm deleteSensoreModel" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Confirm</h4>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure want to delete?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default btnSave" data-dismiss="modal" ng-click="deleteParameter(parameter.PARAMETER_ID)">Yes</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='text-center'>
+                <ul ng-if="pager.pages.length" class="pagination">
+                    <li ng-class="{disabled:pager.currentPage === 1}">
+                        <a ng-click="setPage(1)">&laquo;</a>
+                    </li>
+                    <li ng-class="{disabled:pager.currentPage === 1}">
+                        <a ng-click="setPage(pager.currentPage - 1)">&lsaquo;</a>
+                    </li>
+                    <li ng-repeat="page in pager.pages" ng-class="{active:pager.currentPage === page}">
+                        <a ng-click="setPage(page)">{{page}}</a>
+                    </li>               
+                    <li ng-class="{disabled:pager.currentPage === pager.totalPages}">
+                        <a ng-click="setPage(pager.currentPage + 1)">&rsaquo;</a>
+                    </li>
+                    <li ng-class="{disabled:pager.currentPage === pager.totalPages}">
+                        <a ng-click="setPage(pager.totalPages)">&raquo;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+</div>

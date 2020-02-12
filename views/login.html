@@ -1,0 +1,74 @@
+<div class="logiBg">
+
+    <div class="login-page">
+        <div class="form">
+            <h1><img src="images/login-logo-previnsight.png" alt=""></h1>
+            <h2>Login</h2>
+            <form class="login-form" name="loginForm">
+                <input type="text" placeholder="Username" name="username" ng-model="loginData.username" required />
+                <span style="color:red" ng-show="loginForm.username.$dirty && loginForm.firstname.$invalid">
+    										<span ng-show="loginForm.username.$error.required">User Name is required.</span>
+                                                </span>
+                <input type="password" placeholder="Password" name="password" ng-model="loginData.password" required />
+                <span style="color:red" ng-show="loginForm.password.$dirty && loginForm.passsword.$invalid">
+    										<span ng-show="loginForm.password.$error.required">Password is required.</span>
+                                                </span>
+                
+                <button ng-click="login(loginData)">Login</button>
+                <a href="#" data-toggle="modal" data-target="#forgetPasswordModal" class="forgotPassword">ForgotPassword?</a></p>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal fade" id="viewparameter{{parameter.parameter_code}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog view_modal" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">{{parameter.parameter_name}}</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="view_row">
+                        <label for="">Code</label><span>{{parameter.parameter_code}}</span>
+                    </div>
+                    <div class="view_row">
+                        <label for="">Threshold</label><span>{{parameter.THRESHOLD}}</span>
+                    </div>
+                    <div class="view_row">
+                        <label for="">Sensor</label><span>{{parameter.sensor_code}}</span>
+                    </div>
+                    <div class="view_row">
+                        <label for="">Machinery</label><span>{{parameter.machinery_id}}</span>
+                    </div>
+                    <div class="view_row">
+                        <label for="">Work order</label><span>{{parameter.workOrder}}</span>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="forgetPasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Forgot Password?</h4>
+                </div>
+                <div class="modal-body" id="forgotmessage">
+                    <form name="forgotForm">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Email" ng-model="fData.email" required />
+                         <span style="color:red" ng-show="forgotForm.email.$dirty && forgotForm.email.$invalid">
+    					<span ng-show="forgotForm.email.$error.required">Email is required.</span>
+                         </span>
+						</div>
+                        <button ng-click="forgotpass(forgotdata)" class="btn btn-primary btn-forgotpassword">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

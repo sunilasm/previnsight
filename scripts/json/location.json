@@ -1,0 +1,46 @@
+[{
+    "name": "San Jose",
+    "country": "United States of America",
+    "region": "San Jose, California",
+    "latitude": "37.296867",
+    "longitude": "-121.819306",
+    "sensors": "1",
+    "alerts": "10"
+}, {
+    "name": "Seattle",
+    "country": "United States of America",
+    "region": "Seattle, California",
+    "latitude": "47.6062095",
+    "longitude": "-122.3320708",
+    "sensors": "2",
+    "alerts": "1"
+},{
+    "name": "Santa Clara",
+    "country": "United States of America",
+    "region": "Santa Clara, California",
+    "latitude": "37.3541079",
+    "longitude": "-121.9552356",
+    "sensors": "1",
+    "alerts": "6"
+},
+ {
+    "name": "Shenyang",
+    "country": "China",
+    "region": "Shenyang, China",
+    "latitude": "41.805699",
+    "longitude": "123.431472",
+    "sensors": "1",
+    "alerts": "5"
+},
+  {
+    "name": "Shanghai",
+    "country":"China",
+    "region": "Shanghai, China",
+    "latitude": "31.230416",
+    "longitude": "121.473701",
+    "sensors": "0",
+    "alerts": "5"
+
+}
+
+]

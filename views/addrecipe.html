@@ -1,0 +1,283 @@
+<div class="innerPage">
+    
+    <div id="content" class="recipe">
+        <div class="container-fluid">
+            <div class="row pageTitle">
+                <div class="col-lg-6 col-sm-6">
+                    <h3>Add Recipe</h3>
+                </div>
+                <div class="col-lg-6 col-sm-6">
+                    <!--<a href="javascript:void(0)" class="pull-right" ng-click="editRecipe($event)"> <img src="images/edit.png" alt=""></a>-->
+                </div>
+            </div>
+            <div class="row  customiedFrom">
+                <div class="col-lg-12">
+                    <form class="form-horizontal" ng-submit="submit()" name="addForm" novalidate>
+
+                        <div class="row">
+
+                            <div class="col-lg-5">
+                                <div class="form-group">
+                                    <label for="" class="col-sm-3 control-label"><span class="mandatory">*</span>Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control small" ng-model="addReceipeData.name" name="receipename" value="" servicename="equipment/checkrecipenameexits" required unique-field>
+										<span style="color:red" ng-show="addForm.receipename.$dirty && addForm.receipename.$invalid">
+    										<span ng-show="addForm.receipename.$error.required">Recipe Name is required.</span>
+                                            <span ng-show="addForm.receipename.$error.uniqueField">Recipe name already exists.</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-3 control-label"><span class="mandatory">*</span>Type</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control small" ng-model="addReceipeData.type" ng-options="receipeType for receipeType in receipeTypes" name="receipetype" required>
+                                            <option value="">Select</option>
+
+                                        </select>
+                                        <span style="color:red" ng-show="addForm.receipetype.$dirty && addForm.receipetype.$invalid">
+										<span ng-show="addForm.receipetype.$error.required">Type is required.</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-3 control-label">Target Material</label>
+                                    <div class="col-sm-9">
+                                        <!--<input type="text" class="form-control small" value="" ng-model="addReceipeData.targetMaterial">-->
+                                        <select class="form-control small" ng-model="addReceipeData.targetMaterial" ng-options="material for material in materials" name="expectedyieldtype">
+                                            <option value="">Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-3 control-label"><span class="mandatory">*</span>Expected Yield</label>
+                                    <div class="col-sm-9">
+                                        <div class="addrecipeYieldOption">
+                                            <ul>
+                                                <li>
+                                                    <input type="text" name="expectedyieldvalue" class="form-control" placeholder="Value" ng-model="addReceipeData.expectedYieldValue" name="expectedyieldvalue" required>
+                                                    <span style="color:red" ng-show="addForm.expectedyieldvalue.$dirty && addForm.expectedyieldvalue.$invalid">
+
+										<span ng-show="addForm.expectedyieldvalue.$error.required">Expected Yield  Value is required.</span>
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <select class="form-control" ng-model="addReceipeData.selectedExpectedYield" ng-options="expectedYieldType for expectedYieldType in expectedYieldTypes" name="expectedyieldtype" required>
+                                                    </select>
+                                                    <span style="color:red" ng-show="addForm.expectedyieldtype.$dirty && addForm.expectedyieldtype.$invalid">
+                                                    <span ng-show="addForm.expectedyieldtype.$error.required">Expected Yield Type is required.</span>
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="form-group">
+                                    <label for="" class="col-sm-3 control-label">Description</label>
+                                    <div class="col-sm-9">
+                                        <textarea class="form-control descriptionTextArea" rows="2" ng-model="addReceipeData.Description"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-3 control-label">Upload Image</label>
+                                    <div class="col-sm-9">
+                                        <div class="dropzone" file-dropzone="[image/png, image/jpeg, image/gif]" file="image" file-name="imageFileName" data-max-file-size="3">
+                                        </div>
+                                        <form action>
+
+                                            <div class="imageDragDrop" placeholder="Image browse or Drag and Drop Here">
+                                                <input type="file" fileread="uploadme.src" class="imageDragArea" />
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="image-container" ng-class="{'in': uploadme.src, 'dummy': !uploadme.src}">
+                                    <img data-ng-src="{{ uploadme.src }}">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-lg-12 wordOrderInnerTab">
+                                <ul class="nav nav-tabs" ng-init="activeTab = 'recipe'">
+                                    <li ng-class="{ active: activeTab === 'recipe' }">
+                                        <a ng-click="activeTab = 'recipe'" href="javascript:void(0)">Recipe</a>
+                                    </li>
+                                    <li ng-class="{ active: activeTab === 'productProfile' }">
+                                        <a ng-click="activeTab = 'productProfile'" href="javascript:void(0)">Product Profile</a>
+                                    </li>
+                                </ul>
+                                
+                                <div class="tab-content">
+                                    <div class="tab-pane" ng-class="{ active: activeTab === 'recipe' }">
+                                        <!--<div id="getrecipeuserinputvalue" simditor ng-model="editor" placeholder="some placeholder"></div>-->
+                                        <div class="enterRecipe">
+                                               
+                                            <!--<div id="getrecipeuserinputvalue" simditor ng-model="editor" placeholder="some placeholder"></div>-->                                       <!--<textarea ng-model="inputHtml" id="textareaid"></textarea>-->
+                                                <!--<textarea id="textareaid" ng-model="textValues"></textarea>-->
+                                          <!-- <div class="editable" id="getrecipeuserinputvalue"  ng-bind-html="myHtmlVar" onclick="this.contentEditable='true';"></div>-->
+                                            <div id="getrecipeuserinputvalue" contenteditable="true" ng-bind-html="myHtmlVar"></div>
+                                            
+
+                                            <ul>
+                                                <li class="insertText">Insert</li>
+                                                <li><a href="javascript:void(0)" ng-click="addRecipeParameter($event)" class="text-parameter">Parameter</a>
+                                                    <div class="notifySearchBox recipeoptionbox" ng-class="{'show': parameterBox, 'hide': !parameterBox}">
+                                                        <div class="notifySearchBoxContainer">
+                                                            <ol class="nya-bs-select" ng-model="selectRecipeParameter" title="{{ 'Select Parameter'}}" data-live-search="false">
+                                                                <li nya-bs-option="parameter in parameterList">
+                                                                    <!-- the text content of anchor element will be used for search -->
+                                                                    <a ng-model="equipment">
+                                                                        {{ parameter }}
+                                                                        <span class="glyphicon glyphicon-ok check-mark"></span>
+                                                                    </a>
+                                                                </li>
+                                                            </ol>
+                                                        </div>
+                                                        <div class="arrow"></div>
+                                                        <div class="flyout-fold"></div>
+                                                        <div class="locationFooter">
+                                                            <button type="button" class="btn btn-default btnSave" ng-click="recipeParameterDone($event)">Done</button>
+                                                            <a href="javascript:void(0)" class="cancel" ng-click="recipeParameterCancel($event)">Cancel</a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li><a href="javascript:void(0)" ng-click="addRecipeSensor($event)" class="text-sensor">Sensor</a>
+                                                    <div class="notifySearchBox recipeoptionbox" ng-class="{'show': sensorBox, 'hide': !sensorBox}">
+                                                        <div class="notifySearchBoxContainer">
+                                                            <ol class="nya-bs-select" ng-model="selectRecipeSensor" title="{{ 'Select Sensor'}}" data-live-search="false">
+                                                                <li nya-bs-option="sensor in sensors">
+                                                                    <!-- the text content of anchor element will be used for search -->
+                                                                    <a ng-model="equipment">
+                                                                        {{ sensor }}
+                                                                        <span class="glyphicon glyphicon-ok check-mark"></span>
+                                                                    </a>
+                                                                </li>
+                                                            </ol>
+                                                        </div>
+                                                        <div class="arrow"></div>
+                                                        <div class="flyout-fold"></div>
+                                                        <div class="locationFooter">
+                                                            <button type="button" class="btn btn-default btnSave" ng-click="recipeSensorDone($event)">Done</button>
+                                                            <a href="javascript:void(0)" class="cancel" ng-click="recipeSensorCancel($event)">Cancel</a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li><a href="javascript:void(0)" ng-click="addRecipeMachineries($event)" class="text-machinery">Machinery</a>
+                                                    <div class="notifySearchBox recipeoptionbox" ng-class="{'show': machineryBox, 'hide': !machineryBox}">
+                                                        <div class="notifySearchBoxContainer">
+                                                            <ol class="nya-bs-select" ng-model="selectRecipeEquipemt" title="{{ 'Select Machinery' }}" data-live-search="false">
+                                                                <li nya-bs-option="machinery in machineries">
+                                                                    <!-- the text content of anchor element will be used for search -->
+                                                                    <a ng-model="equipment">
+                                                                        {{ machinery }}
+                                                                        <span class="glyphicon glyphicon-ok check-mark"></span>
+                                                                      </a>
+                                                                </li>
+                                                            </ol>
+                                                        </div>
+                                                        <div class="arrow"></div>
+                                                        <div class="flyout-fold"></div>
+                                                        <div class="locationFooter">
+                                                            <button type="button" class="btn btn-default btnSave" ng-click="recipeMachnieryDone($event)">Done</button>
+                                                            <a href="javascript:void(0)" class="cancel" ng-click="recipeMachnieryCancel($event)">Cancel</a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li><a href="javascript:void(0)" ng-click="addRecipeMaterial($event)" class="text-material">Material</a>
+                                                    <div class="notifySearchBox recipeoptionbox" ng-class="{'show': materialBox, 'hide': !materialBox}">
+
+                                                        <div class="notifySearchBoxContainer">
+                                                            <ol class="nya-bs-select" ng-model="selectRecipeMaterial" title="{{ 'Select Material '}}" data-live-search="false">
+                                                                <li nya-bs-option="material in materials">
+                                                                    <!-- the text content of anchor element will be used for search -->
+                                                                    <a ng-model="equipment">
+                                                                        {{ material }}
+                                                                        <span class="glyphicon glyphicon-ok check-mark"></span>
+                                                                    </a>
+                                                                </li>
+                                                            </ol>
+                                                        </div>
+                                                        <div class="arrow"></div>
+                                                        <div class="flyout-fold"></div>
+                                                        <div class="locationFooter">
+                                                            <button type="button" class="btn btn-default btnSave" ng-click="recipeMaterialDone($event)">Done</button>
+                                                            <a href="javascript:void(0)" class="cancel" ng-click="recipeMaterialCancel($event)">Cancel</a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" ng-class="{ active: activeTab === 'productProfile' }">
+                                        <div class="table-responsive workOrderTable productProfile">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Parameters</th>
+                                                        <th>Threshold</th>
+                                                        <th>Target</th>
+                                                        <th>Criticality</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="item in productProfileItems">
+                                                        <td>
+                                                            <input type="hidden" ng-model="item.id">
+                                                            <select class="form-control small" ng-model="item.selectedParameter" ng-change="getThresholdData(item.selectedParameter,item)">
+                                                                <option ng-repeat="parameter in parameterList" ng-selected="{{parameter==item.selectedParameter}}" value="{{parameter}}">{{parameter}}</option>
+                                                            </select>
+
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control" value="" ng-model="item.thresholdValue" disabled>
+                                                        </td>
+                                                        <td class="productProfileTarget">
+                                                            <select class="form-control small" ng-if="item.subType == 'String' || item.subType == 'Boolean'" ng-model="item.target" ng-options="v for v in item.setValueItems">
+
+                                                            </select>
+
+
+                                                            <input ng-if="item.subType == 'Integer' || item.subType == 'Float'" type="text" class="form-control" value="" ng-model="item.target">
+                                                        </td>
+                                                        <td>
+                                                            <switch name="yesNo" ng-model="item.criticality" on="Yes" off="No" class="wide"></switch>
+                                                        </td>
+                                                        <td>
+                                                            <a href="javascript:void(0)" class="addRecipeBtn recipeActionBtn" ng:click="removeProductItem($index)"><img src="images/remove-recipe.png" alt=""></a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <a href="" class="addnewRecipeItem" id="add_prameter" ng-click="addProductItem()">Add New</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-group col-lg-12 submitArea">
+                            <div class="col-sm-offset-5 col-sm-6">
+                                <button type="submit" class="btn btn-default btnSave" ng-click="onSubmitAddReceipe()">Save</button>
+                                <span class="btn-divider"></span>
+                                <a ui-sref="nav.recipes" type="button" class="btn btn-link">Cancel</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>

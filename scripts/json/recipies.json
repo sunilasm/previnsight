@@ -1,0 +1,90 @@
+[
+    {
+        "id" : "rec01",
+        "name": "Envision Water",
+        "recipeImageUrl": "images/01-recipe-img.jpg",
+        "description": "Envision water is a smooth, medium-bodied water with lots of roased barley flavour, citrus notes and just a hint of livorice, it is styled after New Belgium Brewing Company's 1554, but with a uniqued character of its own.",
+        "itemId" : "RE1234",
+        "type" : "Partial mash",
+        "expectedYield" : "5.5 gal",
+        "notificationCount": 1,
+        "notificationContent": "Text"
+    },
+    {
+        "id" : "rec02",
+        "name": "Beta Carotene",
+        "recipeImageUrl": "images/02-recipe-img.jpg",
+        "description": "Envision water is a smooth, medium-bodied water with lots of roased barley flavour, citrus notes and just a hint of livorice, it is styled after New Belgium Brewing Company's 1554, but with a uniqued character of its own.",
+        "itemId" : "RE45345",
+        "type" : "Partial mash",
+        "expectedYield" : "5.5 gal",
+        "notificationCount": 1,
+        "notificationContent": "Text"
+    },
+    {
+        "id" : "rec03",
+        "name": "Envision Water",
+        "recipeImageUrl": "images/01-recipe-img.jpg",
+        "description": "Envision water is a smooth, medium-bodied water with lots of roased barley flavour, citrus notes and just a hint of livorice, it is styled after New Belgium Brewing Company's 1554, but with a uniqued character of its own.",
+        "itemId" : "RE64565",
+        "type" : "Partial mash",
+        "expectedYield" : "5.5 gal",
+        "notificationCount": 1,
+        "notificationContent": "Text"
+    },
+    {
+        "id" : "rec04",
+        "name": "Beta Carotene",
+        "recipeImageUrl": "images/02-recipe-img.jpg",
+        "description": "Envision water is a smooth, medium-bodied water with lots of roased barley flavour, citrus notes and just a hint of livorice, it is styled after New Belgium Brewing Company's 1554, but with a uniqued character of its own.",
+        "itemId" : "RE67567",
+        "type" : "Partial mash",
+        "expectedYield" : "5.5 gal",
+        "notificationCount": 1,
+        "notificationContent": "Text"
+    },
+    {
+        "id" : "rec05",
+        "name": "Envision Water",
+        "recipeImageUrl": "images/01-recipe-img.jpg",
+        "description": "Envision water is a smooth, medium-bodied water with lots of roased barley flavour, citrus notes and just a hint of livorice, it is styled after New Belgium Brewing Company's 1554, but with a uniqued character of its own.",
+        "itemId" : "RE31212",
+        "type" : "Partial mash",
+        "expectedYield" : "5.5 gal",
+        "notificationCount": 1,
+        "notificationContent": "Text"
+    },
+    {
+        "id" : "rec06",
+        "name": "Beta Carotene",
+        "recipeImageUrl": "images/02-recipe-img.jpg",
+        "description": "Envision water is a smooth, medium-bodied water with lots of roased barley flavour, citrus notes and just a hint of livorice, it is styled after New Belgium Brewing Company's 1554, but with a uniqued character of its own.",
+        "itemId" : "RE1326",
+        "type" : "Partial mash",
+        "expectedYield" : "5.5 gal",
+        "notificationCount": 1,
+        "notificationContent": "Text"
+    },
+    {
+        "id" : "rec07",
+        "name": "Envision Water",
+        "recipeImageUrl": "images/01-recipe-img.jpg",
+        "description": "Envision water is a smooth, medium-bodied water with lots of roased barley flavour, citrus notes and just a hint of livorice, it is styled after New Belgium Brewing Company's 1554, but with a uniqued character of its own.",
+        "itemId" : "RE45765",
+        "type" : "Partial mash",
+        "expectedYield" : "5.5 gal",
+        "notificationCount": 1,
+        "notificationContent": "Text"
+    },
+    {
+        "id" : "rec08",
+        "name": "Beta Carotene",
+        "recipeImageUrl": "images/02-recipe-img.jpg",
+        "description": "Envision water is a smooth, medium-bodied water with lots of roased barley flavour, citrus notes and just a hint of livorice, it is styled after New Belgium Brewing Company's 1554, but with a uniqued character of its own.",
+        "itemId" : "RE46468",
+        "type" : "Partial mash",
+        "expectedYield" : "5.5 gal",
+        "notificationCount": 1,
+        "notificationContent": "Text"
+    }
+]

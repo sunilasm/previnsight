@@ -1,0 +1,343 @@
+<div class="innerPage">
+    
+    <div id="content" class="invetorypage">
+        <div class="container-fluid">
+
+            <div class="row pageTitle">
+                <div class="col-lg-6 col-sm-3">
+                    <h3>Inventory</h3>
+                </div>
+                <div class="col-lg-6 col-sm-9">
+                    <div class="pull-right">
+                        <div class="sensorSearch">
+                            <input type="text" placeholder="Search" ng-model="searchText" ng-keyup="search($event)">
+                            <a href=""><img src="images/search-insight.png" alt="Search" title="Search"></a>
+                        </div>
+
+                        <div class="invetory-dd">
+                            <div class="invetoryddContent" ng-click="selected = !selected">
+                                <span class="inventoryTitle">{{selectedCategoryInfo}}</span> <span class="badge">{{selectedCategoryCount}}</span>
+                            </div>
+
+                            <!--<div class="dd-downarrow"><img src="images/dd-down-arrow.png" alt=""></div>-->
+                            <div class="inventoryMenu" ng-class="{'show' : selected, 'hide' : !selected}">
+                                <ul>
+                                    <li ng-repeat="invcat in inventoryCategoryListcount">
+                                        <a href="" ng-click="dropboxitemselected(invcat.CATEGORY,invcat.TOTALCAT_COUNT)">{{invcat.CATEGORY}} <span class="badge">{{invcat.TOTALCAT_COUNT}}</span></a>
+                                    </li>
+                                    
+									
+									<!--<li><a href="">Diet &amp; Energy Dring <span class="badge">5</span></a></li>
+                                    <li><a href="">Personal Care <span class="badge">2</span></a></li>
+                                    <li><a href="">Vitamin Mixtures</a></li>
+                                    <li><a href="">Raw Materials <span class="badge">3</span></a></li>
+                                    <li><a href="">Excipients <span class="badge">5</span></a></li>
+                                    <li><a href="">Mixtures <span class="badge">2</span></a></li>
+                                    <li><a href="">Intermediates </a></li>
+                                    <li><a href="">API <span class="badge">2</span></a></li>
+                                    <li><a href="">Final Product</a></li>-->
+                                </ul>
+                                <!--<div class="addInventory" ng-click="addInventory()" title="Add New Inventory"><img src="images/add.png" alt=""> <span>Add Inventory</span></div>-->
+                            </div>
+                        </div>
+                        <a ng-show="inventoryCreate==1" ui-sref="nav.addInventory" class="btnAddNew" title="Add New Inventory"> <span><img src="images/rounded-add.png" alt=""></span> Add New</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-sm-6" ng-repeat="inventory in fpInventorieslist">
+                    <div class="card card-inventory">
+                        <div class="cardContent">
+                            <div class="cardContentTop">
+                                <div class="cardContentTopLeft">
+                                    <img ng-src="{{inventory.IMAGE}}" alt="">
+                                </div>
+                                <div class="cardContentTopRight">
+                                    <div class="productTitle">{{inventory.INVENTORY_NAME}}</div>
+                                    <div ng-hide="!inventory.WORK_ORDER_ID" class="inven-wo">
+                                        <div class="productDetail pull-left">WO# </div>
+                                        <div class="productDetailTitle">{{inventory.WORK_ORDER_ID}}</div>
+                                    </div>
+                                    <div class="productDescription">{{inventory.DESCRIPTION}}</div>
+                                </div>
+                            </div>
+                            <div class="cardContentBottom">
+                                <div class="cardColumn">
+                                    <div class="productDetailTitle">{{inventory.ITEM}}</div>
+                                    <div class="productDetail">Material</div>
+                                </div>
+                                <div class="cardColumn">
+                                    <div class="productDetailTitle">{{inventory.GOAL}}</div>
+                                    <div class="productDetail">Goal</div>
+                                </div>
+                                <div class="cardColumn">
+                                    <div class="productDetailTitle">{{inventory.STOCK}}</div>
+                                    <div class="productDetail">Stock</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cardFooter">
+                            <div class="sensor-graph">
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-click="criticalAlerts(inventory.INVENTORY_NAME)">
+                                    <div class="imagesmallContainer">
+                                        <img src="images/warning-sign.png" alt="Notifications" title="Notifications">
+                                    </div>
+                                </a>
+                                <span class="badge">{{inventory.notificationCount}}</span>
+                                <div class="dropdown-menu dropdown-menu-left sensor-notification-dd">
+                                    <div class="dropdownContent">
+                                        <p><a href='#/home'>No of Alerts - 0</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sensor-graph">
+                                <a href="" ng-click="viewinventory(inventory.INVENTORY_ID)" title="View">
+                                    <div class="imagesmallContainer">
+                                        <img src="images/view-icon.png" class="view" alt="View" title="View">
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="sensor-graph">
+                                <a href="#addInventory?id={{inventory.INVENTORY_ID}}" title="Edit" ng-show="inventoryUpdate==1">
+                                    <div class="imagesmallContainer">
+                                        <img src="images/edit-icon.png" alt="Edit" title="Edit">
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="cardFooterSettings pull-right" ng-show="invqualityCreate==1||inventoryDelete==1">
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="More">
+                                    <img src="images/settings.png" alt="More" title="More">
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-left settings-dd" >
+                                    <ul>
+                                        <li ng-show="invqualityCreate==1"><a href="#/createsampleinv?id={{inventory.INVENTORY_ID}}">Create Sample</a></li>
+                                        <li ng-show="inventoryDelete==1"><a data-toggle="modal" data-target="#deleteInvetory{{inventory.INVENTORY_ID}}">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="widget displaynone" ng-class="{'expandwidgetshow': isActive3}">
+                        <div class="widgetHeader">
+                            <h4>{{ViewInventory.INVENTORY_NAME}}</h4>
+                            <a href="javascript:void(0);" class="expand closeviewinventory" ng-click="viewinventory(inventory.INVENTORY_ID)"><span class="glyphicon glyphicon-remove-circle"></span></a>
+                        </div>
+                        <div class="widgetContainer">
+                            <div class="tabbable-panel inventoryview">
+                                <div class="tabbable-line">
+                                    <ul class="nav nav-tabs" role="tablist" id="myTab">
+                                        <li ng-class="{active: selectedTab == 1}">
+                                            <a ng-click="selectedTab = 1">Overview</a></li>
+                                        <li ng-show="invqualityRead==1" ng-class="{active: selectedTab == 2}">
+                                            <a ng-click="selectedTab = 2">Samples</a></li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="overviewTab" ng-show="selectedTab==1">
+                                            <div class="view_row">
+                                                <label for="">INVENTORY ID</label><span>{{ViewInventory.INVENTORY_ID}}</span>
+                                            </div>
+											<div class="view_row">
+                                                <label for="">Category</label><span>{{ViewInventory.CATEGORY}}</span>
+                                            </div>
+                                            <div class="view_row">
+                                                <label for="">Material</label><span>{{ViewInventory.ITEM}}</span>
+                                            </div>
+                                            <div class="view_row">
+                                                <label for="">Location</label><span>{{ViewInventory.COUNTRY}}, {{ViewInventory.CITY}}</span>
+                                            </div>
+                                            <div class="view_row" ng-hide="!ViewInventory.WORK_ORDER_ID">
+                                                <label for="">Workorder ID</label><span>{{ViewInventory.WORK_ORDER_ID}}</span>
+                                            </div>
+                                            <div class="view_row">
+                                                <label for="">Machinery</label><span>{{ViewInventory.MACHINERY_NAME}}</span>
+                                            </div>
+                                            <div class="view_row">
+                                                <label for="">Sensor</label><span>{{ViewInventory.SENSOR_NAME}}</span>
+                                            </div>
+                                            <div class="view_row">
+                                                <label for="">Parameter</label><span>{{ViewInventory.PARAMETER_NAME}}</span>
+                                            </div>
+                                            <div class="view_row">
+                                                <label for="">Goal</label><span>{{ViewInventory.GOAL}}</span>
+                                            </div>
+                                            <div class="view_row">
+                                                <label for="">Stock</label><span>{{ViewInventory.STOCK}}</span>
+                                            </div>
+                                            <div class="view_row">
+                                                <label for="">Description</label><span>{{ViewInventory.DESCRIPTION}}</span>
+                                            </div>
+                                            <div class="view_row">
+                                                <label for="">Image</label><span>
+                                                            <div class="">
+                                                               <img data-ng-src="{{ViewInventory.IMAGE}}" alt="" class="img-responsive">
+                                                            </div>
+                                                        </span>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane active" id="samplesTab" ng-show="selectedTab==2">
+                                            <div class="table-responsive workOrderTable sampleList">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Sample #</th>
+                                                            <th>Amount</th>
+                                                            <th>UOM</th>
+                                                            <th>Date &amp; Time</th>
+                                                            <th>Operator</th>
+                                                            <th>Container ID</th>
+                                                            <th>Container Location</th>
+                                                            <th>Parameter</th>
+															<th>Status</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="sample in samplesList" ng-show="samplesList.length>0">
+                                                            <td>{{sample.SAMPLE_NAME}}</td>
+                                                            <td>{{sample.AMOUNT}}</td>
+                                                            <td>{{sample.UOM}}</td>
+                                                            <td>{{sample.ENTERED_DATE}}</td>
+                                                            <td>{{sample.OPERATOR}}</td>
+                                                            <td>{{sample.CONTAINER_NAME}}</td>
+                                                            <td>{{sample.CAONTAINER_LOCATION}}</td>
+                                                            <td class="workorderActionBtn">
+                                                                <a href="" data-toggle="modal" data-target="#viewparameter" title="View Parameter">
+                                                                    <div class="imagesmallContainer">
+                                                                        <img ng-src="images/icon-parameter.png" class="view" alt="View Parameter" title="View Parameter" ng-click="onGetParamtersList(sample.SAMPLE_ID)">
+                                                                    </div>
+                                                                </a>
+                                                            </td>
+															<td>{{sample.STATUS}}</td>
+                                                            <td class="workorderActionBtn">
+                                                <a href="#/createsampleinv?id={{sample.INVENTORY_ID}}&sampleid={{sample.SAMPLE_ID}}" title="Edit">
+                                                                    <div class="imagesmallContainer">
+                                                                        <img ng-src="images/edit-icon.png" class="view" alt="Edit" title="Edit">
+                                                                    </div>
+                                                                </a>
+                                                                
+                                             <a href="" title="Delete" data-toggle="modal" data-target="#deleteSample">
+                                        <div class="imagesmallContainer">
+                                            <img ng-src="images/delete-icon.png" class="" alt="Delete" title="Delete" ng-click="onDeleteSample(sample.SAMPLE_ID)">
+                                        </div>
+                                    </a>
+                                    
+                                                       
+                                                                
+                                                                
+                                                                
+                                                            </td>
+                                                        </tr>
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal fade" id="deleteSample" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                        <div class="modal-dialog modal-sm deleteSensoreModel" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="myModalLabel">Confirm</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Are you sure want to delete?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default btnSave" data-dismiss="modal" ng-click="deleteInventorySample()">Yes</button>
+                                                    <button type="button" class="btn btn-default">Cancel</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     
+                    <div class="modal fade" id="viewparameter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog machinery-modal" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Parameter Name</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="table-responsive table-bordered workOrderTable parameterslist">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Value</th>
+                                                    <th>UOM</th>
+                                                    <th>Date &amp; Time</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="item in parametersList">
+                                                                    <td>{{item.PARAMTERS}}</td>
+                                                                    <td>{{item.VALUE}}</td>
+                                                                    <td>{{item.UOM}}</td>
+                                                                    <td>{{item.LAST_UPDATED_DATE}}</td>
+                                                                </tr>
+                                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="deleteInvetory{{inventory.INVENTORY_ID}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog modal-sm deleteSensoreModel" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Confirm</h4>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure want to delete?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default btnSave" data-dismiss="modal" ng-click="deleteInvetory(inventory.INVENTORY_ID)">Yes</button>
+                                    <button type="button" class="btn btn-default">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='text-center'>
+                <ul ng-if="pager.pages.length" class="pagination">
+                    <li ng-class="{disabled:pager.currentPage === 1}">
+                        <a ng-click="setPage(1)">&laquo;</a>
+                    </li>
+                    <li ng-class="{disabled:pager.currentPage === 1}">
+                        <a ng-click="setPage(pager.currentPage - 1)">&lsaquo;</a>
+                    </li>
+                    <li ng-repeat="page in pager.pages" ng-class="{active:pager.currentPage === page}">
+                        <a ng-click="setPage(page)">{{page}}</a>
+                    </li>               
+                    <li ng-class="{disabled:pager.currentPage === pager.totalPages}">
+                        <a ng-click="setPage(pager.currentPage + 1)">&rsaquo;</a>
+                    </li>
+                    <li ng-class="{disabled:pager.currentPage === pager.totalPages}">
+                        <a ng-click="setPage(pager.totalPages)">&raquo;</a>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+</div>

@@ -1,0 +1,109 @@
+<div class="innerPage">
+    
+    <div id="content">
+        <div class="container-fluid">
+            <div class="row pageTitle">
+                <div class="col-lg-6 col-sm-6">
+                    <h3>Add Badge Info</h3>
+                </div>
+                <div class="col-lg-6 col-sm-6">
+                    <div class="pull-right">
+                    </div>
+                </div>
+            </div>
+            <div class="row customiedFrom">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-6 col-lg-offset-3">
+                            <form class="form-horizontal" name="addbadgeinfoForm" novalidate>
+                                <!--<div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">User ID</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="userid" class="form-control small" value="" required>
+                                    </div>
+                                </div>
+                                -->
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">User Name</label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" name="selectedUser" ng-model="addBadgeInfoData.selectedUser" ng-change="getModelData(addBadgeInfoData.selectedUser)" ng-options="ma.USER_ID as ma.USERNAME for ma in userslist" required>
+                                            <option value="">Select User</option>
+
+                                        </select>
+
+                                        <!--<input type="text" name="username" class="form-control" value="" required>-->
+                                    </div>
+                                </div>
+                                <!--<div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Location</label>
+                                    <div class="col-sm-8">
+                                        <button type="button" class="btn btn-default locationBtn" ng-class="{'show' : locationSelectBtn, 'hide' : !locationSelectBtn}" ng-click="locationSelect($event)">Select</button>
+                                        <button type="button" class="btn btn-default locationBtn" ng-class="{'show' : locationEditBtn, 'hide' : !locationEditBtn}" ng-click="locationEdit($event)">Edit</button>
+                                        <div class="locationBox" ng-class="{'show' : location, 'hide' : !location}">
+                                            <wxy-push-menu menu="menu" options="rest.options"></wxy-push-menu>
+                                            <div class="arrow"></div>
+                                            <div class="flyout-fold"></div>
+                                            <div class="locationFooter">
+                                                <button type="button" class="btn btn-default btnSave" ng-click="locationSeleted($event)">Done</button>
+                                                <a href="javascript:void(0)" class="cancel" ng-click="locationCancel($event)">Cancel</a>
+                                            </div>
+                                        </div>
+                                        <div id="pushobj" name="locationData" ng-show="events.length >0">
+                                            <ul>
+                                                <li name="event_{{$index}}" ng-repeat="event in events track by $index" ng-bind="event"></li>
+                                            </ul>
+                                        </div>
+                                        <span style="color:red" ng-show="eventsEmptyArr">Select Location is required.</span>
+                                    </div>
+                                </div>
+                                -->
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Badge ID</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" ng-model="addBadgeInfoData.badgeID" class="form-control" ng-disabled="true" value="" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Swipe Sensor Name</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" ng-model="addBadgeInfoData.swipSensorName" class="form-control" value="" ng-disabled="true" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Status</label>
+                                    <div class="col-sm-6">
+                                        <!--<input type="text" name="userid" class="form-control small" value="" required>-->
+                                        <select ng-model="addBadgeInfoData.selectedStatus" class="form-control">
+                                            <option value="">Select Status</option>
+                                            <option value="IN">IN</option>
+                                            <option value="OUT">OUT</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Date and Time</label>
+                                    <div class="col-sm-6">
+                                       
+                                        <div class="input-group date">
+                                            <input class="form-control" datetime-picker ng-model="badgedatetime" date-format="MM/dd/yyyy  HH:mm:ss" close-on-select="false" />
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12 submitArea">
+                        <div class="col-sm-offset-5 col-sm-6">
+                            <button type="submit" class="btn btn-default btnSave" ng-click="onAddBadgeInfo()" title="Save Sensor">Save</button>
+                            <span class="btn-divider"></span>
+                            <button type="button" class="btn btn-link" ng-click="onCancelUser()" title="Cancel Sensor">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>

@@ -1,0 +1,64 @@
+{
+    "name": "Santa Clara",
+    "img": "images/location.svg",
+    "children": [
+        {
+            "name": "Area1-Building1",
+            "img": "images/building.svg",
+            "children": [
+                {
+                    "name": "Room12",
+                    "img": "images/room.svg",
+                    "children": [
+                        {
+                            "name": "Sensor54",
+                            "img": "images/sensor.svg",
+                            "children": [
+                                {
+                                    "name": "Machinery1001",
+                                    "img": "images/machinery.svg"
+
+                    }
+                ]
+
+            }
+        ]
+
+    },
+    {
+                    "name": "Room24",
+                    "img": "images/room.svg",
+                    "children": [
+                        {
+                            "name": "Humidity",
+                            "img": "images/sensor.svg",
+                            "children": [
+                                {
+                                    "name": "Machinery1001",
+                                    "img": "images/machinery.svg"
+
+                    }
+                ]
+
+            }
+        ]
+
+    }
+
+
+  ]
+  },
+
+        {
+            "name": "Building2",
+            "img": "images/building.svg",
+            "children": [
+                {
+                    "name": "Room2",
+                    "img": "images/room.svg"
+    }
+   ]
+  }
+
+ ]
+}

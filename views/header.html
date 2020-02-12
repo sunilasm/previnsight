@@ -1,0 +1,244 @@
+ <header>
+   <div class="container-fluid pbottom10">
+    <div class="row-fluid">
+        <div class="col-lg-2 col-sm-2">
+            <div class="brand">
+                <a ui-sref="nav.home"><img src="images/header-logo-previnsight.png" class="img-responsive" alt="Tracehive" title="Tracehive"></a>
+            </div>
+        </div>
+        <div class="col-lg-9 col-lg-offset-1 col-sm-10 headerRight">
+            <div class="headedTopRight">
+                <!--<div class="headerSearch">
+                    <input type="text" placeholder="Search">
+                    <a href=""><img src="images/search-icon.png" alt="Search" title="Search"></a>
+                </div>-->
+                <div class="headerLocation"><i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Locations">{{selectedCityMenu}}<span class="locationdownarrow"><img src="images/down-arrow.png" alt=""></span></a>
+                    <div class="dropdown-menu dropdown-menu-right location-dd">
+                        <div class="notification-content">
+                            <!-- <ul>
+                                <li>
+                                    <a href="javascript:void(0)">All Locations</a>
+                                </li>
+                                <li class="sublocation">
+                                    <ul>
+                                        <li ng-repeat="location in locationList">
+                                            <a href="javascript:void(0)">{{ location.CITY }}</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul> -->
+                            <ul>
+                                        <li ng-repeat="toplocation in topLocationDropdown">
+                                            <a href="" ng-click="topdropdownitemselected(toplocation)">
+                                                <div class="notifi-title">{{toplocation}}</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                           <!-- <a href="" class="btn btn-link">more Locations</a>-->
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="headerNotification"><a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Notifications"><i class="fa fa-bell" aria-hidden="true"></i></a> <span class="badge">5</span>
+                    <div class="dropdown-menu dropdown-menu-right notification-dd">
+                        <div class="notification-content">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <div class="notifi-title">Beta Carotene <span class="badge">1</span></div>
+                                        <div class="notifi-time">Today, 12:50pm</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="notifi-title">B-Complex <span class="badge">2</span></div>
+                                        <div class="notifi-time">2 days ago</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="notifi-title">Beta Carotene <span class="badge">1</span></div>
+                                        <div class="notifi-time">Today, 12:50pm</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="notifi-title">B-Complex <span class="badge">2</span></div>
+                                        <div class="notifi-time">2 days ago</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="notifi-title">Beta Carotene <span class="badge">1</span></div>
+                                        <div class="notifi-time">Today, 12:50pm</div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <a ui-sref="nav.notifications" class="btn btn-link">more notification</a>
+                        </div>
+                    </div>
+                </div>-->
+                <!--<div class="headerChat">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Messages">
+                        <i class="fa fa-comment" aria-hidden="true"></i> <span class="badge">5</span>
+                        <div class="dropdown-menu dropdown-menu-right message-dd">
+                            <ul>
+                                <li><a href="#">Message1</a></li>
+                                <li><a href="#">Message2</a></li>
+                                <li><a href="#">Message3</a></li>
+                                <li><a href="#">Message4</a></li>
+                                <li><a href="#">Message5</a></li>
+                            </ul>
+                            <a href="" class="btn btn-link">more messages</a>
+                        </div>
+                </div>-->
+                <div class="headerHelp"><a href=""><i class="fa fa-question" aria-hidden="true" title="Help"></i></a></div>
+                <div class="headerUser">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="images/user.jpg" alt=""></a>
+                    <div class="dropdown-menu dropdown-menu-right profile-dd">
+                        <div class="username"><span>Welcome,</span> {{loggedInName}}</div>
+                        <ul>
+                            <li><a href="">Settings</a></li>
+                            <li><a href="#">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-default navfixed">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+            <div class="navbar-left breadcrumbs">
+                <div ng-if="$state.current.name === 'nav.addWorkorder'">
+                    <a ui-sref="nav.workorders" class="backbtn"><img src="images/back.png" alt=""></a>
+                    <div class="currentPageTitle">Work Orders</div>
+                </div>
+                <div ng-if="$state.current.name === 'nav.addInventory'">
+                    <a ui-sref="nav.inventory" class="backbtn"><img src="images/back.png" alt=""></a>
+                    <div class="currentPageTitle">inventory</div>
+                </div>
+                <div ng-if="$state.current.name === 'nav.addRecipe'">
+                    <a ui-sref="nav.recipes" class="backbtn"><img src="images/back.png" alt=""></a>
+                    <div class="currentPageTitle">Recipes</div>
+                </div>
+                <!--<div ng-if="isNavEquipment && !($state.current.name === 'nav.addSensor' || $state.current.name === 'nav.addMachinery' || $state.current.name === 'nav.addParameter')">
+                    <a ng-click="navHome()" class="backbtn"><img src="images/back.png" alt=""></a>
+                    <div class="currentPageTitle">equipment</div>
+                </div>-->
+                <div ng-if="$state.current.name === 'nav.addSensor'">
+                    <a ui-sref="nav.sensors" class="backbtn"><img src="images/back.png" alt=""></a>
+                    <div class="currentPageTitle">Sensors</div>
+                </div>
+                <div ng-if="$state.current.name === 'nav.addMachinery'">
+                    <a ui-sref="nav.machinery" class="backbtn"><img src="images/back.png" alt=""></a>
+                    <div class="currentPageTitle">Machinery</div>
+                </div>
+                <div ng-if="$state.current.name === 'nav.addParameter'">
+                    <a ui-sref="nav.parameters" class="backbtn"><img src="images/back.png" alt=""></a>
+                    <div class="currentPageTitle">Parameters</div>
+                </div>-->
+                <!--<div ng-if="isNavAdmin && !($state.current.name === 'nav.adduser' || $state.current.name === 'nav.adduserprofile' || $state.current.name === 'nav.addbadgeinfo' || $state.current.name === 'nav.masteraddsupplier')">
+                    <a ng-click="navHome()" class="backbtn"><img src="images/back.png" alt=""></a>
+                    <div class="currentPageTitle">Admin</div>
+                </div>-->
+                <div ng-if=" $state.current.name === 'nav.adduser'">
+                    <a ui-sref="nav.users" class="backbtn"><img src="images/back.png" alt=""></a>
+                    <div class="currentPageTitle">Users</div>
+                </div>
+                <div ng-if="$state.current.name === 'nav.adduserprofile'">
+                    <a ui-sref="nav.profile" class="backbtn"><img src="images/back.png" alt=""></a>
+                    <div class="currentPageTitle">User Profile</div>
+                </div>
+                <div ng-if=" $state.current.name === 'nav.addbadgeinfo'">
+                        <a ui-sref="nav.badgeinfo" class="backbtn"><img src="images/back.png" alt=""></a>
+                        <div class="currentPageTitle">Badge Info</div>
+                </div>
+                <div ng-if="$state.current.name === 'nav.masteraddsupplier'">
+                        <a ui-sref="nav.supplier" class="backbtn"><img src="images/back.png" alt=""></a>
+                        <div class="currentPageTitle">supplier</div>
+                </div>
+            </div>
+            <ul ng-if="isNavHome" class="nav navbar-nav navbar-right">
+                <li><a ui-sref="nav.home" ui-sref-active="active"  >Insights</a></li>
+                <li><a ui-sref="nav.workorders" ui-sref-active="active"  ng-class="{active: $state.current.name === 'nav.addWorkorder'}" ng-show="workorderRead==1">Work Orders</a></li>
+                <li><a ui-sref="nav.inventory" ui-sref-active="active" ng-class="{active: $state.current.name === 'nav.addInventory'}" ng-show="inventoryRead==1">inventory</a></li>
+                <li><a ui-sref="nav.recipes" ui-sref-active="active" ng-class="{active: $state.current.name === 'nav.addRecipe'}" ng-show="recipeRead==1">Recipes</a></li>
+                <li ng-show="sensorRead==1 || machineryRead==1 || parameterRead==1"><a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-class="{active: $state.current.name === 'nav.sensors' || $state.current.name === 'nav.machinery' || $state.current.name === 'nav.parameters'}">equipment <span class="caret"></span></a>
+                    <div class="dropdown-menu dropdown-menu-right subCategory-dd">
+                        <ul>
+                            <li ng-show="sensorRead==1"><a ui-sref="nav.sensors">Sensor</a></li>
+                            <li ng-show="machineryRead==1"><a ui-sref="nav.machinery">Machinery</a></li>
+                            <li ng-show="parameterRead==1"><a ui-sref="nav.parameters">Parameter</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <!--<li><a ui-sref="nav.sensors" ng-click="navEquipment()" ui-sref-active="active" ng-class="{active: $state.current.name === 'nav.addSensor' || $state.current.name === 'nav.addMachinery' || $state.current.name === 'nav.addParameter'}"
+                       ng-show="sensorRead==1 || machineryRead==1 || parameterRead==1">equipment</a></li>
+                --><li><a ui-sref="nav.reports" ui-sref-active="active" ng-show="reportRead==1">reports</a></li>
+                <li ng-show="materialRead==1|| uomRead==1 ||manufacturerRead==1||modelRead==1||locationRead==1||supplierRead==1"><a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-class="{active: $state.current.name === 'nav.mastermaterial' || $state.current.name === 'nav.masteruom' || $state.current.name === 'nav.mastermanufature' || $state.current.name === 'nav.mastermodel' || $state.current.name === 'nav.masterlocation' || $state.current.name === 'nav.supplier' || $state.current.name === 'nav.masteraddsupplier'}">Master <span class="caret"></span></a>
+                    <div class="dropdown-menu dropdown-menu-right subCategory-dd">
+                        <ul>
+                            <li ng-show="materialRead==1"><a ui-sref="nav.mastermaterial">Material</a></li>
+                            <li ng-show="uomRead==1"><a ui-sref="nav.masteruom">UOM</a></li>
+                            <li ng-show="manufacturerRead==1"><a ui-sref="nav.mastermanufature">Manufacturer</a></li>
+                            <li ng-show="modelRead==1"><a ui-sref="nav.mastermodel">Model</a></li>
+                            <li ng-show="locationRead==1"><a ui-sref="nav.masterlocation">Location</a></li>
+                            <li ng-show="supplierRead==1"><a ui-sref="nav.supplier">Supplier</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-class="{active: $state.current.name === 'nav.users' || $state.current.name === 'nav.adduser' || $state.current.name === 'nav.profile' || $state.current.name === 'nav.adduserprofile' || $state.current.name === 'nav.badgeinfo' || $state.current.name === 'nav.addbadgeinfo'}">Admin <span class="caret"></span></a>
+                    <div class="dropdown-menu dropdown-menu-right subCategory-dd">
+                        <ul>
+                            <li ng-show="userRead==1"><a ui-sref="nav.users">Users</a></li>
+                            <li ng-show="roleRead==1"><a ui-sref="nav.profile">Profile</a></li>
+                            <li><a ui-sref="nav.badgeinfo">Badge Info</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <!--<li><a ui-sref="nav.users" ng-click="navAdmin()"   ng-class="{active: $state.current.name === 'nav.users' || $state.current.name === 'nav.adduser' || $state.current.name === 'nav.profile' || $state.current.name === 'nav.badgeinfo' || $state.current.name === 'nav.addbadgeinfo'  }">Admin</a></li>-->
+            </ul>
+            <ul ng-if="isNavEquipment" class="nav navbar-nav navbar-left subCategory">
+                <li ng-show="sensorRead==1"><a ui-sref="nav.sensors" ui-sref-active="active" ng-class="{active: $state.current.name === 'nav.addSensor'}">Sensors</a></li>
+                <li ng-show="machineryRead==1"><a ui-sref="nav.machinery" ui-sref-active="active" ng-class="{active: $state.current.name === 'nav.addMachinery'}">Machinery</a></li>
+                <li ng-show="parameterRead==1"><a ui-sref="nav.parameters" ui-sref-active="active" ng-class="{active: $state.current.name === 'nav.addParameter'}">Parameters</a></li>
+            </ul>
+            <!--<ul ng-if="isNavAdmin" class="nav navbar-nav navbar-left subCategory">
+                <li><a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-class="{active: $state.current.name === 'nav.users' || $state.current.name === 'nav.adduser' || $state.current.name === 'nav.profile' || $state.current.name === 'nav.adduserprofile' || $state.current.name === 'nav.badgeinfo' || $state.current.name === 'nav.addbadgeinfo'}">Admin <span class="caret"></span></a>
+                    <div class="dropdown-menu dropdown-menu-right subCategory-dd">
+                        <ul>
+                            <li><a ui-sref="nav.users">Users</a></li>
+                            <li><a ui-sref="nav.profile">Profile</a></li>
+                            <li><a ui-sref="nav.badgeinfo">Badge Info</a></li>
+                        </ul>
+                    </div>
+                </li>
+                
+            </ul>-->
+<!--             <div class="pull-right navigation">
+                <a href="" class="pullmenu" ng-if="isNavHome && $state.current.name === 'nav.sensors'" ng-click="navEquipment()">
+                    <img src="images/menu.png" alt="Main Menu" title="Main Menu" class="normal"></a>
+                <a href="" class="pullmenu" ng-if="isNavHome && $state.current.name === 'nav.users'" ng-click="navEquipment()">
+                    <img src="images/menu.png" alt="Main Menu" title="Main Menu" class="normal"></a>
+            </div> -->
+        </div>
+    </div>
+</nav>
+     </header>
+
+     <div ui-view></div>

@@ -1,0 +1,164 @@
+[
+    {
+        "id" : "inv01",
+        "name": "Amalaki",
+        "inventoryImageUrl": "images/01-products.jpg",
+        "description": "Sugar, Sanitol 100%, Soya Oil...",
+        "itemId" : "BC32456",
+        "goal" : "100 Units",
+        "stock" : "100 Units",
+        "notificationCount": 1,
+        "notificationContent": "Your Yield average for Beta Carotene is low (10 kgs in Dec 2012) compared to your goal of 200kgs. Adjust Equipment 2132 temprature or switch out the supplier of Coagulant COAG54",
+        "notificationDate": "Yesterday, 02:25 pm",
+        "settings": [
+            {
+                "name": "Setting",
+                "link": "javascript:void(0)"
+            }
+        ]
+    },
+    {
+        "id" : "inv02",
+        "name": "Acai",
+        "inventoryImageUrl": "images/02-products.jpg",
+        "description": "Glucose, Santiol 100%, Butter, Sunflower Oil, Soya Oil...",
+        "itemId" : "BC5321",
+        "goal" : "100 Units",
+        "stock" : "100 Units",
+        "notificationCount": 1,
+        "notificationContent": "Your Yield average for Beta Carotene is low (10 kgs in Dec 2012) compared to your goal of 200kgs. Adjust Equipment 2132 temprature or switch out the supplier of Coagulant COAG54",
+        "notificationDate": "Yesterday, 02:25 pm",
+        "settings": [
+            {
+                "name": "Setting",
+                "link": "javascript:void(0)"
+            }
+        ]
+    },
+    {
+        "id" : "inv03",
+        "name": "Beta Carotene",
+        "inventoryImageUrl": "images/03-products.jpg",
+        "description": "Sugar, Sanitol 100%, Soya Oil...",
+        "itemId" : "BC45352",
+        "goal" : "100 Units",
+        "stock" : "100 Units",
+        "notificationCount": 1,
+        "notificationContent": "Your Yield average for Beta Carotene is low (10 kgs in Dec 2012) compared to your goal of 200kgs. Adjust Equipment 2132 temprature or switch out the supplier of Coagulant COAG54",
+        "notificationDate": "Yesterday, 02:25 pm",
+        "settings": [
+            {
+                "name": "Setting",
+                "link": "javascript:void(0)"
+            }
+        ]
+    },
+    {
+        "id" : "inv04",
+        "name": "Holy Basil",
+        "inventoryImageUrl": "images/04-products.jpg",
+        "description": "Sugar, Sanitol 100%, Soya Oil...",
+        "itemId" : "BC32456",
+        "goal" : "100 Units",
+        "stock" : "100 Units",
+        "notificationCount": 1,
+        "notificationContent": "Your Yield average for Beta Carotene is low (10 kgs in Dec 2012) compared to your goal of 200kgs. Adjust Equipment 2132 temprature or switch out the supplier of Coagulant COAG54",
+        "notificationDate": "Yesterday, 02:25 pm",
+        "settings": [
+            {
+                "name": "Setting",
+                "link": "javascript:void(0)"
+            }
+        ]
+    },
+    {
+        "id" : "inv05",
+        "name": "Tulsi",
+        "inventoryImageUrl": "images/05-products.jpg",
+        "description": "Sugar, Sanitol 100%, Soya Oil...",
+        "itemId" : "BC535547",
+        "goal" : "100 Units",
+        "stock" : "100 Units",
+        "notificationCount": 1,
+        "notificationContent": "Your Yield average for Beta Carotene is low (10 kgs in Dec 2012) compared to your goal of 200kgs. Adjust Equipment 2132 temprature or switch out the supplier of Coagulant COAG54",
+        "notificationDate": "Yesterday, 02:25 pm",
+        "settings": [
+            {
+                "name": "Setting",
+                "link": "javascript:void(0)"
+            }
+        ]
+    },
+    {
+        "id" : "inv06",
+        "name": "Confido",
+        "inventoryImageUrl": "images/06-products.jpg",
+        "description": "Sugar, Sanitol 100%, Soya Oil...",
+        "itemId" : "BC32456",
+        "goal" : "100 Units",
+        "stock" : "100 Units",
+        "notificationCount": 1,
+        "notificationContent": "Your Yield average for Beta Carotene is low (10 kgs in Dec 2012) compared to your goal of 200kgs. Adjust Equipment 2132 temprature or switch out the supplier of Coagulant COAG54",
+        "notificationDate": "Yesterday, 02:25 pm",
+        "settings": [
+            {
+                "name": "Setting",
+                "link": "javascript:void(0)"
+            }
+        ]
+    },
+    {
+        "id" : "inv07",
+        "name": "Diarex Syrup",
+        "inventoryImageUrl": "images/04-products.jpg",
+        "description": "Sugar, Sanitol 100%, Soya Oil...",
+        "itemId" : "BC53221",
+        "goal" : "100 Units",
+        "stock" : "100 Units",
+        "notificationCount": 1,
+        "notificationContent": "Your Yield average for Beta Carotene is low (10 kgs in Dec 2012) compared to your goal of 200kgs. Adjust Equipment 2132 temprature or switch out the supplier of Coagulant COAG54",
+        "notificationDate": "Yesterday, 02:25 pm",
+        "settings": [
+            {
+                "name": "Setting",
+                "link": "javascript:void(0)"
+            }
+        ]
+    },
+    {
+        "id" : "inv08",
+        "name": "Koflet",
+        "inventoryImageUrl": "images/01-products.jpg",
+        "description": "Sugar, Sanitol 100%, Soya Oil...",
+        "itemId" : "BC74322",
+        "goal" : "100 Units",
+        "stock" : "100 Units",
+        "notificationCount": 1,
+        "notificationContent": "Your Yield average for Beta Carotene is low (10 kgs in Dec 2012) compared to your goal of 200kgs. Adjust Equipment 2132 temprature or switch out the supplier of Coagulant COAG54",
+        "notificationDate": "Yesterday, 02:25 pm",
+        "settings": [
+            {
+                "name": "Setting",
+                "link": "javascript:void(0)"
+            }
+        ]
+    },
+    {
+        "id" : "inv09",
+        "name": "Lukol",
+        "inventoryImageUrl": "images/02-products.jpg",
+        "description": "Sugar, Sanitol 100%, Soya Oil...",
+        "itemId" : "BC85654",
+        "goal" : "100 Units",
+        "stock" : "100 Units",
+        "notificationCount": 1,
+        "notificationContent": "Your Yield average for Beta Carotene is low (10 kgs in Dec 2012) compared to your goal of 200kgs. Adjust Equipment 2132 temprature or switch out the supplier of Coagulant COAG54",
+        "notificationDate": "Yesterday, 02:25 pm",
+        "settings": [
+            {
+                "name": "Setting",
+                "link": "javascript:void(0)"
+            }
+        ]
+    }
+]

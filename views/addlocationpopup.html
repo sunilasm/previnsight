@@ -1,0 +1,317 @@
+<div class="innerPage locationPage">
+   
+
+    <div id="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 pageTitle">
+                    <h3>Add Location</h3>
+                </div>
+            </div>
+            <div class="row customiedFrom">
+                <div class="col-lg-12">
+                    <div class="row">
+
+                    </div>
+
+
+                    <div class="col-lg-9">
+                        <div class="slider">
+                            <div style="padding: 10px;">
+                                <div class="level1">
+                                    <div class="col-lg-12">
+                                        <div class="locationRow">
+                                            <div class="addlocationSection">
+                                                <a href="#" class="addLocationBtn" ng-click="addLocationCont($event)">Add Location</a>
+                                                <div class="notifySearchBox locationBox" ng-class="{'show': locationBox, 'hide': !locationBox}">
+                                                    <div class="notifySearchBoxContainer">
+                                                        <form class="form-horizontal">
+                                                            <div class="form-group">
+                                                                <label for="" class="col-sm-4 control-label">Location Name</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" class="form-control" placeholder="" ng-model="locationName">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="" class="col-sm-4 control-label">Address 1</label>
+                                                                <div class="col-sm-8">
+                                                                    <textarea rows="2" class="form-control" ng-model="address1"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="" class="col-sm-4 control-label">Address 2</label>
+                                                                <div class="col-sm-8">
+                                                                    <textarea rows="2" class="form-control" ng-model="address2"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="" class="col-sm-4 control-label">Country</label>
+                                                                <div class="col-sm-8">
+                                                                    <select ng-model="country" class="form-control" ng-options="country.name for country in countries track by country.code">
+                                                                        <option value="">Select a Country</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="" class="col-sm-4 control-label">State</label>
+                                                                <div class="col-sm-8">
+                                                                    <select class="form-control" ng-model="state">
+                                                                        <option>Select State</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="" class="col-sm-4 control-label">City</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" class="form-control" placeholder="" ng-model="city">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="" class="col-sm-4 control-label">Zip Code</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" class="form-control" placeholder="" ng-model="zipcode">
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="arrow"></div>
+                                                    <div class="flyout-fold"></div>
+                                                    <div class="locationFooter">
+                                                        <button type="button" class="btn btn-default btnSave" ng-click="addLocationDone($event)">Done</button>
+                                                        <a href="javascript:void(0)" class="cancel" ng-click="addLocationCancel($event)">Cancel</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="locationList">
+                                            <div class="" ng-repeat="item in location">
+                                                <ul>
+                                                    <li ng-repeat="(key,value) in item">
+                                                        <div class="pull-left locationname">
+                                                            {{item[key].locationName}}
+                                                        </div>
+
+                                                        <div class="editAdd pull-right">
+                                                            <a href="javascript:void(0)" class="edit" ng-click="editLocation($event)"><img src="images/edit-icon.png" alt="" /></a>
+                                                            <a href="javascript:void(0)" ng-click="gotoSubLocation($parent.$index,key)" class="next go-right"><img src="images/right-arrow.png" alt="" /></a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="level2">
+                                    <div class="col-lg-12">
+                                        <div class="divCont locationRow">
+                                            <a href="javascript:void(0)" class="go-left" ng-click="backtoLocation($event)"><img src="images/back-location.png" alt="" /></a> {{locationame}} <span>/</span><a href="javascript:void(0)" ng-click="addSubLocation($event )" class="addLocationBtn">Add Sub Location</a>
+
+                                            <div class="notifySearchBox locationBox sublocationBox" ng-class="{'show': sublocationBox, 'hide': !sublocationBox}">
+                                                <div class="notifySearchBoxContainer">
+                                                    <form class="form-horizontal">
+                                                        <div class="form-group">
+                                                            <label for="" class="col-sm-4 control-label">Sub Level 1</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" class="form-control" placeholder="" ng-model="sublocationName">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="" class="col-sm-4 control-label">Description</label>
+                                                            <div class="col-sm-8">
+                                                                <textarea rows="2" class="form-control" ng-model="subLocationDescrption"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="arrow"></div>
+                                                <div class="flyout-fold"></div>
+                                                <div class="locationFooter">
+                                                    <button type="button" class="btn btn-default btnSave" ng-click="subLocationDone($event)">Done</button>
+                                                    <a href="javascript:void(0)" class="cancel" ng-click="subLocationCancel($event)">Cancel</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="clearfix"></div>
+                                        <div class="locationList">
+                                            <div class="" ng-repeat="item in subLocation">
+                                                <ul>
+                                                    <li ng-repeat="(key,value) in item">
+                                                        <div class="pull-left locationname">
+                                                            {{item[key].subLocationName}}
+                                                        </div>
+
+                                                        <div class="editAdd pull-right">
+                                                            <a href="javascript:void(0)" class="edit"><img src="images/edit-icon.png" alt="" /></a>
+                                                            <a href="javascript:void(0)" ng-click="gotoSecondSubLocation($parent.$index,key)" class="next"><img src="images/right-arrow.png" alt="" /></a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="level3">
+                                    <div class="col-lg-12">
+                                        <div class="divCont locationRow">
+                                            <a href="javascript:void(0)" class="go-left" ng-click="backtoLocation($event)"><img src="images/back-location.png" alt="" /></a> {{locationame}} <span>/</span> {{sublocationame}} <span>/</span> <a href="javascript:void(0)" ng-click="addSecondSubLocation($event)" class="addLocationBtn">Add Sub Location</a>
+
+                                            <div class="notifySearchBox locationBox sublocationBox" ng-class="{'show': secondSublocationBox, 'hide': !secondSublocationBox}">
+                                                <div class="notifySearchBoxContainer">
+                                                    <form class="form-horizontal">
+                                                        <div class="form-group">
+                                                            <label for="" class="col-sm-4 control-label">Sub Level 2</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" class="form-control" placeholder="" ng-model="secondsublocationName">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="" class="col-sm-4 control-label">Description</label>
+                                                            <div class="col-sm-8">
+                                                                <textarea rows="2" class="form-control" ng-model="secondsubLocationDescrption"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="arrow"></div>
+                                                <div class="flyout-fold"></div>
+                                                <div class="locationFooter">
+                                                    <button type="button" class="btn btn-default btnSave" ng-click="doneSecondSubLocation($event)">Done</button>
+                                                    <a href="javascript:void(0)" class="cancel" ng-click="cancelSecondSubLocation($event)">Cancel</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="locationList">
+                                            <div class="" ng-repeat="item in secondsubLocation">
+                                                <ul>
+                                                    <li ng-repeat="(key,value) in item">
+                                                        <div class="pull-left locationname">
+                                                            {{item[key].secondsubLocationName}}
+                                                        </div>
+
+                                                        <div class="editAdd pull-right">
+                                                            <a href="javascript:void(0)" class="edit"><img src="images/edit-icon.png" alt="" /></a>
+                                                            <a href="javascript:void(0)" ng-click="gotoThirdSubLocation($parent.$index,key)" class="next"><img src="images/right-arrow.png" alt="" /></a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="level4">
+                                    <div class="col-lg-12">
+                                        <div class="divCont locationRow">
+                                            <a href="javascript:void(0)" class="go-left" ng-click="backtoLocation($event)"><img src="images/back-location.png" alt="" /></a> {{locationame}} <span>/</span> {{sublocationame}} <span>/</span> {{thirdsubLocationName}} <span>/</span> <a href="javascript:void(0)" ng-click="addThirdSubLocation($event)" class="addLocationBtn">Add Sub Location</a>
+
+                                            <div class="notifySearchBox locationBox sublocationBox" ng-class="{'show': thirdSublocationBox, 'hide': !thirdSublocationBox}">
+                                                <div class="notifySearchBoxContainer">
+                                                    <form class="form-horizontal">
+                                                        <div class="form-group">
+                                                            <label for="" class="col-sm-4 control-label">Sub Level 3</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" class="form-control" placeholder="" ng-model="thirdsublocationName">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="" class="col-sm-4 control-label">Description</label>
+                                                            <div class="col-sm-8">
+                                                                <textarea rows="2" class="form-control" ng-model="thirdsubLocationDescrption"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="arrow"></div>
+                                                <div class="flyout-fold"></div>
+                                                <div class="locationFooter">
+                                                    <button type="button" class="btn btn-default btnSave" ng-click="doneThirdSubLocation($event)">Done</button>
+                                                    <a href="javascript:void(0)" class="cancel" ng-click="cancelThirdSubLocation($event)">Cancel</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="locationList">
+                                            <div class="" ng-repeat="item in thirdsublocation">
+                                                <ul>
+                                                    <li ng-repeat="(key,value) in item">
+                                                        <div class="pull-left locationname">
+                                                            {{item[key].thirdsubLocationName}}
+                                                        </div>
+
+                                                        <div class="editAdd pull-right">
+                                                            <a href="javascript:void(0)" class="edit"><img src="images/edit-icon.png" alt="" /></a>
+                                                            <a href="javascript:void(0)" ng-click="gotoFourthSubLocation($parent.$index,key)" class="next"><img src="images/right-arrow.png" alt="" /></a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="level5">
+                                    <div class="col-lg-12">
+                                        <div class="divCont locationRow">
+                                            <a href="javascript:void(0)" class="go-left" ng-click="backtoLocation($event)"><img src="images/back-location.png" alt="" /></a> {{locationame}} <span>/</span> {{sublocationame}} <span>/</span> {{thirdsublocationame}} <span>/</span> {{fourhsublocationame}} <a href="javascript:void(0)" ng-click="addSecondSubLocation($event)" class="addLocationBtn">Add Sub Location</a>
+
+                                            <div class="notifySearchBox locationBox sublocationBox" ng-class="{'show': fourthSublocationBox, 'hide': !fourthSublocationBox}">
+                                                <div class="notifySearchBoxContainer">
+                                                    <form class="form-horizontal">
+                                                        <div class="form-group">
+                                                            <label for="" class="col-sm-4 control-label">Sub Level 4</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" class="form-control" placeholder="" ng-model="fourthsublocationName">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="" class="col-sm-4 control-label">Description</label>
+                                                            <div class="col-sm-8">
+                                                                <textarea rows="2" class="form-control" ng-model="fourthsubLocationDescrption"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="arrow"></div>
+                                                <div class="flyout-fold"></div>
+                                                <div class="locationFooter">
+                                                    <button type="button" class="btn btn-default btnSave" ng-click="doneFourthSubLocation($event)">Done</button>
+                                                    <a href="javascript:void(0)" class="cancel" ng-click="cancelFourthSubLocation($event)">Cancel</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="locationList">
+                                            <div class="" ng-repeat="item in fourthsubLocation">
+                                                <ul>
+                                                    <li ng-repeat="(key,value) in item">
+                                                        <div class="pull-left locationname">
+                                                            {{item[key].fourthsubLocationName}}
+                                                        </div>
+
+                                                        <div class="editAdd pull-right">
+                                                            <a href="javascript:void(0)" class="edit"><img src="images/edit-icon.png" alt="" /></a>
+                                                            <a href="javascript:void(0)" ng-click="gotofourthSubLocation($parent.$index,key)" class="next"><img src="images/right-arrow.png" alt="" /></a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12 submitArea">
+                            <div class="col-sm-offset-5 col-sm-6">
+                                <button type="button" class="btn btn-default btnSave" ng-click="backtoMain($event)">Save</button>
+                                <span class="btn-divider"></span>
+                                <button type="button" class="btn btn-link">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
