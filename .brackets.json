@@ -1,0 +1,7 @@
+{
+    "jscodehints.detectedExclusions": [
+        "indexCtrl.js",
+        "C:/xampp/htdocs/previnsight/phase2/restPhp/long-polling/client/client.js",
+        "C:/xampp/htdocs/previnsight/phase2/scripts/vendor/tether.js"
+    ]
+}
