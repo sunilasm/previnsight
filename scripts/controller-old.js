@@ -3782,9 +3782,9 @@
             getService.addWorkorder(data).then(function (response) {
                 $state.go('workorders');
                 if (workorder_id) {
-                    ngToast.create('Work Order Edited Successfully');
+                    ngToast.create('Prescription Order Edited Successfully');
                 } else {
-                    ngToast.create('Work Order Added Successfully');
+                    ngToast.create('Prescription Order Added Successfully');
                 }
 
             });

@@ -126,7 +126,7 @@
             <div class="navbar-left breadcrumbs">
                 <div ng-if="$state.current.name === 'nav.addWorkorder'">
                     <a ui-sref="nav.workorders" class="backbtn"><img src="images/back.png" alt=""></a>
-                    <div class="currentPageTitle">Work Orders</div>
+                    <div class="currentPageTitle">Prescription</div>
                 </div>
                 <div ng-if="$state.current.name === 'nav.addInventory'">
                     <a ui-sref="nav.inventory" class="backbtn"><img src="images/back.png" alt=""></a>
@@ -134,7 +134,7 @@
                 </div>
                 <div ng-if="$state.current.name === 'nav.addRecipe'">
                     <a ui-sref="nav.recipes" class="backbtn"><img src="images/back.png" alt=""></a>
-                    <div class="currentPageTitle">Recipes</div>
+                    <div class="currentPageTitle">Instructions</div>
                 </div>
                 <!--<div ng-if="isNavEquipment && !($state.current.name === 'nav.addSensor' || $state.current.name === 'nav.addMachinery' || $state.current.name === 'nav.addParameter')">
                     <a ng-click="navHome()" class="backbtn"><img src="images/back.png" alt=""></a>
@@ -175,9 +175,9 @@
             </div>
             <ul ng-if="isNavHome" class="nav navbar-nav navbar-right">
                 <li><a ui-sref="nav.home" ui-sref-active="active"  >Insights</a></li>
-                <li><a ui-sref="nav.workorders" ui-sref-active="active"  ng-class="{active: $state.current.name === 'nav.addWorkorder'}" ng-show="workorderRead==1">Work Orders</a></li>
+                <li><a ui-sref="nav.workorders" ui-sref-active="active"  ng-class="{active: $state.current.name === 'nav.addWorkorder'}" ng-show="workorderRead==1">Prescription</a></li>
                 <li><a ui-sref="nav.inventory" ui-sref-active="active" ng-class="{active: $state.current.name === 'nav.addInventory'}" ng-show="inventoryRead==1">inventory</a></li>
-                <li><a ui-sref="nav.recipes" ui-sref-active="active" ng-class="{active: $state.current.name === 'nav.addRecipe'}" ng-show="recipeRead==1">Recipes</a></li>
+                <li><a ui-sref="nav.recipes" ui-sref-active="active" ng-class="{active: $state.current.name === 'nav.addRecipe'}" ng-show="recipeRead==1">Instructions</a></li>
                 <li ng-show="sensorRead==1 || machineryRead==1 || parameterRead==1"><a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-class="{active: $state.current.name === 'nav.sensors' || $state.current.name === 'nav.machinery' || $state.current.name === 'nav.parameters'}">equipment <span class="caret"></span></a>
                     <div class="dropdown-menu dropdown-menu-right subCategory-dd">
                         <ul>

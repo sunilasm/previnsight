@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row pageTitle">
                 <div class="col-lg-6 col-sm-6">
-                    <h3>Add Recipe</h3>
+                    <h3>Add Instructions</h3>
                 </div>
                 <div class="col-lg-6 col-sm-6">
                     <!--<a href="javascript:void(0)" class="pull-right" ng-click="editRecipe($event)"> <img src="images/edit.png" alt=""></a>-->
@@ -22,8 +22,8 @@
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control small" ng-model="addReceipeData.name" name="receipename" value="" servicename="equipment/checkrecipenameexits" required unique-field>
 										<span style="color:red" ng-show="addForm.receipename.$dirty && addForm.receipename.$invalid">
-    										<span ng-show="addForm.receipename.$error.required">Recipe Name is required.</span>
-                                            <span ng-show="addForm.receipename.$error.uniqueField">Recipe name already exists.</span>
+    										<span ng-show="addForm.receipename.$error.required">Instructions Name is required.</span>
+                                            <span ng-show="addForm.receipename.$error.uniqueField">Instructions name already exists.</span>
                                         </span>
                                     </div>
                                 </div>
@@ -107,7 +107,7 @@
                             <div class="col-lg-12 wordOrderInnerTab">
                                 <ul class="nav nav-tabs" ng-init="activeTab = 'recipe'">
                                     <li ng-class="{ active: activeTab === 'recipe' }">
-                                        <a ng-click="activeTab = 'recipe'" href="javascript:void(0)">Recipe</a>
+                                        <a ng-click="activeTab = 'recipe'" href="javascript:void(0)">Instructions</a>
                                     </li>
                                     <li ng-class="{ active: activeTab === 'productProfile' }">
                                         <a ng-click="activeTab = 'productProfile'" href="javascript:void(0)">Product Profile</a>
