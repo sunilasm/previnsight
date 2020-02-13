@@ -38,7 +38,6 @@ class InventoryController
 								 "i_IMAGE",
 								 "i_CREATED_BY",
 								 "i_LAST_UPDATED_BY");
-		
 		$qut="";
 		for($i=0;$i<count($inventory_array);$i++){
 			$qut .= "?,";

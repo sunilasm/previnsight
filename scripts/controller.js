@@ -2615,7 +2615,7 @@
             $scope.selectedCategoryCount= 0;
             getService.getAllinventory().then(function (response) {
                 $scope.inventorieslist = response;
-                //console.log(JSON.stringify(response));
+                console.log(JSON.stringify(response));
                 //console.log(response.length)
                 $scope.selectedCategoryCount = response.length;
 				applyFilter();
@@ -2635,11 +2635,11 @@
 				@Message :- getting category count from inventory table 
 				*******************************************************/
 				$scope.inventoryCategoryListcount =[];
-			getService.getInventoryCategoryCount().then(function (response) {
-                
-				$scope.inventoryCategoryListcount = response;
-                
-            });
+				getService.getInventoryCategoryCount().then(function (response) {
+					
+					$scope.inventoryCategoryListcount = response;
+					
+				});
 			
             var filteredInventorieslist = [], filteredInventoriesByCategory = [] , filteredUserByTopLocation =[];
             $scope.fpInventorieslist = [];
@@ -2814,6 +2814,7 @@
         if (inventory_id) {
 
             getService.editInventory(inventory_id).then(function (response) {
+				console.log(response);
                 $scope.addInventoryData.inventory_code = response[0].INVENTORY_CODE;
                 $scope.addInventoryData.inventory_name = response[0].INVENTORY_NAME;
                 $scope.addInventoryData.category = response[0].CATEGORY;
@@ -2873,7 +2874,7 @@
 
             if ($scope.addInventoryForm.$valid) {
                 var data = {
-                    "i_INVENTORY_CODE": $scope.addInventoryData.inventory_name,
+                    "i_INVENTORY_CODE": $scope.addInventoryData.inventory_code,
                     "i_INVENTORY_NAME": $scope.addInventoryData.inventory_name,
                     "i_CATEGORY": $scope.addInventoryData.category,
                     "i_ITEM": $scope.addInventoryData.item,
@@ -2891,8 +2892,8 @@
                     "i_DESCRIPTION": $scope.addInventoryData.description||null,
                     "i_SUPPLIER": $scope.addInventoryData.supplierName,
                     "i_IMAGE": $scope.uploadme.src,
-                    "i_CREATED_BY": "admin",
-                    "i_LAST_UPDATED_BY": "admin"
+                    "i_CREATED_BY": $rootScope.loggedInUserID || "1001", //admin
+                    "i_LAST_UPDATED_BY": $rootScope.loggedInUserID || "1001"
                 }
                 
                 console.log(JSON.stringify(data));
@@ -3423,7 +3424,7 @@
                 }
             });
             var data = {
-                "i_INVENTORY_CODE": $scope.addInventoryData.inventory_name,
+                "i_INVENTORY_CODE": $scope.addInventoryData.inventory_code,
                 "i_INVENTORY_NAME": $scope.addInventoryData.inventory_name,
                 "i_CATEGORY": $scope.addInventoryData.category,
                 "i_ITEM": $scope.addInventoryData.item,
@@ -4601,7 +4602,7 @@
                 "i_QUANTITY_MADE": $scope.addWorkorderData.made,
                 "i_STATUS": $scope.addWorkorderData.status,
                 "i_QUANTITY_UNITS": "test",
-                "i_INVENTORY_CODE": $scope.addInventoryData.inventory_name,
+                "i_INVENTORY_CODE": $scope.addInventoryData.inventory_code,
                 "i_INVENTORY_ID": $scope.inventory_id,
                 "i_CREATION_DATE": currentdate,
                 "i_LAST_UPDATED_DATE": currentdate,
